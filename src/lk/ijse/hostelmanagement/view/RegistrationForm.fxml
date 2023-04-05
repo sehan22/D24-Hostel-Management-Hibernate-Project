@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane focusTraversable="true" prefHeight="599.0" prefWidth="1437.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostelmanagement.controller.RegistrationFormController">
+   <children>
+      <ImageView fitHeight="654.0" fitWidth="1437.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assests/images/Rectangle%2029.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="189.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration Date : " y="3.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="357.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2023 / 03 / 31" y="3.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="1190.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I" visible="false">
+         <font>
+            <Font name="Arial Black" size="32.0" />
+         </font>
+      </Text>
+      <Text layoutX="1177.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12.30 P.M." y="3.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <AnchorPane layoutX="98.0" layoutY="124.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
+         <children>
+            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Id">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="21.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S00 - 001" visible="false">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <JFXTextField focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="98.0" layoutY="212.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
+         <children>
+            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Full Name">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+            <JFXTextField fx:id="txtStudentName" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="98.0" layoutY="296.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
+         <children>
+            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Home Town">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="21.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matara" visible="false">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <JFXTextField focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="98.0" layoutY="376.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
+         <children>
+            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Of Birth">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="21.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="07 May 2002" visible="false">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <JFXTextField focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="98.0" layoutY="453.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
+         <children>
+            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="21.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Male" visible="false">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <JFXTextField focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="98.0" layoutY="530.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
+         <children>
+            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Phone Number">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="21.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+94 - 7124001687" visible="false">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <JFXTextField focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="778.0" layoutY="124.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
+         <children>
+            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Campus">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="21.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IJSE - Institute of Software Engineering" visible="false">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <JFXTextField focusColor="WHITE" focusTraversable="false" layoutX="20.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="778.0" layoutY="214.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
+         <children>
+            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Id">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="21.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R00 - 001" visible="false">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <JFXTextField focusColor="WHITE" focusTraversable="false" layoutX="21.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="778.0" layoutY="298.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
+         <children>
+            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Type">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="21.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Non-AC / Food" visible="false">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <JFXTextField focusColor="WHITE" focusTraversable="false" layoutX="21.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="778.0" layoutY="378.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
+         <children>
+            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Key Mony">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="21.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Yes" visible="false">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <JFXTextField focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </AnchorPane>
+      <Text fill="#545454" layoutX="896.0" layoutY="495.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recheck the validity of the data you have entered in the form." />
+      <JFXButton focusTraversable="false" layoutX="1002.0" layoutY="538.0" prefHeight="39.0" prefWidth="111.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="Save" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton focusTraversable="false" layoutX="1129.0" layoutY="537.0" prefHeight="39.0" prefWidth="111.0" styleClass="whiteButton" stylesheets="@css/FormButtonStyle.css" text="Cancel" textFill="#c1455a">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton focusTraversable="false" layoutX="878.0" layoutY="538.0" prefHeight="39.0" prefWidth="111.0" styleClass="blackButton" stylesheets="@css/FormButtonStyle.css" text="Clear" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <Text layoutX="1119.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time : " y="3.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <JFXTextField layoutX="25.0" layoutY="62.0" prefHeight="25.0" prefWidth="1382.0" visible="false" />
+   </children>
+</AnchorPane>

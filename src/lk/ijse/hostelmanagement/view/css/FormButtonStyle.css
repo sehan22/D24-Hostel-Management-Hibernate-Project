@@ -1,0 +1,56 @@
+.redButton{
+    -fx-background-color:  #C1455A;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 10, 0.0 , 0 , 1 );
+    -fx-text-alignment: center;
+}
+
+.redButton:hover {
+    -fx-background-color: #F06D83;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 15, 0.0 , 0 , 1 );
+}
+
+.redButton:pressed {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #C1455A;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+}
+
+.blackButton {
+    -fx-background-color:  #4B4954;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 10, 0.0 , 0 , 1 );
+    -fx-text-alignment: center;
+}
+
+.blackButton:hover {
+    -fx-background-color: #65636B;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 15, 0.0 , 0 , 1 );
+}
+
+.blackButton:pressed {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #4B4954;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+}
+
+.whiteButton{
+    -fx-background-color:  #FFFFFF;
+    -fx-text-fill: #C1455A;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 10, 0.0 , 0 , 1 );
+    -fx-text-alignment: center;
+}
+
+.whiteButton:hover {
+    -fx-background-color: #FFFCFC;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 15, 0.0 , 0 , 1 );
+}
+
+.whiteButton:pressed {
+    -fx-background-color: #C1455A;
+    -fx-text-fill: #FFFFFF;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+}
