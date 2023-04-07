@@ -6,10 +6,13 @@ package lk.ijse.hostelmanagement.controller;
  * Project Name - D24 Hostel Management System
  */
 
+import animatefx.animation.FadeIn;
+import animatefx.animation.FadeOut;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -17,6 +20,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import lk.ijse.hostelmanagement.bo.BOType;
+import lk.ijse.hostelmanagement.bo.BoFactory;
+import lk.ijse.hostelmanagement.bo.custom.LoginBo;
+import lk.ijse.hostelmanagement.dto.UserDTO;
+import lk.ijse.hostelmanagement.entity.User;
+import lk.ijse.hostelmanagement.repository.UserRepository;
 import lk.ijse.hostelmanagement.util.Navigation;
 import lk.ijse.hostelmanagement.util.Routes;
 
@@ -31,6 +40,19 @@ public class LoginFormController {
     public PasswordField txtHidePassword;
     public TextField txtShowPassword;
     public AnchorPane mainloginformpane;
+    public AnchorPane paneResgister;
+    public TextField txtRegisterUserId;
+    public TextField txtRegisterName;
+    public TextField txtRegisterUserName;
+    public TextField txtRegisterPasswordShow;
+    public ImageView imgRegisterPasswordHide;
+    public PasswordField txtRegisterPasswordHide;
+    public ImageView imgRegisterPasswordShow;
+    public AnchorPane paneSignInHide;
+
+    LoginBo loginBo = (LoginBo) BoFactory.getInstance().getBo(BOType.USER);
+
+    private UserRepository userRepository = new UserRepository();
 
     public void initialize() {
     }
@@ -58,6 +80,65 @@ public class LoginFormController {
         }
     }
 
+    public void lnkRegisterNowOnAction(ActionEvent actionEvent) {
+        paneSignInHide.setVisible(true);
+        paneResgister.setVisible(true);
+        new FadeIn(paneResgister).play();
+    }
+
+    public void backToSignInOnAction(ActionEvent actionEvent) {
+        paneResgister.setVisible(false);
+        paneSignInHide.setVisible(true);
+        FadeOut fadeOut = new FadeOut(paneSignInHide);
+        fadeOut.play();
+        fadeOut.setOnFinished(event -> {
+            paneSignInHide.setVisible(false);
+        });
+    }
+
+    public void hideRegisterPasswordOnAction(MouseEvent mouseEvent) {
+        txtRegisterPasswordHide.setText(txtRegisterPasswordShow.getText());
+        txtRegisterPasswordHide.setVisible(true);
+        imgRegisterPasswordHide.setVisible(true);
+    }
+
+    public void showRegisterPasswordOnAction(MouseEvent mouseEvent) {
+        txtRegisterPasswordShow.setText(txtRegisterPasswordHide.getText());
+        txtRegisterPasswordHide.setVisible(false);
+        imgRegisterPasswordHide.setVisible(false);
+    }
+
+    public void saveRegisterOnAction(ActionEvent actionEvent) {
+        String userId = txtRegisterUserId.getText();
+        String name = txtRegisterName.getText();
+        String userName = txtRegisterUserName.getText();
+        String password = txtRegisterPasswordHide.getText();
+
+        try {
+            boolean isAdded = loginBo.addUser(new UserDTO(
+                    userId,
+                    name,
+                    userName,
+                    password
+            ));
+
+            if (isAdded) {
+                new Alert(Alert.AlertType.CONFIRMATION, "User Added Successfuly!").show();
+            }
+        }catch (Exception e) {
+            System.out.println(e);
+        }
+/*        try {
+            boolean isAdded = loginBo.addUser(new UserDTO(userId, name, userName, password));
+
+            if (isAdded) {
+                new Alert(Alert.AlertType.CONFIRMATION, "User Added!").show();
+            }
+        }catch (Exception e) {
+            System.out.println(e);
+        }*/
+    }
+
 /*    private void loadFxmlToStage{String fxmlFileName) throws IOException {
         String URL = "/lk/ijse/hostelmanagement/view/";
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/lk/ijse/hostelmanagement/view/ManagementForm.fxml"URL + fxmlFileName + ".fxml"));
@@ -73,7 +154,7 @@ public class LoginFormController {
         stage.close();
     }*/                                                                                                                 //load fxml
 
-    /*
+/*
         public void googleOnAction(ActionEvent actionEvent) throws URISyntaxException, IOException {
         Desktop.getDesktop().browse(new URI("https://apexbusiness.lk/"));
     }

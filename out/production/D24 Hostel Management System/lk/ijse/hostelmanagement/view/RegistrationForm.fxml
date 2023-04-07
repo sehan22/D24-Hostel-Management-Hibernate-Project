@@ -37,7 +37,7 @@
       </Text>
       <AnchorPane layoutX="98.0" layoutY="124.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
          <children>
-            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Id">
+            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservation Id">
                <font>
                   <Font size="13.0" />
                </font>
@@ -56,7 +56,7 @@
       </AnchorPane>
       <AnchorPane layoutX="98.0" layoutY="212.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
          <children>
-            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Full Name">
+            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Id">
                <font>
                   <Font size="13.0" />
                </font>
@@ -70,7 +70,7 @@
       </AnchorPane>
       <AnchorPane layoutX="98.0" layoutY="296.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
          <children>
-            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Home Town">
+            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Type Id">
                <font>
                   <Font size="13.0" />
                </font>
@@ -89,7 +89,7 @@
       </AnchorPane>
       <AnchorPane layoutX="98.0" layoutY="376.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
          <children>
-            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Of Birth">
+            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="States">
                <font>
                   <Font size="13.0" />
                </font>
@@ -106,47 +106,9 @@
             </JFXTextField>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="98.0" layoutY="453.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
-         <children>
-            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Text>
-            <Text layoutX="21.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Male" visible="false">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Text>
-            <JFXTextField focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </JFXTextField>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="98.0" layoutY="530.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
-         <children>
-            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Phone Number">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Text>
-            <Text layoutX="21.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+94 - 7124001687" visible="false">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Text>
-            <JFXTextField focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </JFXTextField>
-         </children>
-      </AnchorPane>
       <AnchorPane layoutX="778.0" layoutY="124.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
          <children>
-            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Campus">
+            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
                <font>
                   <Font size="13.0" />
                </font>
@@ -165,7 +127,7 @@
       </AnchorPane>
       <AnchorPane layoutX="778.0" layoutY="214.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
          <children>
-            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Id">
+            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Name">
                <font>
                   <Font size="13.0" />
                </font>
@@ -220,18 +182,18 @@
             </JFXTextField>
          </children>
       </AnchorPane>
-      <Text fill="#545454" layoutX="896.0" layoutY="495.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recheck the validity of the data you have entered in the form." />
-      <JFXButton focusTraversable="false" layoutX="1002.0" layoutY="538.0" prefHeight="39.0" prefWidth="111.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="Save" textFill="WHITE">
+      <Text fill="#545454" layoutX="556.0" layoutY="510.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recheck the validity of the data you have entered in the form." />
+      <JFXButton focusTraversable="false" layoutX="662.0" layoutY="551.0" prefHeight="39.0" prefWidth="111.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton focusTraversable="false" layoutX="1129.0" layoutY="537.0" prefHeight="39.0" prefWidth="111.0" styleClass="whiteButton" stylesheets="@css/FormButtonStyle.css" text="Cancel" textFill="#c1455a">
+      <JFXButton focusTraversable="false" layoutX="789.0" layoutY="550.0" prefHeight="39.0" prefWidth="111.0" styleClass="whiteButton" stylesheets="@css/FormButtonStyle.css" text="Cancel" textFill="#c1455a">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton focusTraversable="false" layoutX="878.0" layoutY="538.0" prefHeight="39.0" prefWidth="111.0" styleClass="blackButton" stylesheets="@css/FormButtonStyle.css" text="Clear" textFill="WHITE">
+      <JFXButton focusTraversable="false" layoutX="538.0" layoutY="551.0" prefHeight="39.0" prefWidth="111.0" styleClass="blackButton" stylesheets="@css/FormButtonStyle.css" text="Clear" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
