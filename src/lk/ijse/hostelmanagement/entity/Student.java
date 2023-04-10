@@ -48,4 +48,8 @@ public class Student implements SuperEntity{
         this.campus = campus;
         this.number = number;
     }
+
+    public Student(String id) {
+        this.id = id;
+    }
 }

@@ -47,7 +47,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <JFXTextField focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+            <JFXTextField fx:id="txtResId" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -61,7 +61,7 @@
                   <Font size="13.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="txtStudentName" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+            <JFXTextField fx:id="txtStudentId" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -80,7 +80,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <JFXTextField focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+            <JFXTextField fx:id="txtRoomTypeId" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -99,7 +99,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <JFXTextField focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+            <JFXTextField fx:id="txtStatus" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -118,7 +118,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <JFXTextField focusColor="WHITE" focusTraversable="false" layoutX="20.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+            <JFXTextField fx:id="txtResDate" focusColor="WHITE" focusTraversable="false" layoutX="20.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -183,7 +183,7 @@
          </children>
       </AnchorPane>
       <Text fill="#545454" layoutX="556.0" layoutY="510.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recheck the validity of the data you have entered in the form." />
-      <JFXButton focusTraversable="false" layoutX="662.0" layoutY="551.0" prefHeight="39.0" prefWidth="111.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="Save" textFill="WHITE">
+      <JFXButton focusTraversable="false" layoutX="662.0" layoutY="551.0" onAction="#SaveReservationOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

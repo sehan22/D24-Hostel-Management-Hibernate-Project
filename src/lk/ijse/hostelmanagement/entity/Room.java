@@ -30,4 +30,16 @@ public class Room implements SuperEntity{
     @OneToMany(mappedBy = "room")
     private List<Reservation> reservations = new ArrayList<>();
 
+    public Room(String id, String type, String keyMoney, int qty) {
+        this.id = id;
+        this.type = type;
+        this.keyMoney = keyMoney;
+        this.qty = qty;
+    }
+
+    public Room(String id) {
+        this.id = id;
+    }
+
+
 }

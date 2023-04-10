@@ -31,6 +31,11 @@ public class Reservation implements SuperEntity{
 
     @ManyToOne
     private Room room;
+
+    public Reservation(String id, Room room) {
+        this.id = id;
+        this.room = room;
+    }
 }
 
 

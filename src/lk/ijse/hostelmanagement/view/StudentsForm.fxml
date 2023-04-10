@@ -192,7 +192,7 @@
       </JFXButton>
       <AnchorPane layoutX="486.0" layoutY="124.0" prefHeight="39.0" prefWidth="448.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
          <children>
-            <JFXTextField focusColor="WHITE" focusTraversable="false" layoutX="10.0" layoutY="6.0" prefHeight="29.0" prefWidth="396.0" promptText="Search Student Id Here..." unFocusColor="WHITE">
+            <JFXTextField fx:id="txtSearchId" focusColor="WHITE" focusTraversable="false" layoutX="10.0" layoutY="6.0" prefHeight="29.0" prefWidth="396.0" promptText="Search Student Id Here..." unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>

@@ -38,7 +38,6 @@ public class StudentsFormController {
     public JFXTextField txtGender;
     public JFXTextField txtPhoneNumber;
     public JFXTextField txtCampus;
-    public Text txtSearchCommand;
     public JFXButton btnSearch;
     public AnchorPane paneStudentForm;
     public JFXTextField txtSearchId;
@@ -80,11 +79,6 @@ public class StudentsFormController {
     public void addNewStudentFormOnAction(ActionEvent actionEvent) {
         clearTextFields();
 
-        FadeOut fadeOut = new FadeOut();
-        fadeOut.setNode(btnAddNewStudent);
-        fadeOut.setNode(txtAddNewStudent);
-        fadeOut.play();
-
         btnAddNewStudent.setVisible(false);
         txtAddNewStudent.setVisible(false);
 
@@ -119,6 +113,7 @@ public class StudentsFormController {
 
             btnUpdate.setVisible(true);
             btnDelete.setVisible(true);
+
             btnSave.setVisible(false);
             btnCancel.setVisible(false);
 
