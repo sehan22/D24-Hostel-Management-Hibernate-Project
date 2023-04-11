@@ -12,34 +12,57 @@ import lk.ijse.hostelmanagement.bo.custom.StudentBO;
 import lk.ijse.hostelmanagement.dao.DAOFactory;
 import lk.ijse.hostelmanagement.dao.DAOType;
 import lk.ijse.hostelmanagement.dao.custom.ReservationDAO;
+import lk.ijse.hostelmanagement.dao.custom.RoomDAO;
+import lk.ijse.hostelmanagement.dao.custom.StudentDAO;
 import lk.ijse.hostelmanagement.dto.ReservationDTO;
 import lk.ijse.hostelmanagement.dto.RoomDTO;
 import lk.ijse.hostelmanagement.dto.StudentDTO;
 import lk.ijse.hostelmanagement.entity.Reservation;
 import lk.ijse.hostelmanagement.entity.Room;
 import lk.ijse.hostelmanagement.entity.Student;
+import lk.ijse.hostelmanagement.util.SessionFactoryConfiguration;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 public class ReservationBoImpl implements ReservationBo {
 
     ReservationDAO reservationDAO = (ReservationDAO) DAOFactory.getInstance().getDAO(DAOType.RESERVATION);
+    StudentDAO studentDAO = (StudentDAO) DAOFactory.getInstance().getDAO(DAOType.STUDENT);
+    RoomDAO roomDAO = (RoomDAO) DAOFactory.getInstance().getDAO(DAOType.ROOM);
 
-    public static StudentBO studentBO = (StudentBO) DAOFactory.getInstance().getDAO(DAOType.STUDENT);
-
-    public static RoomBo roomBo = (RoomBo) DAOFactory.getInstance().getDAO(DAOType.ROOM);
+    @Override
+    public ReservationDTO getReservation(String id) {
+        Reservation reservation = reservationDAO.search(id);
+        return new ReservationDTO(
+                reservation.getId(),
+                reservation.getDate(),
+                reservation.getStates(),
+                reservation.getStudent().getId(),
+                reservation.getRoom().getId()
+                );
+    }
 
     @Override
     public boolean addReservation(ReservationDTO reservationDTO) {
+        Student student = studentDAO.search(reservationDTO.getStudentId());
+        Room room = roomDAO.search(reservationDTO.getRoomId());
 
-        studentBO.addStudent(new StudentDTO());
-        StudentDTO student = reservationDTO.getStudent();
-        RoomDTO room = reservationDTO.getRoom();
         return reservationDAO.add(new Reservation(
                 reservationDTO.getId(),
                 reservationDTO.getDate(),
                 reservationDTO.getStates(),
-                new
-                /*new Student(student.getId(), student.getName(), student.getAddress(), student.getDob(), student.getGender(), student.getCampus(), student.getContact()),
-                new Room(room.getId(), room.getType(), room.getKeyMoney(), room.getQty())*/
+                student,
+                room
         ));
+    }
+
+    @Override
+    public boolean updateReservation(ReservationDTO reservationDTO) {
+        return false;
+    }
+
+    @Override
+    public boolean deleteReservation(String id) {
+        return false;
     }
 }

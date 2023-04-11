@@ -22,4 +22,8 @@ public class StudentDTO {
     private String gender;
     private String campus;
     private int contact;
+
+    public StudentDTO(String id) {
+        this.id = id;
+    }
 }

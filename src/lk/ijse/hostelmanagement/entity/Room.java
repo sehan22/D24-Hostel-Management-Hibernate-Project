@@ -4,9 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,12 +20,16 @@ import java.util.List;
 @Entity
 public class Room implements SuperEntity{
     @Id
+    @Column(name = "room_type_id", nullable = false)
     private String id;
+    @Column(name = "room_type", nullable = false)
     private String type;
+    @Column(name = "room_keymoney", nullable = false)
     private String keyMoney;
+    @Column(name = "room_type_qty", nullable = false)
     private int qty;
 
-    @OneToMany(mappedBy = "room")
+    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
     private List<Reservation> reservations = new ArrayList<>();
 
     public Room(String id, String type, String keyMoney, int qty) {
@@ -40,6 +42,4 @@ public class Room implements SuperEntity{
     public Room(String id) {
         this.id = id;
     }
-
-
 }

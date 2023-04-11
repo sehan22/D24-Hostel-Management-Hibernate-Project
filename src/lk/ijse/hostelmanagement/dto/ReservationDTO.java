@@ -21,6 +21,6 @@ public class ReservationDTO {
     private String id;
     private Date date;
     private String states;
-    private StudentDTO student;
-    private RoomDTO room;
+    private String studentId;
+    private String roomId;
 }

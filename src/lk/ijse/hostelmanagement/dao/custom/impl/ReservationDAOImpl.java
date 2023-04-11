@@ -15,7 +15,16 @@ import org.hibernate.Transaction;
 public class ReservationDAOImpl implements ReservationDAO {
     @Override
     public Reservation search(String id) {
-        return null;
+
+        Session session = SessionFactoryConfiguration.getInstance().getSessionFactory();
+        Transaction transaction = session.beginTransaction();
+
+        Reservation reservation = session.get(Reservation.class, id);
+
+        transaction.commit();
+        session.close();
+
+        return reservation;
     }
 
     @Override
@@ -32,11 +41,28 @@ public class ReservationDAOImpl implements ReservationDAO {
 
     @Override
     public boolean update(Reservation entity) {
-        return false;
+        Session session = SessionFactoryConfiguration.getInstance().getSessionFactory();
+        Transaction transaction = session.beginTransaction();
+
+        session.update(entity);
+
+        transaction.commit();
+        session.close();
+        return true;
     }
 
     @Override
     public boolean delete(String id) {
-        return false;
+        Session session = SessionFactoryConfiguration.getInstance().getSessionFactory();
+        Transaction transaction = session.beginTransaction();
+
+        Reservation entity = session.load(Reservation.class, id);
+
+        session.delete(entity);
+
+        transaction.commit();
+        session.close();
+
+        return true;
     }
 }

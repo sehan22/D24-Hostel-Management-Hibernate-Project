@@ -18,4 +18,8 @@ public class RoomDTO {
     private String type;
     private String keyMoney;
     private int qty;
+
+    public RoomDTO(String id) {
+        this.id = id;
+    }
 }

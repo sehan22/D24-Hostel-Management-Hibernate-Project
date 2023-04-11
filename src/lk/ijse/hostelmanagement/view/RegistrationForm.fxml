@@ -5,6 +5,8 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -35,7 +37,7 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <AnchorPane layoutX="98.0" layoutY="124.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
+      <AnchorPane layoutX="98.0" layoutY="203.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
          <children>
             <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservation Id">
                <font>
@@ -54,7 +56,7 @@
             </JFXTextField>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="98.0" layoutY="212.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
+      <AnchorPane layoutX="98.0" layoutY="307.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
          <children>
             <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Id">
                <font>
@@ -68,7 +70,7 @@
             </JFXTextField>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="98.0" layoutY="296.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
+      <AnchorPane layoutX="98.0" layoutY="411.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
          <children>
             <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Type Id">
                <font>
@@ -87,7 +89,7 @@
             </JFXTextField>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="98.0" layoutY="376.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
+      <AnchorPane layoutX="98.0" layoutY="515.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
          <children>
             <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="States">
                <font>
@@ -106,7 +108,7 @@
             </JFXTextField>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="778.0" layoutY="124.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
+      <AnchorPane layoutX="776.0" layoutY="203.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
          <children>
             <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
                <font>
@@ -125,7 +127,7 @@
             </JFXTextField>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="778.0" layoutY="214.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
+      <AnchorPane layoutX="776.0" layoutY="307.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
          <children>
             <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Name">
                <font>
@@ -137,14 +139,14 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <JFXTextField focusColor="WHITE" focusTraversable="false" layoutX="21.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+            <JFXTextField fx:id="txtStudentName" focusColor="WHITE" focusTraversable="false" layoutX="21.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </JFXTextField>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="778.0" layoutY="298.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
+      <AnchorPane layoutX="776.0" layoutY="411.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
          <children>
             <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Type">
                <font>
@@ -156,44 +158,35 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <JFXTextField focusColor="WHITE" focusTraversable="false" layoutX="21.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+            <JFXTextField fx:id="txtRoomType" focusColor="WHITE" focusTraversable="false" layoutX="21.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </JFXTextField>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="778.0" layoutY="378.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
-         <children>
-            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Key Mony">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Text>
-            <Text layoutX="21.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Yes" visible="false">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Text>
-            <JFXTextField focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </JFXTextField>
-         </children>
-      </AnchorPane>
-      <Text fill="#545454" layoutX="556.0" layoutY="510.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recheck the validity of the data you have entered in the form." />
-      <JFXButton focusTraversable="false" layoutX="662.0" layoutY="551.0" onAction="#SaveReservationOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="Save" textFill="WHITE">
+      <Text fill="#545454" layoutX="894.0" layoutY="514.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recheck the validity of the data you have entered in the form." />
+      <JFXButton fx:id="btnSave" focusTraversable="false" layoutX="1000.0" layoutY="542.0" onAction="#SaveReservationOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton focusTraversable="false" layoutX="789.0" layoutY="550.0" prefHeight="39.0" prefWidth="111.0" styleClass="whiteButton" stylesheets="@css/FormButtonStyle.css" text="Cancel" textFill="#c1455a">
+      <JFXButton fx:id="btnCancel" focusTraversable="false" layoutX="1127.0" layoutY="541.0" onAction="#CancelOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="whiteButton" stylesheets="@css/FormButtonStyle.css" text="Cancel" textFill="#c1455a">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton focusTraversable="false" layoutX="538.0" layoutY="551.0" prefHeight="39.0" prefWidth="111.0" styleClass="blackButton" stylesheets="@css/FormButtonStyle.css" text="Clear" textFill="WHITE">
+      <JFXButton fx:id="btnClear" focusTraversable="false" layoutX="876.0" layoutY="542.0" onAction="#clearFormTextFieldsOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="blackButton" stylesheets="@css/FormButtonStyle.css" text="Clear" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnUpdate" focusTraversable="false" layoutX="1000.0" layoutY="542.0" onAction="#UpdateReservationOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="Update" textFill="WHITE" visible="false">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnDelete" focusTraversable="false" layoutX="1127.0" layoutY="541.0" onAction="#DeleteReservationOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="whiteButton" stylesheets="@css/FormButtonStyle.css" text="Delete" textFill="#c1455a" visible="false">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -204,5 +197,53 @@
          </font>
       </Text>
       <JFXTextField layoutX="25.0" layoutY="62.0" prefHeight="25.0" prefWidth="1382.0" visible="false" />
+      <AnchorPane layoutX="486.0" layoutY="124.0" prefHeight="39.0" prefWidth="448.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
+         <children>
+            <JFXTextField fx:id="txtSearchId" focusColor="WHITE" focusTraversable="false" layoutX="10.0" layoutY="6.0" prefHeight="29.0" prefWidth="396.0" promptText="Search Reservation Id Here..." unFocusColor="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXTextField>
+            <JFXButton fx:id="btnSearch" buttonType="RAISED" focusTraversable="false" layoutX="417.0" layoutY="5.0" onAction="#SearchOnAction" prefHeight="31.0" prefWidth="13.0" style="-fx-background-radius: 15;" text="." textFill="#ffffff00" translateX="-3.0" translateY="-1.0">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="30.0" layoutX="4.0" pickOnBounds="true" preserveRatio="true" translateX="3.0">
+                     <image>
+                        <Image url="@../assests/images/icons8-search-in-list-24.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <ripplerFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#bf455bbb" />
+                        <Stop color="#f78f8fbe" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </ripplerFill>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <Text fx:id="txtAddNewReservation" layoutX="1129.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add New Reservation" visible="false" y="3.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <JFXButton fx:id="btnAddNewReservation" buttonType="RAISED" focusTraversable="false" layoutX="1267.0" layoutY="134.0" onAction="#addNewReservationFormOnAction" prefHeight="39.0" prefWidth="46.0" style="-fx-background-radius: 100;" text="." textFill="#ffffff00" visible="false">
+         <graphic>
+            <ImageView fitHeight="51.0" fitWidth="23.0" layoutX="4.0" pickOnBounds="true" preserveRatio="true" translateX="4.0">
+               <image>
+                  <Image url="@../assests/images/icons8-add-properties-24.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#bd465c33" />
+                  <Stop color="#f58e8e32" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+      </JFXButton>
    </children>
 </AnchorPane>
