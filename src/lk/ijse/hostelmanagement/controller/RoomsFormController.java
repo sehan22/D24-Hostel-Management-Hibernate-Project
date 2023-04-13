@@ -33,6 +33,33 @@ public class RoomsFormController {
 
     RoomBo roomBo = (RoomBo) BoFactory.getInstance().getBo(BOType.ROOM);
 
+    private void clearTextFields() {
+        txtRoomNumber.setDisable(false);
+
+        btnDelete.setVisible(false);
+        btnUpdate.setVisible(false);
+
+        btnSave.setVisible(true);
+        btnCancel.setVisible(true);
+
+        txtSearchRoomNumber.clear();
+        txtRoomNumber.clear();
+        txtRoomType.clear();
+        txtKeyMoney.clear();
+        txtQty.clear();
+    }
+
+    public void addNewRoomOnAction(ActionEvent actionEvent) {
+        clearTextFields();
+
+        btnAddNewRoom.setVisible(false);
+        txtAddNewRoom.setVisible(false);
+    }
+
+    public void clearTextFieldsOnAction(ActionEvent actionEvent) {
+        clearTextFields();
+    }
+
     public void SaveOnAction(ActionEvent actionEvent) {
         String id = txtRoomNumber.getText();
         String roomType = txtRoomType.getText();
@@ -58,20 +85,20 @@ public class RoomsFormController {
     }
 
     public void SearchOnAction(ActionEvent actionEvent) {
-        txtRoomNumber.setDisable(true);
-
-        btnDelete.setVisible(true);
-        btnUpdate.setVisible(true);
-
-        btnSave.setVisible(false);
-        btnCancel.setVisible(false);
-
-        txtAddNewRoom.setVisible(true);
-        btnAddNewRoom.setVisible(true);
-
         String id = txtSearchRoomNumber.getText();
 
         try {
+            txtRoomNumber.setDisable(true);
+
+            btnDelete.setVisible(true);
+            btnUpdate.setVisible(true);
+
+            btnSave.setVisible(false);
+            btnCancel.setVisible(false);
+
+            txtAddNewRoom.setVisible(true);
+            btnAddNewRoom.setVisible(true);
+
             RoomDTO room = roomBo.getRoom(id);
             txtRoomNumber.setText(room.getId());
             txtRoomType.setText(room.getType());
@@ -79,6 +106,10 @@ public class RoomsFormController {
             txtQty.setText(String.valueOf(room.getQty()));
         }catch (Exception e) {
             System.out.println(e);
+            clearTextFields();
+
+            txtAddNewRoom.setVisible(false);
+            btnAddNewRoom.setVisible(false);
         }
     }
 
@@ -117,32 +148,5 @@ public class RoomsFormController {
         }catch (Exception e) {
             System.out.println(e);
         }
-    }
-
-    public void clearTextFieldsOnAction(ActionEvent actionEvent) {
-        clearTextFields();
-    }
-
-    private void clearTextFields() {
-        txtRoomNumber.setDisable(false);
-
-        btnDelete.setVisible(false);
-        btnUpdate.setVisible(false);
-
-        btnSave.setVisible(true);
-        btnCancel.setVisible(true);
-
-        txtSearchRoomNumber.clear();
-        txtRoomNumber.clear();
-        txtRoomType.clear();
-        txtKeyMoney.clear();
-        txtQty.clear();
-    }
-
-    public void addNewRoomOnAction(ActionEvent actionEvent) {
-        clearTextFields();
-
-        btnAddNewRoom.setVisible(false);
-        txtAddNewRoom.setVisible(false);
     }
 }

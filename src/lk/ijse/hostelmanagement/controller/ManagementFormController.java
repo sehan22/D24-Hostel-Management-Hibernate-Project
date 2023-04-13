@@ -162,4 +162,8 @@ public class ManagementFormController {
     public void btnViewUsersOnAction(ActionEvent actionEvent) throws IOException {
         Navigation.navigate(Routes.VIEWUSERS, mainFormPane);
     }
+
+    public void GetStartedOnAction(ActionEvent actionEvent) throws IOException {
+        Navigation.navigate(Routes.DASHBOARD, mainFormPane);
+    }
 }

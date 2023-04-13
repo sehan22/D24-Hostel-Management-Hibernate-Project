@@ -54,10 +54,6 @@ public class StudentsFormController {
 
     StudentBO studentBO = (StudentBO) BoFactory.getInstance().getBo(BOType.STUDENT);
 
-    public void clearStudentFormTextFieldOnAction(ActionEvent actionEvent) {
-        clearTextFields();
-    }
-
     private void clearTextFields() {
         txtStudentId.setDisable(false);
 
@@ -74,6 +70,10 @@ public class StudentsFormController {
         txtGender.clear();
         txtCampus.clear();
         txtPhoneNumber.clear();
+    }
+
+    public void clearStudentFormTextFieldOnAction(ActionEvent actionEvent) {
+        clearTextFields();
     }
 
     public void addNewStudentFormOnAction(ActionEvent actionEvent) {
@@ -131,9 +131,10 @@ public class StudentsFormController {
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, "Input Student Id Is Ivalid!\nPlease Try Again..").show();
             System.out.println(e);
-            System.out.println("catch");
-
             clearTextFields();
+
+            txtAddNewStudent.setVisible(false);
+            btnAddNewStudent.setVisible(false);
         }
     }
 

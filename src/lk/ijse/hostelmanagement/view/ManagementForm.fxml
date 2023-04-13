@@ -166,11 +166,31 @@
                   <Image url="@../assests/images/Rectangle%2029.png" />
                </image>
             </ImageView>
-            <Text layoutX="627.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME">
+            <Text layoutX="401.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome To D | 24 Hostel System">
                <font>
-                  <Font size="57.0" />
+                  <Font name="System Bold" size="40.0" />
                </font>
             </Text>
+            <Text layoutX="401.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hi There,">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="401.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We’re here to  help  you create an amazing experience fot your users fromthe get go.">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="401.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Let's Go....!">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <JFXButton focusTraversable="false" layoutX="528.0" layoutY="407.0" onAction="#GetStartedOnAction" prefHeight="48.0" prefWidth="152.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="Get Started" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
          </children>
       </AnchorPane>
    </children>

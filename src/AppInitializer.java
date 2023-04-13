@@ -18,9 +18,10 @@ public class AppInitializer extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/lk/ijse/hostelmanagement/view/ManagementForm.fxml"))));
+        primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/lk/ijse/hostelmanagement/view/LoginForm.fxml"))));
         primaryStage.setTitle("D | 24 Hostel Management System");
-        /*primaryStage.getIcons().add(image);*/
+        Image image = new Image("/lk/ijse/hostelmanagement/assests/images/Screenshot (64).png");
+        primaryStage.getIcons().add(image);
         primaryStage.centerOnScreen();
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
