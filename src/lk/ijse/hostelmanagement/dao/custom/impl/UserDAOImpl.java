@@ -17,7 +17,15 @@ import java.util.List;
 public class UserDAOImpl implements UserDAO {
     @Override
     public User search(String id) {
-        return null;
+        Session session = SessionFactoryConfiguration.getInstance().getSessionFactory();
+        Transaction transaction = session.beginTransaction();
+
+        User user = session.get(User.class, id);
+
+        transaction.commit();
+        session.close();
+
+        return user;
     }
 
     @Override
@@ -29,21 +37,48 @@ public class UserDAOImpl implements UserDAO {
 
         transaction.commit();
         session.close();
+
         return true;
     }
 
     @Override
     public boolean update(User entity) {
-        return false;
+        Session session = SessionFactoryConfiguration.getInstance().getSessionFactory();
+        Transaction transaction = session.beginTransaction();
+
+        session.update(entity);
+
+        transaction.commit();
+        session.close();
+
+        return true;
     }
 
     @Override
     public boolean delete(String id) {
-        return false;
+        Session session = SessionFactoryConfiguration.getInstance().getSessionFactory();
+        Transaction transaction = session.beginTransaction();
+
+        User entity = session.load(User.class, id);
+
+        session.delete(entity);
+
+        transaction.commit();
+        session.close();
+
+        return true;
     }
 
     @Override
     public List<User> getAll() {
-        return null;
+        Session session = SessionFactoryConfiguration.getInstance().getSessionFactory();
+        Transaction transaction = session.beginTransaction();
+
+        List userList = session.createQuery("FROM User ").list();
+
+        transaction.commit();
+        session.close();
+
+        return userList;
     }
 }

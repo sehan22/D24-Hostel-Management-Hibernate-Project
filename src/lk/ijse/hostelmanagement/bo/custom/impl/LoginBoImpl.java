@@ -16,19 +16,63 @@ import lk.ijse.hostelmanagement.dto.UserDTO;
 import lk.ijse.hostelmanagement.entity.User;
 import lk.ijse.hostelmanagement.repository.UserRepository;
 
-public class LoginBoImpl implements LoginBo {
+import java.util.ArrayList;
+import java.util.stream.Collectors;
 
-    /*UserRepository userRepository = new UserRepository();*/
+public class LoginBoImpl implements LoginBo {
     UserDAO userDAO = (UserDAO) DAOFactory.getInstance().getDAO(DAOType.USER);
 
     @Override
+    public UserDTO getUser(String id) {
+        User user = userDAO.search(id);
+        return new UserDTO(
+                user.getId(),
+                user.getName(),
+                user.getEmail(),
+                user.getUserName(),
+                user.getPassword()
+        );
+    }
+
+    @Override
     public boolean addUser(UserDTO userDTO) {
-        /*return userRepository.addUser(new User(userDTO.getId(), userDTO.getName(), userDTO.getUserName(), userDTO.getPassword()));*/
         return userDAO.add(new User(
-           userDTO.getId(),
-           userDTO.getName(),
-           userDTO.getUserName(),
-           userDTO.getPassword()
+                userDTO.getId(),
+                userDTO.getName(),
+                userDTO.getEmail(),
+                userDTO.getUserName(),
+                userDTO.getPassword()
         ));
+    }
+
+    @Override
+    public boolean updateUser(UserDTO userDTO) {
+        return userDAO.update(new User(
+                userDTO.getId(),
+                userDTO.getName(),
+                userDTO.getEmail(),
+                userDTO.getUserName(),
+                userDTO.getPassword()
+        ));
+    }
+
+    @Override
+    public boolean deleteUser(String id) {
+        return userDAO.delete(id);
+    }
+
+    @Override
+    public ArrayList<UserDTO> getAllUser() {
+        ArrayList<UserDTO> userList = new ArrayList<>();
+        userList.addAll(userDAO.getAll().stream().map(user -> {
+            return new UserDTO(
+                    user.getId(),
+                    user.getName(),
+                    user.getEmail(),
+                    user.getUserName(),
+                    user.getPassword());
+        }).collect(Collectors.toList()));
+
+        return userList;
     }
 }

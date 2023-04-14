@@ -190,12 +190,9 @@
                </children>
             </Group>
             <AnchorPane fx:id="paneSignInHide" layoutX="566.0" layoutY="178.0" prefHeight="303.0" prefWidth="327.0" style="-fx-background-color: white;" visible="false" />
-            <AnchorPane fx:id="paneResgister" layoutX="566.0" layoutY="178.0" prefHeight="303.0" prefWidth="327.0" style="-fx-background-color: white;" visible="false">
+            <AnchorPane fx:id="paneResgister" layoutX="566.0" layoutY="178.0" prefHeight="303.0" prefWidth="327.0" style="-fx-background-color: white;">
                <children>
-                  <TextField fx:id="txtRegisterUserId" focusTraversable="false" layoutX="15.0" layoutY="73.0" prefHeight="32.0" prefWidth="298.0" promptText="UserId" style="-fx-border-color: #880505; -fx-border-radius: 8; -fx-background-radius: 8;" />
-                  <TextField fx:id="txtRegisterName" focusTraversable="false" layoutX="15.0" layoutY="115.0" prefHeight="32.0" prefWidth="298.0" promptText="Name" style="-fx-border-color: #880505; -fx-border-radius: 8; -fx-background-radius: 8;" />
-                  <TextField fx:id="txtRegisterUserName" focusTraversable="false" layoutX="15.0" layoutY="157.0" prefHeight="32.0" prefWidth="298.0" promptText="UserName" style="-fx-border-color: #880505; -fx-border-radius: 8; -fx-background-radius: 8;" />
-                  <JFXButton focusTraversable="false" layoutX="84.0" layoutY="253.0" onAction="#saveRegisterOnAction" prefHeight="36.0" prefWidth="83.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="Register" textFill="WHITE">
+                  <JFXButton focusTraversable="false" layoutX="84.0" layoutY="253.0" prefHeight="36.0" prefWidth="83.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="Register" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -210,14 +207,14 @@
                         <Font size="14.0" />
                      </font>
                   </Hyperlink>
-                  <TextField fx:id="txtRegisterPasswordShow" focusTraversable="false" layoutX="15.0" layoutY="199.0" prefHeight="32.0" prefWidth="298.0" promptText="Password" style="-fx-border-color: #880505; -fx-border-radius: 8; -fx-background-radius: 8;" />
-                  <ImageView fx:id="imgRegisterPasswordShow" fitHeight="17.0" fitWidth="26.0" layoutX="282.0" layoutY="207.0" onMouseClicked="#hideRegisterPasswordOnAction" pickOnBounds="true" preserveRatio="true">
+                  <TextField focusTraversable="false" layoutX="15.0" layoutY="199.0" prefHeight="32.0" prefWidth="298.0" promptText="Password" style="-fx-border-color: #880505; -fx-border-radius: 8; -fx-background-radius: 8;" />
+                  <ImageView fitHeight="17.0" fitWidth="26.0" layoutX="282.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assests/images/icons8-eye-48.png" />
                      </image>
                   </ImageView>
-                  <PasswordField fx:id="txtRegisterPasswordHide" focusTraversable="false" layoutX="15.0" layoutY="199.0" prefHeight="32.0" prefWidth="298.0" promptText="Password" style="-fx-border-color: #880505; -fx-background-radius: 8; -fx-border-radius: 8;" />
-                  <ImageView fx:id="imgRegisterPasswordHide" fitHeight="17.0" fitWidth="26.0" layoutX="282.0" layoutY="207.0" onMouseClicked="#showRegisterPasswordOnAction" pickOnBounds="true" preserveRatio="true">
+                  <PasswordField focusTraversable="false" layoutX="15.0" layoutY="199.0" prefHeight="32.0" prefWidth="298.0" promptText="Password" style="-fx-border-color: #880505; -fx-background-radius: 8; -fx-border-radius: 8;" />
+                  <ImageView fx:id="imgRegisterPasswordHide" fitHeight="17.0" fitWidth="26.0" layoutX="282.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assests/images/icons8-hide-48%201.png" />
                      </image>

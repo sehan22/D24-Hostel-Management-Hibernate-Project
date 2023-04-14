@@ -18,10 +18,11 @@
       </ImageView>
       <TableView fx:id="tblUser" focusTraversable="false" layoutX="87.0" layoutY="201.0" prefHeight="403.0" prefWidth="1271.0" stylesheets="@css/TableViewStyle.css">
          <columns>
-            <TableColumn fx:id="colUserId" editable="false" prefWidth="268.9999694824219" sortable="false" text="User Id" />
-            <TableColumn fx:id="colUserName" editable="false" prefWidth="427.0" sortable="false" text="User Name" />
-            <TableColumn fx:id="colUName" editable="false" prefWidth="297.0" sortable="false" text="UserName" />
-            <TableColumn fx:id="colPasword" editable="false" prefWidth="275.0" sortable="false" text="Password" />
+            <TableColumn fx:id="colUserId" editable="false" prefWidth="181.99996948242188" sortable="false" text="User Id" />
+            <TableColumn fx:id="colUserName" editable="false" prefWidth="346.9999694824219" sortable="false" text="Full Name" />
+            <TableColumn fx:id="colEmail" editable="false" prefWidth="343.0" sortable="false" text="Email" />
+            <TableColumn fx:id="colUName" editable="false" prefWidth="213.0" sortable="false" text="UserName" />
+            <TableColumn fx:id="colPasword" editable="false" prefWidth="185.0" sortable="false" text="Password" />
          </columns>
       </TableView>
       <AnchorPane layoutX="448.0" layoutY="125.0" prefHeight="7.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">

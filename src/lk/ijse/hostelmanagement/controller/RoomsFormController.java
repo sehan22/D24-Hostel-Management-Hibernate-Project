@@ -42,11 +42,12 @@ public class RoomsFormController {
         btnSave.setVisible(true);
         btnCancel.setVisible(true);
 
-        txtSearchRoomNumber.clear();
         txtRoomNumber.clear();
         txtRoomType.clear();
         txtKeyMoney.clear();
         txtQty.clear();
+
+        txtSearchRoomNumber.clear();
     }
 
     public void addNewRoomOnAction(ActionEvent actionEvent) {
@@ -79,6 +80,8 @@ public class RoomsFormController {
                 clearTextFields();
             }
         }catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, "Input User Id Is Ivalid!\nPlease Try Again..").show();
+
             System.out.println(e);
             e.printStackTrace();
         }
@@ -100,11 +103,14 @@ public class RoomsFormController {
             btnAddNewRoom.setVisible(true);
 
             RoomDTO room = roomBo.getRoom(id);
+
             txtRoomNumber.setText(room.getId());
             txtRoomType.setText(room.getType());
             txtKeyMoney.setText(room.getKeyMoney());
             txtQty.setText(String.valueOf(room.getQty()));
         }catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, "Input User Id Is Ivalid!\nPlease Try Again..").show();
+
             System.out.println(e);
             clearTextFields();
 
@@ -129,8 +135,11 @@ public class RoomsFormController {
 
             if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Room Added Successfully!").show();
+                clearTextFields();
             }
         } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, "Input User Id Is Ivalid!\nPlease Try Again..").show();
+
             System.out.println(e);
         }
     }
@@ -146,6 +155,8 @@ public class RoomsFormController {
                 clearTextFields();
             }
         }catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, "Input User Id Is Ivalid!\nPlease Try Again..").show();
+
             System.out.println(e);
         }
     }

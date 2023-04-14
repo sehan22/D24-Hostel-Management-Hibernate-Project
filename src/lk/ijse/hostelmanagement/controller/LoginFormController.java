@@ -41,16 +41,8 @@ public class LoginFormController {
     public TextField txtShowPassword;
     public AnchorPane mainloginformpane;
     public AnchorPane paneResgister;
-    public TextField txtRegisterUserId;
-    public TextField txtRegisterName;
-    public TextField txtRegisterUserName;
-    public TextField txtRegisterPasswordShow;
     public ImageView imgRegisterPasswordHide;
-    public PasswordField txtRegisterPasswordHide;
-    public ImageView imgRegisterPasswordShow;
     public AnchorPane paneSignInHide;
-
-    LoginBo loginBo = (LoginBo) BoFactory.getInstance().getBo(BOType.USER);
 
     private UserRepository userRepository = new UserRepository();
 
@@ -94,37 +86,7 @@ public class LoginFormController {
         fadeOut.setOnFinished(event -> {
             paneSignInHide.setVisible(false);
         });
-    }
-
-    public void hideRegisterPasswordOnAction(MouseEvent mouseEvent) {
-        txtRegisterPasswordHide.setText(txtRegisterPasswordShow.getText());
-        txtRegisterPasswordHide.setVisible(true);
-        imgRegisterPasswordHide.setVisible(true);
-    }
-
-    public void showRegisterPasswordOnAction(MouseEvent mouseEvent) {
-        txtRegisterPasswordShow.setText(txtRegisterPasswordHide.getText());
-        txtRegisterPasswordHide.setVisible(false);
-        imgRegisterPasswordHide.setVisible(false);
-    }
-
-    public void saveRegisterOnAction(ActionEvent actionEvent) {
-    }
-
-/*    private void loadFxmlToStage{String fxmlFileName) throws IOException {
-        String URL = "/lk/ijse/hostelmanagement/view/";
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/lk/ijse/hostelmanagement/view/ManagementForm.fxml"URL + fxmlFileName + ".fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage1 = new Stage();
-        stage1.setScene(new Scene(root1));
-        stage1.initStyle(StageStyle.UNDECORATED);
-        stage1.show();
-    }
-
-    private void closeStage(AnchorPane paneId) {
-        Stage stage = (Stage) paneId.getScene().getWindow();
-        stage.close();
-    }*/                                                                                                                 //load fxml
+    }                                                                                                              //load fxml
 
 /*
         public void googleOnAction(ActionEvent actionEvent) throws URISyntaxException, IOException {
