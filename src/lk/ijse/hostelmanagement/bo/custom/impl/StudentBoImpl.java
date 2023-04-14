@@ -62,4 +62,11 @@ public class StudentBoImpl implements StudentBO {
     public boolean deleteStudent(String id) {
         return studentDAO.delete(id);
     }
+
+    @Override
+    public ArrayList<StudentDTO> getAllStudent() {
+        ArrayList<Object> students = new ArrayList<>();
+
+        students.
+    }
 }

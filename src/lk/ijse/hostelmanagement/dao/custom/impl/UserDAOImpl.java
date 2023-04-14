@@ -12,6 +12,8 @@ import lk.ijse.hostelmanagement.util.SessionFactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.List;
+
 public class UserDAOImpl implements UserDAO {
     @Override
     public User search(String id) {
@@ -38,5 +40,10 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public boolean delete(String id) {
         return false;
+    }
+
+    @Override
+    public List<User> getAll() {
+        return null;
     }
 }

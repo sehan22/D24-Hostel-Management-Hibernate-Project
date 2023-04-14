@@ -16,15 +16,15 @@
             <Image url="@../assests/images/Rectangle%2029.png" />
          </image>
       </ImageView>
-      <TableView layoutX="77.0" layoutY="191.0" prefHeight="403.0" prefWidth="1271.0">
+      <TableView fx:id="tblStudent" layoutX="77.0" layoutY="191.0" prefHeight="403.0" prefWidth="1271.0">
          <columns>
-            <TableColumn prefWidth="113.99996948242188" text="Student Id" />
-            <TableColumn prefWidth="226.00003051757812" text="Student Name" />
-            <TableColumn prefWidth="216.0" text="Address" />
-            <TableColumn minWidth="0.0" prefWidth="147.0" text="DOB" />
-            <TableColumn minWidth="0.0" prefWidth="115.0" text="Gender" />
-            <TableColumn minWidth="0.0" prefWidth="267.0" text="Campus" />
-            <TableColumn prefWidth="184.0" text="Phone Number" />
+            <TableColumn fx:id="colStudentId" prefWidth="113.99996948242188" text="Student Id" />
+            <TableColumn fx:id="colStudentName" prefWidth="226.00003051757812" text="Student Name" />
+            <TableColumn fx:id="colStudentAddress" prefWidth="216.0" text="Address" />
+            <TableColumn fx:id="colStudentDOB" minWidth="0.0" prefWidth="147.0" text="DOB" />
+            <TableColumn fx:id="colStudentGender" minWidth="0.0" prefWidth="115.0" text="Gender" />
+            <TableColumn fx:id="colStudentCampus" minWidth="0.0" prefWidth="267.0" text="Campus" />
+            <TableColumn fx:id="colStudentPhoneNumber" prefWidth="184.0" text="Phone Number" />
          </columns>
       </TableView>
       <AnchorPane layoutX="438.0" layoutY="115.0" prefHeight="7.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">

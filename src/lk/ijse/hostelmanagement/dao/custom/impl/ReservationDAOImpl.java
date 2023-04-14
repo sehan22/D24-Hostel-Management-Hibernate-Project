@@ -12,6 +12,8 @@ import lk.ijse.hostelmanagement.util.SessionFactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.List;
+
 public class ReservationDAOImpl implements ReservationDAO {
     @Override
     public Reservation search(String id) {
@@ -64,5 +66,10 @@ public class ReservationDAOImpl implements ReservationDAO {
         session.close();
 
         return true;
+    }
+
+    @Override
+    public List<Reservation> getAll() {
+        return null;
     }
 }

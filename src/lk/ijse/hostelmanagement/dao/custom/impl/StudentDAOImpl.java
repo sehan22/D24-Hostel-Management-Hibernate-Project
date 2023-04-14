@@ -12,6 +12,8 @@ import lk.ijse.hostelmanagement.util.SessionFactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.List;
+
 public class StudentDAOImpl implements StudentDAO {
     @Override
     public Student search(String id) {
@@ -62,4 +64,16 @@ public class StudentDAOImpl implements StudentDAO {
         return true;
     }
 
+    @Override
+    public List<Student> getAll() {
+        Session session = SessionFactoryConfiguration.getInstance().getSessionFactory();
+        Transaction transaction = session.beginTransaction();
+
+        List<Student> list = session.createQuery("FROM Student ").list();
+
+        transaction.commit();
+        session.close();
+
+        return list;
+    }
 }

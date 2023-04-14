@@ -7,6 +7,13 @@
         <naming-strategy-map />
       </configuration>
     </facet>
+    <facet type="jpa" name="JPA">
+      <configuration>
+        <setting name="validation-enabled" value="true" />
+        <datasource-mapping />
+        <naming-strategy-map />
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
@@ -18,7 +25,7 @@
     <orderEntry type="library" name="jfoenix-8.0.2" level="project" />
     <orderEntry type="library" name="io.github.typhon0.AnimateFX" level="project" />
     <orderEntry type="library" name="mysql-connector-java-8.0.24" level="project" />
-    <orderEntry type="library" name="antlr-2.7.7" level="project" />
     <orderEntry type="library" name="lombok" level="project" />
+    <orderEntry type="library" name="antlr-2.7.7" level="project" />
   </component>
 </module>
