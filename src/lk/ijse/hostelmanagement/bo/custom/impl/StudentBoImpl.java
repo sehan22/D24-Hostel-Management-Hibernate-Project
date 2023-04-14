@@ -12,7 +12,6 @@ import lk.ijse.hostelmanagement.dao.DAOType;
 import lk.ijse.hostelmanagement.dao.custom.StudentDAO;
 import lk.ijse.hostelmanagement.dto.StudentDTO;
 import lk.ijse.hostelmanagement.entity.Student;
-import lk.ijse.hostelmanagement.repository.StudentRepository;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;

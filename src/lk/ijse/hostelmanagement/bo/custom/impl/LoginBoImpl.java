@@ -14,7 +14,6 @@ import lk.ijse.hostelmanagement.dao.custom.UserDAO;
 import lk.ijse.hostelmanagement.dao.custom.impl.UserDAOImpl;
 import lk.ijse.hostelmanagement.dto.UserDTO;
 import lk.ijse.hostelmanagement.entity.User;
-import lk.ijse.hostelmanagement.repository.UserRepository;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;

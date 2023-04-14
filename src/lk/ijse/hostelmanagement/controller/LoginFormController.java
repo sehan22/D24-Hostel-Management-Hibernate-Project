@@ -25,7 +25,6 @@ import lk.ijse.hostelmanagement.bo.BoFactory;
 import lk.ijse.hostelmanagement.bo.custom.LoginBo;
 import lk.ijse.hostelmanagement.dto.UserDTO;
 import lk.ijse.hostelmanagement.entity.User;
-import lk.ijse.hostelmanagement.repository.UserRepository;
 import lk.ijse.hostelmanagement.util.Navigation;
 import lk.ijse.hostelmanagement.util.Routes;
 
@@ -43,8 +42,6 @@ public class LoginFormController {
     public AnchorPane paneResgister;
     public ImageView imgRegisterPasswordHide;
     public AnchorPane paneSignInHide;
-
-    private UserRepository userRepository = new UserRepository();
 
     public void initialize() {
     }
