@@ -16,12 +16,12 @@
             <Image url="@../assests/images/Rectangle%2029.png" />
          </image>
       </ImageView>
-      <TableView layoutX="77.0" layoutY="191.0" prefHeight="403.0" prefWidth="1271.0">
+      <TableView fx:id="tblRoom" focusTraversable="false" layoutX="77.0" layoutY="191.0" prefHeight="403.0" prefWidth="1271.0" stylesheets="@css/TableViewStyle.css">
         <columns>
-          <TableColumn prefWidth="150.0" text="Room Type ID" />
-            <TableColumn prefWidth="150.0" text="Room Type" />
-            <TableColumn prefWidth="743.0" text="Room Key Money" />
-            <TableColumn prefWidth="227.0" text="Room Qty" />
+          <TableColumn fx:id="colRoomTypeId" editable="false" prefWidth="150.0" sortable="false" text="Room Type ID" />
+            <TableColumn fx:id="colRoomType" editable="false" prefWidth="150.0" sortable="false" text="Room Type" />
+            <TableColumn fx:id="colRoomKeyMoney" editable="false" prefWidth="743.0" sortable="false" text="Room Key Money" />
+            <TableColumn fx:id="colRoomQty" editable="false" prefWidth="227.0" sortable="false" text="Room Qty" />
         </columns>
       </TableView>
       <AnchorPane layoutX="442.0" layoutY="116.0" prefHeight="7.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">

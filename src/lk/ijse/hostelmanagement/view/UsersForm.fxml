@@ -204,5 +204,27 @@
             </JFXButton>
          </children>
       </AnchorPane>
+      <Text fx:id="txtAddNewUser" layoutX="1171.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add New User" visible="false" y="3.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <JFXButton fx:id="btnAddNewUser" buttonType="RAISED" focusTraversable="false" layoutX="1268.0" layoutY="124.0" onAction="#addNewUserOnAction" prefHeight="39.0" prefWidth="46.0" style="-fx-background-radius: 100;" text="." textFill="#ffffff00" visible="false">
+         <graphic>
+            <ImageView fitHeight="51.0" fitWidth="23.0" layoutX="4.0" pickOnBounds="true" preserveRatio="true" translateX="4.0">
+               <image>
+                  <Image url="@../assests/images/icons8-add-administrator-48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#bd465c33" />
+                  <Stop color="#f58e8e32" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+      </JFXButton>
    </children>
 </AnchorPane>

@@ -109,34 +109,6 @@ public class LoginFormController {
     }
 
     public void saveRegisterOnAction(ActionEvent actionEvent) {
-        String userId = txtRegisterUserId.getText();
-        String name = txtRegisterName.getText();
-        String userName = txtRegisterUserName.getText();
-        String password = txtRegisterPasswordHide.getText();
-
-        try {
-            boolean isAdded = loginBo.addUser(new UserDTO(
-                    userId,
-                    name,
-                    userName,
-                    password
-            ));
-
-            if (isAdded) {
-                new Alert(Alert.AlertType.CONFIRMATION, "User Added Successfuly!").show();
-            }
-        }catch (Exception e) {
-            System.out.println(e);
-        }
-/*        try {
-            boolean isAdded = loginBo.addUser(new UserDTO(userId, name, userName, password));
-
-            if (isAdded) {
-                new Alert(Alert.AlertType.CONFIRMATION, "User Added!").show();
-            }
-        }catch (Exception e) {
-            System.out.println(e);
-        }*/
     }
 
 /*    private void loadFxmlToStage{String fxmlFileName) throws IOException {

@@ -16,15 +16,15 @@
             <Image url="@../assests/images/Rectangle%2029.png" />
          </image>
       </ImageView>
-      <TableView layoutX="77.0" layoutY="191.0" prefHeight="403.0" prefWidth="1271.0">
+      <TableView fx:id="tblStudent" focusTraversable="false" layoutX="77.0" layoutY="191.0" prefHeight="403.0" prefWidth="1271.0" stylesheets="@css/TableViewStyle.css">
          <columns>
-            <TableColumn prefWidth="113.99996948242188" text="Student Id" />
-            <TableColumn prefWidth="226.00003051757812" text="Student Name" />
-            <TableColumn prefWidth="216.0" text="Address" />
-            <TableColumn minWidth="0.0" prefWidth="147.0" text="DOB" />
-            <TableColumn minWidth="0.0" prefWidth="115.0" text="Gender" />
-            <TableColumn minWidth="0.0" prefWidth="267.0" text="Campus" />
-            <TableColumn prefWidth="184.0" text="Phone Number" />
+            <TableColumn fx:id="colStudentId" editable="false" prefWidth="113.99996948242188" sortable="false" text="Student Id" />
+            <TableColumn fx:id="colStudentName" editable="false" prefWidth="226.00003051757812" sortable="false" text="Student Name" />
+            <TableColumn fx:id="colStudentAddress" editable="false" prefWidth="216.0" sortable="false" text="Address" />
+            <TableColumn fx:id="colStudentDOB" editable="false" minWidth="0.0" prefWidth="147.0" sortable="false" text="DOB" />
+            <TableColumn fx:id="colStudentGender" editable="false" minWidth="0.0" prefWidth="115.0" sortable="false" text="Gender" />
+            <TableColumn fx:id="colStudentCampus" editable="false" minWidth="0.0" prefWidth="267.0" sortable="false" text="Campus" />
+            <TableColumn fx:id="colStudentPhoneNumber" editable="false" prefWidth="184.0" sortable="false" text="Phone Number" />
          </columns>
       </TableView>
       <AnchorPane layoutX="438.0" layoutY="115.0" prefHeight="7.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
@@ -34,7 +34,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <JFXTextField focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="10.0" prefHeight="30.0" prefWidth="518.0" promptText="Search" unFocusColor="WHITE">
+            <JFXTextField focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="8.0" prefHeight="30.0" prefWidth="518.0" promptText="Search" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

@@ -70,6 +70,14 @@ public class ReservationDAOImpl implements ReservationDAO {
 
     @Override
     public List<Reservation> getAll() {
-        return null;
+        Session session = SessionFactoryConfiguration.getInstance().getSessionFactory();
+        Transaction transaction = session.beginTransaction();
+
+        List reservation = session.createQuery("FROM Reservation ").list();
+
+        transaction.commit();
+        session.close();
+
+        return reservation;
     }
 }

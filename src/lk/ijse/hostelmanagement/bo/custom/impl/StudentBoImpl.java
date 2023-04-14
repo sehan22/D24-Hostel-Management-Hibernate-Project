@@ -15,6 +15,7 @@ import lk.ijse.hostelmanagement.entity.Student;
 import lk.ijse.hostelmanagement.repository.StudentRepository;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class StudentBoImpl implements StudentBO {
     StudentDAO studentDAO = (StudentDAO) DAOFactory.getInstance().getDAO(DAOType.STUDENT);
@@ -65,8 +66,16 @@ public class StudentBoImpl implements StudentBO {
 
     @Override
     public ArrayList<StudentDTO> getAllStudent() {
-        ArrayList<Object> students = new ArrayList<>();
-
-        students.
+        ArrayList<StudentDTO> studentList = new ArrayList<>();
+        studentList.addAll(studentDAO.getAll().stream().map(student -> {return new StudentDTO(
+                student.getId(),
+                student.getName(),
+                student.getAddress(),
+                student.getDob(),
+                student.getGender(),
+                student.getCampus(),
+                student.getNumber());
+        }).collect(Collectors.toList()));
+        return studentList;
     }
 }

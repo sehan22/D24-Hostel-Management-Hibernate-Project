@@ -16,13 +16,13 @@
             <Image url="@../assests/images/Rectangle%2029.png" />
          </image>
       </ImageView>
-      <TableView layoutX="77.0" layoutY="191.0" prefHeight="403.0" prefWidth="1271.0">
+      <TableView fx:id="tblReservation" focusTraversable="false" layoutX="77.0" layoutY="191.0" prefHeight="403.0" prefWidth="1271.0" stylesheets="@css/TableViewStyle.css">
          <columns>
-            <TableColumn prefWidth="146.99996948242188" text="Reservation Id" />
-            <TableColumn prefWidth="194.00003051757812" text="Student Id" />
-            <TableColumn prefWidth="227.0" text="Room Type Id" />
-            <TableColumn minWidth="0.0" prefWidth="286.0" text="Date" />
-            <TableColumn minWidth="0.0" prefWidth="416.0" text="States" />
+            <TableColumn fx:id="colReservationId" editable="false" prefWidth="146.99996948242188" sortable="false" text="Reservation Id" />
+            <TableColumn fx:id="colStudentId" editable="false" prefWidth="194.00003051757812" sortable="false" text="Student Id" />
+            <TableColumn fx:id="colRoomTypeId" editable="false" prefWidth="227.0" sortable="false" text="Room Type Id" />
+            <TableColumn fx:id="colDate" editable="false" minWidth="0.0" prefWidth="286.0" sortable="false" text="Date" />
+            <TableColumn fx:id="colStates" editable="false" minWidth="0.0" prefWidth="416.0" sortable="false" text="States" />
          </columns>
       </TableView>
       <AnchorPane layoutX="438.0" layoutY="115.0" prefHeight="7.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">

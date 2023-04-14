@@ -11,7 +11,11 @@ import lk.ijse.hostelmanagement.dao.DAOFactory;
 import lk.ijse.hostelmanagement.dao.DAOType;
 import lk.ijse.hostelmanagement.dao.custom.RoomDAO;
 import lk.ijse.hostelmanagement.dto.RoomDTO;
+import lk.ijse.hostelmanagement.dto.StudentDTO;
 import lk.ijse.hostelmanagement.entity.Room;
+
+import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class RoomBoImpl implements RoomBo {
 
@@ -51,5 +55,18 @@ public class RoomBoImpl implements RoomBo {
     @Override
     public boolean deleteRoom(String id) {
         return roomDAO.delete(id);
+    }
+
+    @Override
+    public ArrayList<RoomDTO> getAllRoom() {
+        ArrayList<RoomDTO> roomList = new ArrayList<>();
+        roomList.addAll(roomDAO.getAll().stream().map(room -> {
+            return new RoomDTO(
+                room.getId(),
+                room.getType(),
+                room.getKeyMoney(),
+                room.getQty());
+        }).collect(Collectors.toList()));
+        return roomList;
     }
 }

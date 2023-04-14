@@ -7,8 +7,6 @@ package lk.ijse.hostelmanagement.bo.custom.impl;
  */
 
 import lk.ijse.hostelmanagement.bo.custom.ReservationBo;
-import lk.ijse.hostelmanagement.bo.custom.RoomBo;
-import lk.ijse.hostelmanagement.bo.custom.StudentBO;
 import lk.ijse.hostelmanagement.dao.DAOFactory;
 import lk.ijse.hostelmanagement.dao.DAOType;
 import lk.ijse.hostelmanagement.dao.custom.ReservationDAO;
@@ -20,9 +18,9 @@ import lk.ijse.hostelmanagement.dto.StudentDTO;
 import lk.ijse.hostelmanagement.entity.Reservation;
 import lk.ijse.hostelmanagement.entity.Room;
 import lk.ijse.hostelmanagement.entity.Student;
-import lk.ijse.hostelmanagement.util.SessionFactoryConfiguration;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+
+import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class ReservationBoImpl implements ReservationBo {
 
@@ -73,5 +71,22 @@ public class ReservationBoImpl implements ReservationBo {
     @Override
     public boolean deleteReservation(String id) {
         return reservationDAO.delete(id);
+    }
+
+    @Override
+    public ArrayList<ReservationDTO> getAllReservation() {
+
+        ArrayList<ReservationDTO> resList = new ArrayList<>();
+        resList.addAll(reservationDAO.getAll().stream().map(reservation -> {
+            String studentId = reservation.getStudent().getId();
+            String roomId = reservation.getRoom().getId();
+            return new ReservationDTO(
+                    reservation.getId(),
+                    reservation.getDate(),
+                    reservation.getStates(),
+                    studentId,
+                    roomId);
+        }).collect(Collectors.toList()));
+        return resList;
     }
 }

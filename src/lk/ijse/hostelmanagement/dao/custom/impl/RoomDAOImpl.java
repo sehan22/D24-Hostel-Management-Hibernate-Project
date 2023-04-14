@@ -68,6 +68,14 @@ public class RoomDAOImpl implements RoomDAO {
 
     @Override
     public List<Room> getAll() {
-        return null;
+        Session session = SessionFactoryConfiguration.getInstance().getSessionFactory();
+        Transaction transaction = session.beginTransaction();
+
+        List<Room> room = session.createQuery("FROM Room").list();
+
+        transaction.commit();
+        session.close();
+
+        return room;
     }
 }
