@@ -190,14 +190,14 @@
                </children>
             </Group>
             <AnchorPane fx:id="paneSignInHide" layoutX="566.0" layoutY="178.0" prefHeight="303.0" prefWidth="327.0" style="-fx-background-color: white;" visible="false" />
-            <AnchorPane fx:id="paneResgister" layoutX="566.0" layoutY="178.0" prefHeight="303.0" prefWidth="327.0" style="-fx-background-color: white;">
+            <AnchorPane fx:id="paneResgister" layoutX="566.0" layoutY="178.0" prefHeight="303.0" prefWidth="327.0" style="-fx-background-color: white;" visible="false">
                <children>
-                  <JFXButton focusTraversable="false" layoutX="84.0" layoutY="253.0" prefHeight="36.0" prefWidth="83.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="Register" textFill="WHITE">
+                  <JFXButton focusTraversable="false" layoutX="84.0" layoutY="253.0" prefHeight="36.0" prefWidth="83.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="Reset" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </JFXButton>
-                  <Text layoutX="113.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign Up">
+                  <Text layoutX="54.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reset Password">
                      <font>
                         <Font name="Calibri Light" size="35.0" />
                      </font>
@@ -207,18 +207,21 @@
                         <Font size="14.0" />
                      </font>
                   </Hyperlink>
-                  <TextField focusTraversable="false" layoutX="15.0" layoutY="199.0" prefHeight="32.0" prefWidth="298.0" promptText="Password" style="-fx-border-color: #880505; -fx-border-radius: 8; -fx-background-radius: 8;" />
-                  <ImageView fitHeight="17.0" fitWidth="26.0" layoutX="282.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true">
+                  <TextField focusTraversable="false" layoutX="15.0" layoutY="67.0" prefHeight="32.0" prefWidth="298.0" promptText="UserName" style="-fx-border-color: #880505; -fx-border-radius: 8; -fx-background-radius: 8;" />
+                  <Group layoutX="15.0" layoutY="199.0" />
+                  <TextField focusTraversable="false" layoutX="15.0" layoutY="136.0" prefHeight="32.0" prefWidth="298.0" promptText="Password" style="-fx-border-color: #880505; -fx-border-radius: 8; -fx-background-radius: 8;" />
+                  <ImageView fitHeight="17.0" fitWidth="26.0" layoutX="282.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assests/images/icons8-eye-48.png" />
                      </image>
                   </ImageView>
-                  <PasswordField focusTraversable="false" layoutX="15.0" layoutY="199.0" prefHeight="32.0" prefWidth="298.0" promptText="Password" style="-fx-border-color: #880505; -fx-background-radius: 8; -fx-border-radius: 8;" />
-                  <ImageView fx:id="imgRegisterPasswordHide" fitHeight="17.0" fitWidth="26.0" layoutX="282.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true">
+                  <PasswordField focusTraversable="false" layoutX="15.0" layoutY="136.0" prefHeight="32.0" prefWidth="298.0" promptText="Password" style="-fx-border-color: #880505; -fx-background-radius: 8; -fx-border-radius: 8;" />
+                  <ImageView fx:id="imgRegisterPasswordHide" fitHeight="17.0" fitWidth="26.0" layoutX="282.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assests/images/icons8-hide-48%201.png" />
                      </image>
                   </ImageView>
+                  <PasswordField focusTraversable="false" layoutX="15.0" layoutY="199.0" prefHeight="32.0" prefWidth="298.0" promptText="Confirm Password" style="-fx-border-color: #880505; -fx-background-radius: 8; -fx-border-radius: 8;" />
                </children>
             </AnchorPane>
          </children>

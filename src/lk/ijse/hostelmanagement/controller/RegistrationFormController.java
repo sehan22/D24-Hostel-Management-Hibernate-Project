@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import lk.ijse.hostelmanagement.bo.BOType;
 import lk.ijse.hostelmanagement.bo.BoFactory;
@@ -42,6 +43,10 @@ public class RegistrationFormController {
     public JFXButton btnAddNewReservation;
 
     ReservationBo reservationBo = (ReservationBo) BoFactory.getInstance().getBo(BOType.RESERVATION);
+
+    StudentBO studentBO = (StudentBO) BoFactory.getInstance().getBo(BOType.STUDENT);
+
+    RoomBo roomBo = (RoomBo) BoFactory.getInstance().getBo(BOType.ROOM);
 
     public void CancelOnAction(ActionEvent actionEvent) {
     }
@@ -77,6 +82,28 @@ public class RegistrationFormController {
 
         txtAddNewReservation.setVisible(false);
         btnAddNewReservation.setVisible(false);
+    }
+
+    public void SearchStuNameOnAction(KeyEvent keyEvent) {
+        String studentId = txtStudentId.getText();
+
+        try {
+            StudentDTO student = studentBO.getStudent(studentId);
+            txtStudentName.setText(student.getName());
+        }catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void searchRoomTypeOnAction(KeyEvent keyEvent) {
+        String roomId = txtRoomTypeId.getText();
+
+        try {
+            RoomDTO room = roomBo.getRoom(roomId);
+            txtRoomType.setText(room.getType());
+        }catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     public void SaveReservationOnAction(ActionEvent actionEvent) {

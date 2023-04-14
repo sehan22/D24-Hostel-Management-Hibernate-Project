@@ -7,9 +7,12 @@ package lk.ijse.hostelmanagement.controller;
  */
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import lk.ijse.hostelmanagement.bo.BOType;
@@ -33,6 +36,11 @@ public class UsersFormController {
     public Text txtAddNewUser;
     public JFXButton btnAddNewUser;
     public AnchorPane paneConfirmPassword;
+    public ImageView imgShowPassword;
+    public JFXTextField txtShowPassword;
+    public ImageView imgHidePassword;
+    public JFXPasswordField txtConfPassword;
+    public JFXPasswordField txtHidePassword;
 
     LoginBo loginBo = (LoginBo) BoFactory.getInstance().getBo(BOType.USER);
 
@@ -71,6 +79,26 @@ public class UsersFormController {
 
         btnAddNewUser.setVisible(false);
         txtAddNewUser.setVisible(false);
+    }
+
+    public void hidePasswordOnAction(MouseEvent mouseEvent) {
+        txtHidePassword.setText(txtShowPassword.getText());
+
+        imgHidePassword.setVisible(true);
+        txtHidePassword.setVisible(true);
+
+        imgShowPassword.setVisible(false);
+        txtShowPassword.setVisible(false);
+    }
+
+    public void ShowPasswordOnAction(MouseEvent mouseEvent) {
+        txtShowPassword.setText(txtHidePassword.getText());
+
+        imgHidePassword.setVisible(false);
+        txtHidePassword.setVisible(false);
+
+        imgShowPassword.setVisible(true);
+        txtShowPassword.setVisible(true);
     }
 
     public void SaveOnAction(ActionEvent actionEvent) {

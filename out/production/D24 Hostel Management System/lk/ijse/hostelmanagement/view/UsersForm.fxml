@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -126,11 +127,26 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="txtPassword" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+            <ImageView fx:id="imgShowPassword" fitHeight="25.0" fitWidth="25.0" layoutX="522.0" layoutY="22.0" onMouseClicked="#hidePasswordOnAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/images/icons8-eye-48.png" />
+               </image>
+            </ImageView>
+            <JFXTextField fx:id="txtShowPassword" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="487.0" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </JFXTextField>
+            <ImageView fx:id="imgHidePassword" fitHeight="25.0" fitWidth="25.0" layoutX="522.0" layoutY="22.0" onMouseClicked="#ShowPasswordOnAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/images/icons8-hide-48%201.png" />
+               </image>
+            </ImageView>
+            <JFXPasswordField fx:id="txtHidePassword" focusColor="WHITE" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="487.0" unFocusColor="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXPasswordField>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="paneConfirmPassword" layoutX="776.0" layoutY="411.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
@@ -145,11 +161,11 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="txtConfirmPassword" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+            <JFXPasswordField fx:id="txtConfPassword" focusColor="WHITE" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
-            </JFXTextField>
+            </JFXPasswordField>
          </children>
       </AnchorPane>
       <JFXButton fx:id="btnSave" focusTraversable="false" layoutX="662.0" layoutY="545.0" onAction="#SaveOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="Save" textFill="WHITE">
