@@ -16,6 +16,7 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import lk.ijse.hostelmanagement.bo.BOType;
 import lk.ijse.hostelmanagement.bo.BoFactory;
@@ -29,6 +30,8 @@ import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLDataException;
 import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StudentsFormController {
     public JFXTextField txtStudentId;
@@ -72,6 +75,24 @@ public class StudentsFormController {
         txtPhoneNumber.clear();
     }
 
+    private boolean validInputData() {
+        Pattern contactPattern = Pattern.compile("^(07)([0-9]{8})$");
+        Matcher matcher = contactPattern.matcher(txtPhoneNumber.getText());
+
+        boolean isPhoneNumberMatch =matcher.matches();
+
+        Pattern contactPattern1 = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+        Matcher matcher1 = contactPattern.matcher(txtCampus.getText());
+
+        boolean isEmailMatch = matcher.matches();
+
+        if (isPhoneNumberMatch && isEmailMatch) {
+            return true;
+        }
+
+        return  false;
+    }
+
     public void clearStudentFormTextFieldOnAction(ActionEvent actionEvent) {
         clearTextFields();
     }
@@ -84,6 +105,32 @@ public class StudentsFormController {
 
     }
 
+    public void CheckPhoneNumberValidityOnAction(KeyEvent keyEvent) {
+        Pattern contactPattern = Pattern.compile("^(07)([0-9]{8})$");
+        Matcher matcher = contactPattern.matcher(txtPhoneNumber.getText());
+
+        boolean isMatch =matcher.matches();
+
+        if (isMatch) {
+            txtPhoneNumber.setFocusColor(Paint.valueOf("green"));
+        } else {
+            txtPhoneNumber.setFocusColor(Paint.valueOf("red"));
+        }
+    }
+
+    public void CheckEmailValidityOnAction(KeyEvent keyEvent) {
+        Pattern contactPattern = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+        Matcher matcher = contactPattern.matcher(txtCampus.getText());
+
+        boolean isMatch =matcher.matches();
+
+        if (isMatch) {
+            txtCampus.setFocusColor(Paint.valueOf("green"));
+        } else {
+            txtCampus.setFocusColor(Paint.valueOf("red"));
+        }
+    }
+
     public void saveStudentOnAction(ActionEvent actionEvent) {
         String id = txtStudentId.getText();
         String name = txtStudentName.getText();
@@ -94,11 +141,15 @@ public class StudentsFormController {
         int phoneNumber = Integer.parseInt(txtPhoneNumber.getText());
 
         try {
-            boolean isAdded = studentBO.addStudent(new StudentDTO(id, name, address, dob, gender, campus, phoneNumber));
+            if (validInputData()) {
+                boolean isAdded = studentBO.addStudent(new StudentDTO(id, name, address, dob, gender, campus, phoneNumber));
 
-            if (isAdded) {
-                new Alert(Alert.AlertType.CONFIRMATION, "User Added!").show();
-                clearTextFields();
+                if (isAdded) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "User Added!").show();
+                    clearTextFields();
+                }
+            } else {
+                System.out.println("error");
             }
         }catch (Exception e) {
             System.out.println(e);
@@ -174,7 +225,7 @@ public class StudentsFormController {
             boolean isDeleted = studentBO.deleteStudent(id);
 
             if (isDeleted) {
-                new Alert(Alert.AlertType.ERROR, "Student Delete Succesfully!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Student Delete Succesfully!").show();
                 clearTextFields();
             }
         }catch (Exception e) {
@@ -182,4 +233,5 @@ public class StudentsFormController {
             new Alert(Alert.AlertType.ERROR, "Input Student Id Is Ivalid!\nPlease Try Again..").show();
         }
     }
+
 }
