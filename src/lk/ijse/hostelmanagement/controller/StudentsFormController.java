@@ -102,7 +102,6 @@ public class StudentsFormController {
 
         btnAddNewStudent.setVisible(false);
         txtAddNewStudent.setVisible(false);
-
     }
 
     public void CheckPhoneNumberValidityOnAction(KeyEvent keyEvent) {
@@ -115,19 +114,6 @@ public class StudentsFormController {
             txtPhoneNumber.setFocusColor(Paint.valueOf("green"));
         } else {
             txtPhoneNumber.setFocusColor(Paint.valueOf("red"));
-        }
-    }
-
-    public void CheckEmailValidityOnAction(KeyEvent keyEvent) {
-        Pattern contactPattern = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-        Matcher matcher = contactPattern.matcher(txtCampus.getText());
-
-        boolean isMatch =matcher.matches();
-
-        if (isMatch) {
-            txtCampus.setFocusColor(Paint.valueOf("green"));
-        } else {
-            txtCampus.setFocusColor(Paint.valueOf("red"));
         }
     }
 
