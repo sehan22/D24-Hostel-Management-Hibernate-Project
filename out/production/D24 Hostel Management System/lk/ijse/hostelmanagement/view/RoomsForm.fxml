@@ -142,7 +142,7 @@
          </font>
       </JFXButton>
       <Text fill="#545454" layoutX="555.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recheck the validity of the data you have entered in the form." />
-      <TableView fx:id="tblRoom" focusTraversable="false" layoutX="138.0" layoutY="480.0" prefHeight="135.0" prefWidth="1160.0">
+      <TableView fx:id="tblRoom" focusTraversable="false" layoutX="138.0" layoutY="480.0" prefHeight="135.0" prefWidth="1160.0" stylesheets="@css/TableStyle.css">
         <columns>
           <TableColumn fx:id="colRoomTypeId" prefWidth="160.99996948242188" text="Room Types Id" />
           <TableColumn fx:id="colRoomType" prefWidth="495.0" text="Room Type" />

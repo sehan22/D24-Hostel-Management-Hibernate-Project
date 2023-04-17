@@ -16,7 +16,7 @@
             <Image url="@../assests/images/Rectangle%2029.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tblRoom" focusTraversable="false" layoutX="77.0" layoutY="191.0" prefHeight="403.0" prefWidth="1271.0">
+      <TableView fx:id="tblRoom" focusTraversable="false" layoutX="77.0" layoutY="191.0" prefHeight="403.0" prefWidth="1271.0" stylesheets="@css/TableStyle.css">
         <columns>
           <TableColumn fx:id="colRoomTypeId" editable="false" prefWidth="150.0" sortable="false" text="Room Type ID" />
             <TableColumn fx:id="colRoomType" editable="false" prefWidth="150.0" sortable="false" text="Room Type" />
