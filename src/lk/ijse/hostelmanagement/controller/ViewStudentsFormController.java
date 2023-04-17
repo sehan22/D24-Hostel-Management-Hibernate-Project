@@ -31,5 +31,34 @@ public class ViewStudentsFormController {
 
     StudentBO studentBO = (StudentBO) BoFactory.getInstance().getBo(BOType.STUDENT);
 
+    public void initialize() {
+        colStudentId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colStudentName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colStudentAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colStudentDOB.setCellValueFactory(new PropertyValueFactory<>("dob"));
+        colStudentGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        colStudentCampus.setCellValueFactory(new PropertyValueFactory<>("campus"));
+        colStudentPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("contact"));
 
+        try {
+            loadStudents(studentBO.getAllStudent());
+        }catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    private void loadStudents(ArrayList<StudentDTO> students) {
+        tblStudent.setItems(FXCollections.observableArrayList(
+                students.stream().map(studentDTO -> {
+                    return new StudentTM(
+                        studentDTO.getId(),
+                        studentDTO.getName(),
+                        studentDTO.getAddress(),
+                        studentDTO.getDob(),
+                        studentDTO.getGender(),
+                        studentDTO.getCampus(),
+                        studentDTO.getContact()
+                    );
+                }).collect(Collectors.toList())));
+    }
 }

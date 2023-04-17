@@ -29,5 +29,24 @@ public class ViewRegistraionFormController {
 
     ReservationBo reservationBo = (ReservationBo) BoFactory.getInstance().getBo(BOType.RESERVATION);
 
+    public void initialize() {
+        colReservationId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        colStates.setCellValueFactory(new PropertyValueFactory<>("states"));
+        colStudentId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
+        colRoomTypeId.setCellValueFactory(new PropertyValueFactory<>("roomId"));
+    }
 
+    private void loadReservation(ArrayList<ReservationDTO> reservations) {
+        tblReservation.setItems(FXCollections.observableArrayList(
+                reservations.stream().map(reservationDTO -> {
+                    return new ReservationTM(
+                        reservationDTO.getId(),
+                        reservationDTO.getDate(),
+                        reservationDTO.getStates(),
+                        reservationDTO.getStudentId(),
+                        reservationDTO.getRoomId()
+                    );
+                }).collect(Collectors.toList())));
+    }
 }
