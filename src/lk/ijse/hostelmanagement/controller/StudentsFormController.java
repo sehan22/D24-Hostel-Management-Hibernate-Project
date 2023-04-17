@@ -76,21 +76,16 @@ public class StudentsFormController {
     }
 
     private boolean validInputData() {
-        Pattern contactPattern = Pattern.compile("^(07)([0-9]{8})$");
-        Matcher matcher = contactPattern.matcher(txtPhoneNumber.getText());
+        Pattern pattern = Pattern.compile("^((07)([0-9]){8})$");
+        Matcher matcher = pattern.matcher(txtPhoneNumber.getText());
 
-        boolean isPhoneNumberMatch =matcher.matches();
+        boolean isPhoneNumberMatches = matcher.matches();
 
-        Pattern contactPattern1 = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-        Matcher matcher1 = contactPattern.matcher(txtCampus.getText());
-
-        boolean isEmailMatch = matcher.matches();
-
-        if (isPhoneNumberMatch && isEmailMatch) {
+        if (isPhoneNumberMatches) {
             return true;
         }
 
-        return  false;
+        return false;
     }
 
     public void clearStudentFormTextFieldOnAction(ActionEvent actionEvent) {
@@ -105,12 +100,12 @@ public class StudentsFormController {
     }
 
     public void CheckPhoneNumberValidityOnAction(KeyEvent keyEvent) {
-        Pattern contactPattern = Pattern.compile("^(07)([0-9]{8})$");
-        Matcher matcher = contactPattern.matcher(txtPhoneNumber.getText());
+        Pattern pattern = Pattern.compile("^((07)([0-9]){8})$");
+        Matcher matcher = pattern.matcher(txtPhoneNumber.getText());
 
-        boolean isMatch =matcher.matches();
+        boolean matches = matcher.matches();
 
-        if (isMatch) {
+        if (matches) {
             txtPhoneNumber.setFocusColor(Paint.valueOf("green"));
         } else {
             txtPhoneNumber.setFocusColor(Paint.valueOf("red"));

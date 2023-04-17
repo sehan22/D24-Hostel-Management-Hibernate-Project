@@ -69,9 +69,10 @@ public class LoginBoImpl implements LoginBo {
                     user.getName(),
                     user.getEmail(),
                     user.getUserName(),
-                    user.getPassword());
+                    user.getPassword()
+            );
         }).collect(Collectors.toList()));
 
-        return userList;
+    return userList;
     }
 }

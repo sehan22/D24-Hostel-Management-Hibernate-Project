@@ -62,11 +62,13 @@ public class RoomBoImpl implements RoomBo {
         ArrayList<RoomDTO> roomList = new ArrayList<>();
         roomList.addAll(roomDAO.getAll().stream().map(room -> {
             return new RoomDTO(
-                room.getId(),
-                room.getType(),
-                room.getKeyMoney(),
-                room.getQty());
+                    room.getId(),
+                    room.getType(),
+                    room.getKeyMoney(),
+                    room.getQty()
+            );
         }).collect(Collectors.toList()));
+
         return roomList;
     }
 }

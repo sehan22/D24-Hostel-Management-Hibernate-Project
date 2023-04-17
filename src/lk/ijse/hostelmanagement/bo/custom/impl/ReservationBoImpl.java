@@ -75,7 +75,6 @@ public class ReservationBoImpl implements ReservationBo {
 
     @Override
     public ArrayList<ReservationDTO> getAllReservation() {
-
         ArrayList<ReservationDTO> resList = new ArrayList<>();
         resList.addAll(reservationDAO.getAll().stream().map(reservation -> {
             String studentId = reservation.getStudent().getId();
@@ -85,8 +84,10 @@ public class ReservationBoImpl implements ReservationBo {
                     reservation.getDate(),
                     reservation.getStates(),
                     studentId,
-                    roomId);
+                    roomId
+            );
         }).collect(Collectors.toList()));
+
         return resList;
     }
 }

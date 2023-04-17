@@ -66,15 +66,18 @@ public class StudentBoImpl implements StudentBO {
     @Override
     public ArrayList<StudentDTO> getAllStudent() {
         ArrayList<StudentDTO> studentList = new ArrayList<>();
-        studentList.addAll(studentDAO.getAll().stream().map(student -> {return new StudentDTO(
-                student.getId(),
-                student.getName(),
-                student.getAddress(),
-                student.getDob(),
-                student.getGender(),
-                student.getCampus(),
-                student.getNumber());
+        studentList.addAll(studentDAO.getAll().stream().map(student -> {
+            return new StudentDTO(
+                    student.getId(),
+                    student.getName(),
+                    student.getAddress(),
+                    student.getDob(),
+                    student.getGender(),
+                    student.getCampus(),
+                    student.getNumber()
+            );
         }).collect(Collectors.toList()));
-        return studentList;
+
+    return studentList;
     }
 }

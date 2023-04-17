@@ -35,6 +35,12 @@ public class ViewRegistraionFormController {
         colStates.setCellValueFactory(new PropertyValueFactory<>("states"));
         colStudentId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
         colRoomTypeId.setCellValueFactory(new PropertyValueFactory<>("roomId"));
+
+        try {
+            loadReservation(reservationBo.getAllReservation());
+        }catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     private void loadReservation(ArrayList<ReservationDTO> reservations) {
