@@ -71,7 +71,7 @@ public class RoomDAOImpl implements RoomDAO {
         Session session = SessionFactoryConfiguration.getInstance().getSessionFactory();
         Transaction transaction = session.beginTransaction();
 
-        List<Room> room = session.createQuery("FROM Room").list();
+        List<Room> room = session.createQuery("FROM Room ").list();
 
         transaction.commit();
         session.close();

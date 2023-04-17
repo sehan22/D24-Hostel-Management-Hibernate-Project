@@ -73,11 +73,10 @@ public class ReservationDAOImpl implements ReservationDAO {
         Session session = SessionFactoryConfiguration.getInstance().getSessionFactory();
         Transaction transaction = session.beginTransaction();
 
-        List reservation = session.createQuery("FROM Reservation ").list();
+        List<Reservation> reservation = session.createQuery("FROM Reservation ").list();
 
         transaction.commit();
         session.close();
-
         return reservation;
     }
 }

@@ -30,30 +30,5 @@ public class ViewUsersFormController {
 
     LoginBo loginBo = (LoginBo) BoFactory.getInstance().getBo(BOType.USER);
 
-    public void initialize() {
-        colUserId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colUserName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        colUName.setCellValueFactory(new PropertyValueFactory<>("userName"));
-        colPasword.setCellValueFactory(new PropertyValueFactory<>("password"));
 
-        try {
-            loadUser(loginBo.getAllUser());
-        }catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-
-    private void loadUser(ArrayList<UserDTO> users) {
-        tblUser.setItems(FXCollections.observableArrayList(
-            users.stream().map(userDTO -> {
-                return new UserTM(
-                    userDTO.getId(),
-                    userDTO.getName(),
-                    userDTO.getEmail(),
-                    userDTO.getUserName(),
-                    userDTO.getPassword()
-                );
-            }).collect(Collectors.toList())));
-    }
 }

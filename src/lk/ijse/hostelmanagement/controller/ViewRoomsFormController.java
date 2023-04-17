@@ -31,28 +31,5 @@ public class ViewRoomsFormController {
 
     RoomBo roomBo = (RoomBo) BoFactory.getInstance().getBo(BOType.ROOM);
 
-    public void initialize() {
-        colRoomTypeId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colRoomType.setCellValueFactory(new PropertyValueFactory<>("type"));
-        colRoomKeyMoney.setCellValueFactory(new PropertyValueFactory<>("keyMoney"));
-        colRoomQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
 
-        try {
-            loadRoom(roomBo.getAllRoom());
-        }catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-
-    private void loadRoom(ArrayList<RoomDTO> rooms) {
-        tblRoom.setItems(FXCollections.observableArrayList(
-                rooms.stream().map(roomDTO -> {
-                    return new RoomTM(
-                            roomDTO.getId(),
-                            roomDTO.getType(),
-                            roomDTO.getKeyMoney(),
-                            roomDTO.getQty()
-                    );
-                }).collect(Collectors.toList())));
-    }
 }

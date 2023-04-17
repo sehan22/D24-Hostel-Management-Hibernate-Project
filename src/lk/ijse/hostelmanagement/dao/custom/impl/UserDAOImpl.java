@@ -74,7 +74,7 @@ public class UserDAOImpl implements UserDAO {
         Session session = SessionFactoryConfiguration.getInstance().getSessionFactory();
         Transaction transaction = session.beginTransaction();
 
-        List userList = session.createQuery("FROM User ").list();
+        List<User> userList = session.createQuery("FROM User ").list();
 
         transaction.commit();
         session.close();
