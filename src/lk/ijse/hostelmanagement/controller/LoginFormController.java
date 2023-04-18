@@ -43,6 +43,8 @@ public class LoginFormController {
     public ImageView imgRegisterPasswordHide;
     public AnchorPane paneSignInHide;
 
+    LoginBo loginBo = (LoginBo) BoFactory.getInstance().getBo(BOType.USER);
+
     public void initialize() {
     }
 
@@ -63,6 +65,8 @@ public class LoginFormController {
     }
 
     public void loginOnAction(ActionEvent actionEvent) throws IOException {
+       /* loginBo.getUser()*/
+
         if(userNametxt.getText().equals("user")) {
             if (txtHidePassword.getText().equals("1234") && txtShowPassword.getText().equals("1234"));
                 Navigation.navigate(Routes.MANAGEMENT, mainloginformpane);

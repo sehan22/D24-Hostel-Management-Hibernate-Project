@@ -113,4 +113,22 @@ public class UserDAOImpl implements UserDAO {
             return genarateId;
         }
     }
+
+    @Override
+    public List<User> getUserNamePassword(String userName) {
+        Session session = SessionFactoryConfiguration.getInstance().getSessionFactory();
+        Transaction transaction = session.beginTransaction();
+
+        Query query = session.createQuery("SELECT password FROM User WHERE userName LIKE : ID").setParameter("ID", userName);
+
+        List list = query.list();
+        if (list.size()<null) {
+
+        }
+
+        transaction.commit();
+        session.close();
+
+        return list;
+    }
 }

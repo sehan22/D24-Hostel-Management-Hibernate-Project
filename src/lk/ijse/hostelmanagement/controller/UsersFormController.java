@@ -13,6 +13,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -50,6 +51,8 @@ public class UsersFormController {
     public ImageView imgHidePassword;
     public JFXPasswordField txtConfPassword;
     public JFXPasswordField txtHidePassword;
+    public AnchorPane paneDeleteAccConfPassword;
+    public JFXPasswordField txtConfDeleteAccPassword;
 
     LoginBo loginBo = (LoginBo) BoFactory.getInstance().getBo(BOType.USER);
 
@@ -81,6 +84,8 @@ public class UsersFormController {
         txtUserName.setEditable(true);
 
         paneConfirmPassword.setVisible(true);
+        paneDeleteAccConfPassword.setVisible(false);
+
     }
 
     private void genarateUserId() {
@@ -92,16 +97,13 @@ public class UsersFormController {
         }
     }
 
-    private boolean validConfirmPassword() {
-        Pattern pattern = Pattern.compile(txtConfPassword.getText());
-        Matcher matcher = pattern.matcher(txtHidePassword.getText());
-
-        boolean matches = matcher.matches();
-
-        if (matches) {
-            return true;
+    private boolean validFullName() {
+        if (txtFullName.getText().equals("")) {
+            txtFullName.requestFocus();
+            txtFullName.setFocusColor(Paint.valueOf("red"));
+            return false;
         }
-        return false;
+        return true;
     }
 
     private boolean validEmail() {
@@ -114,15 +116,6 @@ public class UsersFormController {
             return true;
         }
         return false;
-    }
-
-    private boolean validFullName() {
-        if (txtFullName.getText().equals("")) {
-            txtFullName.requestFocus();
-            txtFullName.setFocusColor(Paint.valueOf("red"));
-            return false;
-        }
-        return true;
     }
 
     private boolean validUserName() {
@@ -141,6 +134,30 @@ public class UsersFormController {
             return false;
         }
         return true;
+    }
+
+    private boolean validConfirmPassword() {
+        Pattern pattern = Pattern.compile(txtConfPassword.getText());
+        Matcher matcher = pattern.matcher(txtHidePassword.getText());
+
+        boolean matches = matcher.matches();
+
+        if (matches) {
+            return true;
+        }
+        return false;
+    }
+
+    public void fillNameOnAction(KeyEvent keyEvent) {
+        txtFullName.setFocusColor(Paint.valueOf("white"));
+    }
+
+    public void fillUserNameOnAction(KeyEvent keyEvent) {
+        txtUserName.setFocusColor(Paint.valueOf("white"));
+    }
+
+    public void fillPasswordOnAction(KeyEvent keyEvent) {
+        txtHidePassword.setFocusColor(Paint.valueOf("white"));
     }
 
     public void ClearOnAction(ActionEvent actionEvent) {
@@ -267,7 +284,6 @@ public class UsersFormController {
         String id = txtSearchId.getText();
 
         try {
-
             btnDelete.setVisible(true);
             btnUpdate.setVisible(true);
 
@@ -284,6 +300,7 @@ public class UsersFormController {
             txtUserName.setEditable(false);
 
             paneConfirmPassword.setVisible(false);
+            paneDeleteAccConfPassword.setVisible(true);
 
             UserDTO user = loginBo.getUser(id);
 
@@ -305,6 +322,7 @@ public class UsersFormController {
             txtUserName.setEditable(true);
 
             paneConfirmPassword.setVisible(true);
+            paneDeleteAccConfPassword.setVisible(false);
         }
     }
 
@@ -343,6 +361,7 @@ public class UsersFormController {
         String id = txtUserId.getText();
 
         try {
+        if (checkAccPasswordInDelete()) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are sure do you want to delete this user?", ButtonType.OK, ButtonType.CANCEL);
             Optional<ButtonType> buttonType = alert.showAndWait();
 
@@ -357,20 +376,40 @@ public class UsersFormController {
             } else {
                 System.out.println("error");
             }
+        }
         }catch (Exception e) {
             System.out.println(e);
         }
     }
 
-    public void fillNameOnAction(KeyEvent keyEvent) {
-        txtFullName.setFocusColor(Paint.valueOf("white"));
+    public void confirmPasswordOnAction(ActionEvent actionEvent) {
+        checkAccPasswordInDelete();
     }
 
-    public void fillUserNameOnAction(KeyEvent keyEvent) {
-        txtUserName.setFocusColor(Paint.valueOf("white"));
+    public boolean checkAccPasswordInDelete() {
+        UserDTO user = loginBo.getUser(txtUserId.getText());
+        if (txtConfDeleteAccPassword.getText().equals(user.getPassword())) {
+            return true;
+        } else {
+            new BounceIn(txtConfDeleteAccPassword).play();
+
+            txtConfDeleteAccPassword.requestFocus();
+            txtConfDeleteAccPassword.setFocusColor(Paint.valueOf("red"));
+        }
+        return false;
     }
 
-    public void fillPasswordOnAction(KeyEvent keyEvent) {
-        txtHidePassword.setFocusColor(Paint.valueOf("white"));
+    public void ConfirmAccDeletePasswordOnAction(KeyEvent keyEvent) {
+        txtConfDeleteAccPassword.setFocusColor(Paint.valueOf("white"));
     }
 }
+
+/*        TextInputDialog textInputDialog = new TextInputDialog();
+        textInputDialog.setTitle("Confirm Delete");
+        textInputDialog.setHeaderText("Enter your Password");
+
+        Optional<String> s = textInputDialog.showAndWait();
+        s.ifPresent(s1 -> {
+            this.txtUserName.setText(s1);
+        });
+        textInputDialog.show();*/

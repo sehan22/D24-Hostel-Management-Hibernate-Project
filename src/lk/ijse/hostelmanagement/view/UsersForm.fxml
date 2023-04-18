@@ -242,5 +242,19 @@
             </LinearGradient>
          </ripplerFill>
       </JFXButton>
+      <AnchorPane fx:id="paneDeleteAccConfPassword" layoutX="776.0" layoutY="411.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: white;" visible="false">
+         <children>
+            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Account Password">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+            <JFXPasswordField fx:id="txtConfDeleteAccPassword" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" onAction="#confirmPasswordOnAction" onKeyReleased="#ConfirmAccDeletePasswordOnAction" prefHeight="30.0" prefWidth="518.0" promptText="Type Account Password For Delete This Account" unFocusColor="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXPasswordField>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
