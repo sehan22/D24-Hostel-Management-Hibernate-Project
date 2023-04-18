@@ -7,16 +7,21 @@ package lk.ijse.hostelmanagement.controller;
  */
 
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import lk.ijse.hostelmanagement.bo.BOType;
 import lk.ijse.hostelmanagement.bo.BoFactory;
 import lk.ijse.hostelmanagement.bo.custom.LoginBo;
 import lk.ijse.hostelmanagement.bo.custom.ReservationBo;
 import lk.ijse.hostelmanagement.dto.UserDTO;
+import lk.ijse.hostelmanagement.util.Navigation;
+import lk.ijse.hostelmanagement.util.Routes;
 import lk.ijse.hostelmanagement.view.tm.UserTM;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
@@ -27,6 +32,7 @@ public class ViewUsersFormController {
     public TableColumn colEmail;
     public TableColumn colUName;
     public TableColumn colPasword;
+    public AnchorPane paneMainTable;
 
     LoginBo loginBo = (LoginBo) BoFactory.getInstance().getBo(BOType.USER);
 
@@ -55,5 +61,9 @@ public class ViewUsersFormController {
                     userDTO.getPassword()
                 );
         }).collect(Collectors.toList())));
+    }
+
+    public void addNewUserOnAction(ActionEvent actionEvent) throws IOException {
+        Navigation.navigate(Routes.USERS, paneMainTable);
     }
 }

@@ -89,7 +89,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="txtUserEmail" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+            <JFXTextField fx:id="txtUserEmail" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" onKeyReleased="#validEmailOnAction" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -161,7 +161,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <JFXPasswordField fx:id="txtConfPassword" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+            <JFXPasswordField fx:id="txtConfPassword" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" onKeyReleased="#ConfirmPasswordOnAction" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -196,7 +196,7 @@
       <Text fill="#545454" layoutX="553.0" layoutY="517.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recheck the validity of the data you have entered in the form." />
       <AnchorPane layoutX="486.0" layoutY="124.0" prefHeight="39.0" prefWidth="448.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
          <children>
-            <JFXTextField fx:id="txtSearchId" focusColor="WHITE" focusTraversable="false" layoutX="10.0" layoutY="6.0" prefHeight="29.0" prefWidth="396.0" promptText="Search Student Id Here..." unFocusColor="WHITE">
+            <JFXTextField fx:id="txtSearchId" focusColor="WHITE" focusTraversable="false" layoutX="10.0" layoutY="6.0" prefHeight="29.0" prefWidth="396.0" promptText="Search User Id Here..." unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>

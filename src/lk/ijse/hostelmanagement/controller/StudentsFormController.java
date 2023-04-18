@@ -84,7 +84,6 @@ public class StudentsFormController {
         if (isPhoneNumberMatches) {
             return true;
         }
-
         return false;
     }
 
@@ -106,7 +105,7 @@ public class StudentsFormController {
         boolean matches = matcher.matches();
 
         if (matches) {
-            txtPhoneNumber.setFocusColor(Paint.valueOf("green"));
+            txtPhoneNumber.setFocusColor(Paint.valueOf("white"));
         } else {
             txtPhoneNumber.setFocusColor(Paint.valueOf("red"));
         }
@@ -123,7 +122,15 @@ public class StudentsFormController {
 
         try {
             if (validInputData()) {
-                boolean isAdded = studentBO.addStudent(new StudentDTO(id, name, address, dob, gender, campus, phoneNumber));
+                boolean isAdded = studentBO.addStudent(new StudentDTO(
+                        id,
+                        name,
+                        address,
+                        dob,
+                        gender,
+                        campus,
+                        phoneNumber
+                ));
 
                 if (isAdded) {
                     new Alert(Alert.AlertType.CONFIRMATION, "User Added!").show();

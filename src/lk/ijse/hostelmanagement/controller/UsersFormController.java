@@ -6,26 +6,36 @@ package lk.ijse.hostelmanagement.controller;
  * Project Name - D24 Hostel Management System
  */
 
+import animatefx.animation.*;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import lk.ijse.hostelmanagement.bo.BOType;
 import lk.ijse.hostelmanagement.bo.BoFactory;
 import lk.ijse.hostelmanagement.bo.custom.LoginBo;
 import lk.ijse.hostelmanagement.dto.UserDTO;
+import lk.ijse.hostelmanagement.util.Navigation;
+import lk.ijse.hostelmanagement.util.Routes;
+
+import java.io.IOException;
+import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UsersFormController {
     public JFXTextField txtUserId;
     public JFXTextField txtFullName;
     public JFXTextField txtUserEmail;
     public JFXTextField txtUserName;
-    public JFXTextField txtPassword;
     public JFXButton btnSave;
     public JFXButton btnCancel;
     public JFXButton btnClear;
@@ -40,6 +50,7 @@ public class UsersFormController {
     public ImageView imgHidePassword;
     public JFXPasswordField txtConfPassword;
     public JFXPasswordField txtHidePassword;
+    public AnchorPane paneMainForm;
 
     LoginBo loginBo = (LoginBo) BoFactory.getInstance().getBo(BOType.USER);
 
@@ -58,11 +69,17 @@ public class UsersFormController {
         txtFullName.clear();
         txtUserEmail.clear();
         txtUserName.clear();
+        txtShowPassword.clear();
         txtHidePassword.clear();
-        txtPassword.clear();
         txtConfPassword.clear();
 
         txtSearchId.clear();
+
+        imgShowPassword.setVisible(true);
+        imgHidePassword.setVisible(true);
+
+        txtHidePassword.setEditable(true);
+        txtUserName.setEditable(true);
 
         paneConfirmPassword.setVisible(true);
     }
@@ -76,11 +93,46 @@ public class UsersFormController {
         }
     }
 
+    private boolean validConfirmPassword() {
+        Pattern pattern = Pattern.compile(txtConfPassword.getText());
+        Matcher matcher = pattern.matcher(txtHidePassword.getText());
+
+        boolean matches = matcher.matches();
+
+        if (matches) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean validEmail() {
+        Pattern pattern = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+        Matcher matcher = pattern.matcher(txtUserEmail.getText());
+
+        boolean matches = matcher.matches();
+
+        if (matches) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean validAllTextFieldsOnSave() {
+        if (txtFullName.getText().equals("")) {
+            if (txtUserName.getText().equals("")) {
+                if (txtHidePassword.getText().equals("")) {
+
+                }
+            }
+        }
+    }
+
     public void ClearOnAction(ActionEvent actionEvent) {
         clearTextFields();
     }
 
-    public void CancelOnAction(ActionEvent actionEvent) {
+    public void CancelOnAction(ActionEvent actionEvent) throws IOException {
+        Navigation.navigate(Routes.DASHBOARD, paneMainForm);
     }
 
     public void addNewUserOnAction(ActionEvent actionEvent) {
@@ -110,31 +162,68 @@ public class UsersFormController {
         txtShowPassword.setVisible(true);
     }
 
+    public void ConfirmPasswordOnAction(KeyEvent keyEvent) {
+        Pattern pattern = Pattern.compile(txtConfPassword.getText());
+        Matcher matcher = pattern.matcher(txtHidePassword.getText());
+
+        boolean matches = matcher.matches();
+
+        if (matches) {
+            txtConfPassword.setFocusColor(Paint.valueOf("white"));
+        } else {
+            txtConfPassword.setFocusColor(Paint.valueOf("red"));
+        }
+    }
+
+    public void validEmailOnAction(KeyEvent keyEvent) {
+        Pattern pattern = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+        Matcher matcher = pattern.matcher(txtUserEmail.getText());
+
+        boolean matches = matcher.matches();
+
+        if (matches) {
+            txtUserEmail.setFocusColor(Paint.valueOf("white"));
+        } else {
+            txtUserEmail.setFocusColor(Paint.valueOf("red"));
+        }
+    }
+
     public void SaveOnAction(ActionEvent actionEvent) {
         String id = txtUserId.getText();
         String fullName = txtFullName.getText();
         String userEmail = txtUserEmail.getText();
         String userName = txtUserName.getText();
         String password = txtHidePassword.getText();
-        String password1 = txtShowPassword.getText();
-        password1 = password;
 
         try {
-            boolean isAdded = loginBo.addUser(
-                new UserDTO(
-                    id,
-                    fullName,
-                    userEmail,
-                    userName,
-                    password
-                )
-            );
+            if (validConfirmPassword()) {
+                if (validEmail()) {
+                    boolean isAdded = loginBo.addUser(
+                            new UserDTO(
+                                    id,
+                                    fullName,
+                                    userEmail,
+                                    userName,
+                                    password));
 
-            if (isAdded) {
-                new Alert(Alert.AlertType.CONFIRMATION, "User Added Successfuly!").show();
-                genarateUserId();
-                clearTextFields();
+                    if (isAdded) {
+                        new Alert(Alert.AlertType.CONFIRMATION, "User Added Successfuly!").show();
+                        genarateUserId();
+                        clearTextFields();
+
+                    }
+                } else {
+                    new BounceIn(txtUserEmail).play();
+                    txtUserEmail.requestFocus();
+                    txtUserEmail.setFocusColor(Paint.valueOf("red"));
+                }
+            } else {
+                new BounceIn(txtConfPassword).play();
+                txtConfPassword.requestFocus();
+                txtConfPassword.setFocusColor(Paint.valueOf("red"));
             }
+        }catch (NullPointerException e) {
+
         }catch (Exception e) {
             System.out.println(e);
         }
@@ -154,6 +243,12 @@ public class UsersFormController {
             btnAddNewUser.setVisible(true);
             txtAddNewUser.setVisible(true);
 
+            imgShowPassword.setVisible(false);
+            imgHidePassword.setVisible(false);
+
+            txtHidePassword.setEditable(false);
+            txtUserName.setEditable(false);
+
             paneConfirmPassword.setVisible(false);
 
             UserDTO user = loginBo.getUser(id);
@@ -162,15 +257,20 @@ public class UsersFormController {
             txtFullName.setText(user.getName());
             txtUserEmail.setText(user.getEmail());
             txtUserName.setText(user.getUserName());
-            txtPassword.setText(user.getPassword());
+            txtHidePassword.setText(user.getPassword());
         }catch (Exception e) {
             System.out.println(e);
-            /*clearTextFields();
-
+            clearTextFields();
             btnAddNewUser.setVisible(false);
             txtAddNewUser.setVisible(false);
 
-            paneConfirmPassword.setVisible(true);*/
+            imgShowPassword.setVisible(true);
+            imgHidePassword.setVisible(true);
+
+            txtHidePassword.setEditable(true);
+            txtUserName.setEditable(true);
+
+            paneConfirmPassword.setVisible(true);
         }
     }
 
@@ -182,14 +282,23 @@ public class UsersFormController {
         String password = txtHidePassword.getText();
 
         try {
-            boolean isUpdated = loginBo.updateUser(new UserDTO(id
-                    , fullName
-                    , userEmail
-                    , userName
-                    , password));
+            if (validEmail()) {
+                boolean isUpdated = loginBo.updateUser(new UserDTO(
+                        id,
+                        fullName,
+                        userEmail,
+                        userName,
+                        password));
 
-            if (isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "User Updated Successfuly!").show();
+                if (isUpdated) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "User Updated Successfuly!").show();
+                    clearTextFields();
+                    genarateUserId();
+                }
+            } else {
+                new BounceIn(txtUserEmail).play();
+                txtUserEmail.requestFocus();
+                txtUserEmail.setFocusColor(Paint.valueOf("red"));
             }
         }catch (Exception e) {
             System.out.println(e);
@@ -200,12 +309,19 @@ public class UsersFormController {
         String id = txtUserId.getText();
 
         try {
-            boolean isDeleted = loginBo.deleteUser(id);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are sure do you want to delete this user?", ButtonType.OK, ButtonType.CANCEL);
+            Optional<ButtonType> buttonType = alert.showAndWait();
 
-            if (isDeleted) {
-                new Alert(Alert.AlertType.CONFIRMATION, "User Deleted Successfuly!").show();
-                clearTextFields();
-                genarateUserId();
+            if (buttonType.get() == ButtonType.OK) {
+                boolean isDeleted = loginBo.deleteUser(id);
+
+                if (isDeleted) {
+                    new Alert(Alert.AlertType.INFORMATION, "User Deleted Successfuly!").show();
+                    clearTextFields();
+                    genarateUserId();
+                }
+            } else {
+                System.out.println("error");
             }
         }catch (Exception e) {
             System.out.println(e);
