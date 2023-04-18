@@ -50,7 +50,6 @@ public class UsersFormController {
     public ImageView imgHidePassword;
     public JFXPasswordField txtConfPassword;
     public JFXPasswordField txtHidePassword;
-    public AnchorPane paneMainForm;
 
     LoginBo loginBo = (LoginBo) BoFactory.getInstance().getBo(BOType.USER);
 
@@ -149,7 +148,7 @@ public class UsersFormController {
     }
 
     public void CancelOnAction(ActionEvent actionEvent) throws IOException {
-        Navigation.navigate(Routes.DASHBOARD, paneMainForm);
+        //Navigation.navigate(Routes.DASHBOARD, paneMainForm);
     }
 
     public void addNewUserOnAction(ActionEvent actionEvent) {
@@ -232,19 +231,20 @@ public class UsersFormController {
                                     clearTextFields();
                                 }
                             } else {
-                                new BounceIn(txtHidePassword).play();
-                                txtHidePassword.requestFocus();
-                                txtHidePassword.setFocusColor(Paint.valueOf("red"));
+                                new BounceIn(txtConfPassword).play();
+                                txtConfPassword.requestFocus();
+                                txtConfPassword.setFocusColor(Paint.valueOf("red"));
                             }
                         } else {
-                            new BounceIn(txtUserName).play();
-                            txtUserName.requestFocus();
-                            txtUserName.setFocusColor(Paint.valueOf("red"));
+                            new BounceIn(txtHidePassword).play();
+                            txtHidePassword.requestFocus();
+                            txtHidePassword.setFocusColor(Paint.valueOf("red"));
                         }
                     } else {
-                        new BounceIn(txtFullName).play();
-                        txtFullName.requestFocus();
-                        txtFullName.setFocusColor(Paint.valueOf("red"));
+                        new BounceIn(txtUserName).play();
+                        txtUserName.requestFocus();
+                        txtUserName.setFocusColor(Paint.valueOf("red"));
+
                     }
                 } else {
                     new BounceIn(txtUserEmail).play();
@@ -252,9 +252,9 @@ public class UsersFormController {
                     txtUserEmail.setFocusColor(Paint.valueOf("red"));
                 }
             } else {
-                new BounceIn(txtConfPassword).play();
-                txtConfPassword.requestFocus();
-                txtConfPassword.setFocusColor(Paint.valueOf("red"));
+                new BounceIn(txtFullName).play();
+                txtFullName.requestFocus();
+                txtFullName.setFocusColor(Paint.valueOf("red"));
             }
         }catch (NullPointerException e) {
 
@@ -360,5 +360,17 @@ public class UsersFormController {
         }catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    public void fillNameOnAction(KeyEvent keyEvent) {
+        txtFullName.setFocusColor(Paint.valueOf("white"));
+    }
+
+    public void fillUserNameOnAction(KeyEvent keyEvent) {
+        txtUserName.setFocusColor(Paint.valueOf("white"));
+    }
+
+    public void fillPasswordOnAction(KeyEvent keyEvent) {
+        txtHidePassword.setFocusColor(Paint.valueOf("white"));
     }
 }
