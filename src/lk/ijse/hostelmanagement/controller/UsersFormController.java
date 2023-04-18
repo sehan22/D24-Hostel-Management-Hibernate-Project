@@ -117,14 +117,31 @@ public class UsersFormController {
         return false;
     }
 
-    private boolean validAllTextFieldsOnSave() {
+    private boolean validFullName() {
         if (txtFullName.getText().equals("")) {
-            if (txtUserName.getText().equals("")) {
-                if (txtHidePassword.getText().equals("")) {
-
-                }
-            }
+            txtFullName.requestFocus();
+            txtFullName.setFocusColor(Paint.valueOf("red"));
+            return false;
         }
+        return true;
+    }
+
+    private boolean validUserName() {
+        if (txtUserName.getText().equals("")) {
+            txtUserName.requestFocus();
+            txtUserName.setFocusColor(Paint.valueOf("red"));
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validPassword() {
+        if (txtHidePassword.getText().equals("")) {
+            txtHidePassword.requestFocus();
+            txtHidePassword.setFocusColor(Paint.valueOf("red"));
+            return false;
+        }
+        return true;
     }
 
     public void ClearOnAction(ActionEvent actionEvent) {
@@ -196,21 +213,38 @@ public class UsersFormController {
         String password = txtHidePassword.getText();
 
         try {
-            if (validConfirmPassword()) {
+            if (validFullName()) {
                 if (validEmail()) {
-                    boolean isAdded = loginBo.addUser(
-                            new UserDTO(
-                                    id,
-                                    fullName,
-                                    userEmail,
-                                    userName,
-                                    password));
+                    if (validUserName()) {
+                        if (validPassword()) {
+                            if (validConfirmPassword()) {
+                                boolean isAdded = loginBo.addUser(
+                                        new UserDTO(
+                                                id,
+                                                fullName,
+                                                userEmail,
+                                                userName,
+                                                password));
 
-                    if (isAdded) {
-                        new Alert(Alert.AlertType.CONFIRMATION, "User Added Successfuly!").show();
-                        genarateUserId();
-                        clearTextFields();
-
+                                if (isAdded) {
+                                    new Alert(Alert.AlertType.CONFIRMATION, "User Added Successfuly!").show();
+                                    genarateUserId();
+                                    clearTextFields();
+                                }
+                            } else {
+                                new BounceIn(txtHidePassword).play();
+                                txtHidePassword.requestFocus();
+                                txtHidePassword.setFocusColor(Paint.valueOf("red"));
+                            }
+                        } else {
+                            new BounceIn(txtUserName).play();
+                            txtUserName.requestFocus();
+                            txtUserName.setFocusColor(Paint.valueOf("red"));
+                        }
+                    } else {
+                        new BounceIn(txtFullName).play();
+                        txtFullName.requestFocus();
+                        txtFullName.setFocusColor(Paint.valueOf("red"));
                     }
                 } else {
                     new BounceIn(txtUserEmail).play();
