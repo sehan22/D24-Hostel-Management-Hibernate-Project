@@ -75,4 +75,9 @@ public class LoginBoImpl implements LoginBo {
 
     return userList;
     }
+
+    @Override
+    public String genarateId() {
+        return userDAO.genarateNewId();
+    }
 }

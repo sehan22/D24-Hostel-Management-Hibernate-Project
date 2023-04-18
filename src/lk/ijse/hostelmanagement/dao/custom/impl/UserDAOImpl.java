@@ -11,6 +11,7 @@ import lk.ijse.hostelmanagement.entity.User;
 import lk.ijse.hostelmanagement.util.SessionFactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -80,5 +81,36 @@ public class UserDAOImpl implements UserDAO {
         session.close();
 
         return userList;
+    }
+
+    @Override
+    public String genarateNewId() {
+        Session session = SessionFactoryConfiguration.getInstance().getSessionFactory();
+        Transaction transaction = session.beginTransaction();
+
+        Query query = session.createQuery("SELECT id FROM User ORDER BY id DESC ");
+
+        String newId = "U00 - 001";
+
+        if (query.list().size() == 0) {
+            return newId;
+        }else {
+            String genarateId = (String) query.list().get(0);
+
+            String[] split = genarateId.split("U00 - 00");
+
+            for (String i:split) {
+                genarateId = i;
+            }
+
+            int genNumber = Integer.valueOf(genarateId);
+
+            genarateId = "U00 - 00" + (genNumber + 1);
+
+            transaction.commit();
+            session.close();
+
+            return genarateId;
+        }
     }
 }

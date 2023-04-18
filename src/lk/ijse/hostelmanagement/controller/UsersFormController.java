@@ -26,7 +26,6 @@ public class UsersFormController {
     public JFXTextField txtUserEmail;
     public JFXTextField txtUserName;
     public JFXTextField txtPassword;
-    public JFXTextField txtConfirmPassword;
     public JFXButton btnSave;
     public JFXButton btnCancel;
     public JFXButton btnClear;
@@ -45,10 +44,10 @@ public class UsersFormController {
     LoginBo loginBo = (LoginBo) BoFactory.getInstance().getBo(BOType.USER);
 
     public void initialize() {
+        genarateUserId();
     }
 
     private void clearTextFields() {
-        txtUserId.setDisable(false);
 
         btnDelete.setVisible(false);
         btnUpdate.setVisible(false);
@@ -56,15 +55,25 @@ public class UsersFormController {
         btnSave.setVisible(true);
         btnCancel.setVisible(true);
 
-        txtUserId.clear();
         txtFullName.clear();
         txtUserEmail.clear();
         txtUserName.clear();
+        txtHidePassword.clear();
         txtPassword.clear();
+        txtConfPassword.clear();
 
         txtSearchId.clear();
 
         paneConfirmPassword.setVisible(true);
+    }
+
+    private void genarateUserId() {
+        try {
+            String genarateUserId = loginBo.genarateId();
+            txtUserId.setText(genarateUserId);
+        }catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     public void ClearOnAction(ActionEvent actionEvent) {
@@ -106,7 +115,9 @@ public class UsersFormController {
         String fullName = txtFullName.getText();
         String userEmail = txtUserEmail.getText();
         String userName = txtUserName.getText();
-        String password = txtPassword.getText();
+        String password = txtHidePassword.getText();
+        String password1 = txtShowPassword.getText();
+        password1 = password;
 
         try {
             boolean isAdded = loginBo.addUser(
@@ -121,6 +132,7 @@ public class UsersFormController {
 
             if (isAdded) {
                 new Alert(Alert.AlertType.CONFIRMATION, "User Added Successfuly!").show();
+                genarateUserId();
                 clearTextFields();
             }
         }catch (Exception e) {
@@ -132,7 +144,6 @@ public class UsersFormController {
         String id = txtSearchId.getText();
 
         try {
-            txtUserId.setDisable(true);
 
             btnDelete.setVisible(true);
             btnUpdate.setVisible(true);
@@ -154,12 +165,12 @@ public class UsersFormController {
             txtPassword.setText(user.getPassword());
         }catch (Exception e) {
             System.out.println(e);
-            clearTextFields();
+            /*clearTextFields();
 
             btnAddNewUser.setVisible(false);
             txtAddNewUser.setVisible(false);
 
-            paneConfirmPassword.setVisible(true);
+            paneConfirmPassword.setVisible(true);*/
         }
     }
 
@@ -168,7 +179,7 @@ public class UsersFormController {
         String fullName = txtFullName.getText();
         String userEmail = txtUserEmail.getText();
         String userName = txtUserName.getText();
-        String password = txtPassword.getText();
+        String password = txtHidePassword.getText();
 
         try {
             boolean isUpdated = loginBo.updateUser(new UserDTO(id
@@ -194,6 +205,7 @@ public class UsersFormController {
             if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "User Deleted Successfuly!").show();
                 clearTextFields();
+                genarateUserId();
             }
         }catch (Exception e) {
             System.out.println(e);

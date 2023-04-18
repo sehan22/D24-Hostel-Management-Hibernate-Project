@@ -76,4 +76,9 @@ public class StudentDAOImpl implements StudentDAO {
 
         return list;
     }
+
+    @Override
+    public String genarateNewId() {
+        return null;
+    }
 }

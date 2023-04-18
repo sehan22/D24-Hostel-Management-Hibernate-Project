@@ -12,6 +12,7 @@ import lk.ijse.hostelmanagement.entity.Student;
 import lk.ijse.hostelmanagement.util.SessionFactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -77,5 +78,24 @@ public class RoomDAOImpl implements RoomDAO {
         session.close();
 
         return room;
+    }
+
+    @Override
+    public String genarateNewId() {
+        return null;
+    }
+
+    @Override
+    public int getRoomTypeQTY(String id) {
+        Session session = SessionFactoryConfiguration.getInstance().getSessionFactory();
+        Transaction transaction = session.beginTransaction();
+
+        Query query = session.createQuery("SELECT qty FROM Room WHERE id LIKE : ID").setParameter("ID", id);
+        int qty = (int) query.list().get(0);
+
+        transaction.commit();
+        session.close();
+
+        return qty;
     }
 }

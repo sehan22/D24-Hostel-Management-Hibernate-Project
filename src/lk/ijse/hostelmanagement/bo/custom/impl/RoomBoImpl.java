@@ -71,4 +71,9 @@ public class RoomBoImpl implements RoomBo {
 
         return roomList;
     }
+
+    @Override
+    public int getQTYRoom(String id) {
+        return roomDAO.getRoomTypeQTY(id);
+    }
 }

@@ -11,5 +11,6 @@ public interface LoginBo extends SuperBo {
     public boolean updateUser(UserDTO userDTO);
     public boolean deleteUser(String id);
     ArrayList<UserDTO> getAllUser();
+    public String genarateId();
 
 }

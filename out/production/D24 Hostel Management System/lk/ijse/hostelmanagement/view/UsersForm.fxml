@@ -51,7 +51,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="txtUserId" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+            <JFXTextField fx:id="txtUserId" editable="false" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -142,7 +142,7 @@
                   <Image url="@../assests/images/icons8-hide-48%201.png" />
                </image>
             </ImageView>
-            <JFXPasswordField fx:id="txtHidePassword" focusColor="WHITE" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="487.0" unFocusColor="WHITE">
+            <JFXPasswordField fx:id="txtHidePassword" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="487.0" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -161,7 +161,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <JFXPasswordField fx:id="txtConfPassword" focusColor="WHITE" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+            <JFXPasswordField fx:id="txtConfPassword" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

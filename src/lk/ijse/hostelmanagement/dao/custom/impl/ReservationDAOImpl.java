@@ -79,4 +79,9 @@ public class ReservationDAOImpl implements ReservationDAO {
         session.close();
         return reservation;
     }
+
+    @Override
+    public String genarateNewId() {
+        return null;
+    }
 }
