@@ -31,36 +31,4 @@ public class ViewNotPayKeyMoneyStudentFormController {
     public TableColumn colStudentCampus;
     public TableColumn colStudentPhoneNumber;
 
-    ReservationBo reservationBo = (ReservationBo) BoFactory.getInstance().getBo(BOType.RESERVATION);
-
-    public void initialize() {
-        colStudentId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colStudentName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colStudentAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        colStudentDOB.setCellValueFactory(new PropertyValueFactory<>("dob"));
-        colStudentGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
-        colStudentCampus.setCellValueFactory(new PropertyValueFactory<>("campus"));
-        colStudentPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("contact"));
-
-        try {
-            loadKeyMoneyNotPayStudent(reservationBo.getNotPayStudent());
-        }catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-
-    private void loadKeyMoneyNotPayStudent(ArrayList<StudentDTO> notPayStudents) {
-        tblStudent.setItems(FXCollections.observableArrayList(
-                notPayStudents.stream().map(studentDTO -> {
-                    return new StudentTM(
-                            studentDTO.getId(),
-                            studentDTO.getName(),
-                            studentDTO.getAddress(),
-                            studentDTO.getDob(),
-                            studentDTO.getGender(),
-                            studentDTO.getCampus(),
-                            studentDTO.getContact()
-                    );
-                }).collect(Collectors.toList())));
-    }
 }

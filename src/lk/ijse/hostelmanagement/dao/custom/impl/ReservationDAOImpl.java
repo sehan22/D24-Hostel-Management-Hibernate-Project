@@ -112,17 +112,4 @@ public class ReservationDAOImpl implements ReservationDAO {
             return genarateId;
         }
     }
-
-    @Override
-    public List<Student> getKeyMoneyNotPaid() {
-        Session session = SessionFactoryConfiguration.getInstance().getSessionFactory();
-        Transaction transaction = session.beginTransaction();
-
-        List<Student> notPaylist = session.createQuery("SELECT student FROM Reservation WHERE states LIKE : ID").setParameter("ID", "NOT PAY").list();
-
-        transaction.commit();
-        session.close();
-
-        return notPaylist;
-    }
 }
