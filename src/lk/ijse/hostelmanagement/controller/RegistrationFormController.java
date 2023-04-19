@@ -46,7 +46,7 @@ public class RegistrationFormController {
     public Text txtAddNewReservation;
     public JFXButton btnAddNewReservation;
     public JFXTextField txtRoomTypeQTY;
-    public JFXTextField txtRoomTypeValue;
+    public JFXTextField txtRoomTypeKeyMoney;
 
     ReservationBo reservationBo = (ReservationBo) BoFactory.getInstance().getBo(BOType.RESERVATION);
 
@@ -100,7 +100,14 @@ public class RegistrationFormController {
         jfxTextField.setFocusColor(Paint.valueOf("red"));
     }
 
+
     public void SearchStuNameOnAction(KeyEvent keyEvent) {
+        searchStuNameOnAction();
+    }
+    public void searchRoomTypeOnAction(KeyEvent keyEvent) {
+        searchRoomTypeOnAction();
+    }
+    public void searchStuNameOnAction() {
         String studentId = txtStudentId.getText();
 
         try {
@@ -110,15 +117,14 @@ public class RegistrationFormController {
             System.out.println(e);
         }
     }
-
-    public void searchRoomTypeOnAction(KeyEvent keyEvent) {
+    public void searchRoomTypeOnAction() {
         String roomId = txtRoomTypeId.getText();
 
         try {
             RoomDTO room = roomBo.getRoom(roomId);
             txtRoomType.setText(room.getType());
+            txtRoomTypeKeyMoney.setText(room.getKeyMoney());
             txtRoomTypeQTY.setText(String.valueOf(room.getQty()));
-            txtRoomTypeValue.setText(room.getKeyMoney());
 
             if (txtRoomTypeQTY.getText().equals(0)) {
                 btnSave.setDisable(true);
@@ -128,6 +134,7 @@ public class RegistrationFormController {
         }
     }
 
+
     private void generateNewId() {
         try {
             String generateNewId = reservationBo.genarateReservationId();
@@ -136,6 +143,7 @@ public class RegistrationFormController {
             System.out.println(e);
         }
     }
+
 
     public boolean validDate() {
         Pattern pattern = Pattern.compile("^[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}$");
@@ -266,6 +274,9 @@ public class RegistrationFormController {
             txtRoomTypeId.setText(reservation.getRoomId());
             txtStatus.setText(reservation.getStates());
             txtResDate.setText(String.valueOf(reservation.getDate()));
+
+            searchStuNameOnAction();
+            searchRoomTypeOnAction();
         }catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, "Input Reservation Id Is Ivalid!\nPlease Try Again..").show();
             System.out.println(e);
