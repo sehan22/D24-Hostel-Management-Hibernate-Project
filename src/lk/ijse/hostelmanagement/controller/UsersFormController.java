@@ -461,9 +461,16 @@ public class UsersFormController {
                     boolean isDeleted = loginBo.deleteUser(id);
 
                     if (isDeleted) {
-                        new Alert(Alert.AlertType.INFORMATION, "User Deleted Successfuly!").show();
+                        System.out.println("user deleted successfully");
                         clearTextFields();
                         genarateUserId();
+
+                        Alert alert1 = new Alert(Alert.AlertType.WARNING, "You have to resign the D24 Hostel Management System \nbecause of the removing you user account!", ButtonType.OK);
+                        Optional<ButtonType> buttonType1 = alert1.showAndWait();
+
+                        if (buttonType1.get() == ButtonType.OK) {
+                            System.exit(0);
+                        }
                     }
                 } else {
                     System.out.println("error");

@@ -31,7 +31,6 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class RoomsFormController {
-
     public JFXTextField txtRoomNumber;
     public JFXTextField txtKeyMoney;
     public JFXTextField txtRoomType;

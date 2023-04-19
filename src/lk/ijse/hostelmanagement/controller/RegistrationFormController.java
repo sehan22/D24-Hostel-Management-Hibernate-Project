@@ -49,7 +49,8 @@ public class RegistrationFormController {
 
     RoomBo roomBo = (RoomBo) BoFactory.getInstance().getBo(BOType.ROOM);
 
-    public void CancelOnAction(ActionEvent actionEvent) {
+    public void initialize() {
+        generateNewId();
     }
 
     private void clearTextFields() {
@@ -72,6 +73,9 @@ public class RegistrationFormController {
         txtRoomTypeId.clear();
         txtStudentName.clear();
         txtRoomType.clear();
+    }
+
+    public void CancelOnAction(ActionEvent actionEvent) {
     }
 
     public void clearFormTextFieldsOnAction(ActionEvent actionEvent) {
@@ -108,6 +112,15 @@ public class RegistrationFormController {
                 btnSave.setDisable(true);
             }
         }catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    private void generateNewId() {
+        try {
+            String generateNewId = reservationBo.genarateReservationId();
+            txtResId.setText(generateNewId);
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
