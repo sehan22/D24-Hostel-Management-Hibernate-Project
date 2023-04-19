@@ -183,15 +183,17 @@ public class RoomsFormController {
     }
 
     public void SaveOnAction(ActionEvent actionEvent) {
-        String id = txtRoomNumber.getText();
-        String roomType = txtRoomType.getText();
-        String keyMoney = txtKeyMoney.getText();
-        int qty = Integer.parseInt(txtQty.getText());
 
         try {
             if (validRoomType()) {
                 if (validKeyMoney()) {
                     if (validRoomTypeQTY()) {
+
+                        String id = txtRoomNumber.getText();
+                        String roomType = txtRoomType.getText();
+                        String keyMoney = txtKeyMoney.getText();
+                        int qty = Integer.parseInt(txtQty.getText());
+
                         boolean isAdded = roomBo.addRoom(new RoomDTO(
                                 id,
                                 roomType,
@@ -205,12 +207,15 @@ public class RoomsFormController {
                             loadRoom(roomBo.getAllRoom());
                         }
                     } else {
+                        txtQty.requestFocus();
                         animationToTextFields(txtQty);
                     }
                 } else {
+                    txtKeyMoney.requestFocus();
                     animationToTextFields(txtKeyMoney);
                 }
             } else {
+                txtRoomType.requestFocus();
                 animationToTextFields(txtRoomType);
             }
         }catch (Exception e) {
@@ -253,15 +258,15 @@ public class RoomsFormController {
     }
 
     public void updateOnAction(ActionEvent actionEvent) {
-        String id = txtRoomNumber.getText();
-        String roomType = txtRoomType.getText();
-        String keyMoney = txtKeyMoney.getText();
-        int qty = Integer.parseInt(txtQty.getText());
-
         try {
             if (validRoomType()) {
                 if (validKeyMoney()) {
                     if (validRoomTypeQTY()) {
+                        String id = txtRoomNumber.getText();
+                        String roomType = txtRoomType.getText();
+                        String keyMoney = txtKeyMoney.getText();
+                        int qty = Integer.parseInt(txtQty.getText());
+
                         boolean isUpdated = roomBo.updateRoom(new RoomDTO(
                                 id,
                                 roomType,
@@ -276,15 +281,12 @@ public class RoomsFormController {
                         }
                     } else {
                         animationToTextFields(txtQty);
-                        System.out.println("error in qty");
                     }
                 } else {
                     animationToTextFields(txtKeyMoney);
-                    System.out.println("error in keymoney");
                 }
             } else {
                 animationToTextFields(txtRoomType);
-                System.out.println("error in room type");
             }
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, "Input Room Id Is Ivalid!\nPlease Try Again..").show();

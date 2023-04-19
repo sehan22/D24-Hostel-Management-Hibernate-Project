@@ -277,18 +277,18 @@ public class UsersFormController {
     }
 
     public void SaveOnAction(ActionEvent actionEvent) {
-        String id = txtUserId.getText();
-        String fullName = txtFullName.getText();
-        String userEmail = txtUserEmail.getText();
-        String userName = txtUserName.getText();
-        String password = txtHidePassword.getText();
-
         try {
             if (validFullName()) {
                 if (validEmail()) {
                     if (validUserName()) {
                         if (validPassword()) {
                             if (validConfirmPassword()) {
+                                String id = txtUserId.getText();
+                                String fullName = txtFullName.getText();
+                                String userEmail = txtUserEmail.getText();
+                                String userName = txtUserName.getText();
+                                String password = txtHidePassword.getText();
+
                                 boolean isAdded = loginBo.addUser(
                                         new UserDTO(
                                                 id,
@@ -390,17 +390,17 @@ public class UsersFormController {
     }
 
     public void UpdateOnAction(ActionEvent actionEvent) {
-        String id = txtUserId.getText();
-        String fullName = txtFullName.getText();
-        String userEmail = txtUserEmail.getText();
-        String userName = txtUserName.getText();
-        String password = txtNewPassword.getText();
-
         try {
             if (validFullName()) {
                 if (validEmail()) {
                     if (validNewPassword()) {
                         if (checkAccPasswordInDelete()) {
+                            String id = txtUserId.getText();
+                            String fullName = txtFullName.getText();
+                            String userEmail = txtUserEmail.getText();
+                            String userName = txtUserName.getText();
+                            String password = txtNewPassword.getText();
+
                             boolean isUpdated = loginBo.updateUser(new UserDTO(
                                     id,
                                     fullName,
@@ -415,6 +415,12 @@ public class UsersFormController {
                             }
                         }
                     } else if (checkAccPasswordInDelete()) {
+                        String id = txtUserId.getText();
+                        String fullName = txtFullName.getText();
+                        String userEmail = txtUserEmail.getText();
+                        String userName = txtUserName.getText();
+                        String password = txtNewPassword.getText();
+
                         boolean isUpdated = loginBo.updateUser(new UserDTO(
                                 id,
                                 fullName,
