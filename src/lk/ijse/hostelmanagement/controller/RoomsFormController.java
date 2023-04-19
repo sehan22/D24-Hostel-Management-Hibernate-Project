@@ -7,6 +7,7 @@ package lk.ijse.hostelmanagement.controller;
  */
 
 
+import animatefx.animation.BounceIn;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
@@ -15,6 +16,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import lk.ijse.hostelmanagement.bo.BOType;
 import lk.ijse.hostelmanagement.bo.BoFactory;
@@ -23,6 +26,8 @@ import lk.ijse.hostelmanagement.dto.RoomDTO;
 import lk.ijse.hostelmanagement.view.tm.RoomTM;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class RoomsFormController {
@@ -57,10 +62,11 @@ public class RoomsFormController {
         }catch (Exception e) {
             System.out.println(e);
         }
+
+        generateNewId();
     }
 
     private void clearTextFields() {
-        txtRoomNumber.setDisable(false);
 
         btnDelete.setVisible(false);
         btnUpdate.setVisible(false);
@@ -68,12 +74,13 @@ public class RoomsFormController {
         btnSave.setVisible(true);
         btnCancel.setVisible(true);
 
-        txtRoomNumber.clear();
         txtRoomType.clear();
         txtKeyMoney.clear();
         txtQty.clear();
 
         txtSearchRoomNumber.clear();
+
+        generateNewId();
     }
 
     public void addNewRoomOnAction(ActionEvent actionEvent) {
@@ -87,6 +94,94 @@ public class RoomsFormController {
         clearTextFields();
     }
 
+    private void animationToTextFields(JFXTextField jfxTextField) {
+        new BounceIn(jfxTextField).play();
+    }
+
+    private void generateNewId() {
+        try {
+            String genarateNewId = roomBo.genarateRoomId();
+            txtRoomNumber.setText(genarateNewId);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    private boolean validRoomType() {
+        Pattern pattern = Pattern.compile("^([a-zA-Z\\s]+)");
+        Matcher matcher = pattern.matcher(txtRoomType.getText());
+
+        boolean isMatches = matcher.matches();
+
+        if (isMatches) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean validKeyMoney() {
+        Pattern pattern = Pattern.compile("^[0-9]{4,6}+$");
+        Matcher matcher = pattern.matcher(txtKeyMoney.getText());
+
+        boolean isMatches = matcher.matches();
+
+        if (isMatches) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean validRoomTypeQTY() {
+        Pattern pattern = Pattern.compile("^^[0-9]{1,2}+$");
+        Matcher matcher = pattern.matcher(txtQty.getText());
+
+        boolean isMatches = matcher.matches();
+
+        if (isMatches) {
+            return true;
+        }
+        return false;
+    }
+
+    public void validRoomTypeOnAction(KeyEvent keyEvent) {
+        Pattern pattern = Pattern.compile("^([a-zA-Z\\s]+)");
+        Matcher matcher = pattern.matcher(txtRoomType.getText());
+
+        boolean isMatches = matcher.matches();
+
+        if (isMatches) {
+            txtRoomType.setFocusColor(Paint.valueOf("white"));
+        } else {
+            txtRoomType.setFocusColor(Paint.valueOf("red"));
+        }
+    }
+
+    public void validKeyMoneyOnAction(KeyEvent keyEvent) {
+        Pattern pattern = Pattern.compile("^[0-9]{4,6}+$");
+        Matcher matcher = pattern.matcher(txtKeyMoney.getText());
+
+        boolean isMatches = matcher.matches();
+
+        if (isMatches) {
+            txtKeyMoney.setFocusColor(Paint.valueOf("white"));
+        } else {
+            txtKeyMoney.setFocusColor(Paint.valueOf("red"));
+        }
+    }
+
+    public void validRoomTypeQTYOnAction(KeyEvent keyEvent) {
+        Pattern pattern = Pattern.compile("^^[0-9]{1,2}+$");
+        Matcher matcher = pattern.matcher(txtQty.getText());
+
+        boolean isMatches = matcher.matches();
+
+        if (isMatches) {
+            txtQty.setFocusColor(Paint.valueOf("white"));
+        } else {
+            txtQty.setFocusColor(Paint.valueOf("red"));
+        }
+    }
+
     public void SaveOnAction(ActionEvent actionEvent) {
         String id = txtRoomNumber.getText();
         String roomType = txtRoomType.getText();
@@ -94,20 +189,32 @@ public class RoomsFormController {
         int qty = Integer.parseInt(txtQty.getText());
 
         try {
-            boolean isAdded = roomBo.addRoom(new RoomDTO(
-                    id,
-                    roomType,
-                    keyMoney,
-                    qty
-            ));
+            if (validRoomType()) {
+                if (validKeyMoney()) {
+                    if (validRoomTypeQTY()) {
+                        boolean isAdded = roomBo.addRoom(new RoomDTO(
+                                id,
+                                roomType,
+                                keyMoney,
+                                qty
+                        ));
 
-            if (isAdded) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Room Added Successfully!").show();
-                clearTextFields();
-                loadRoom(roomBo.getAllRoom());
+                        if (isAdded) {
+                            new Alert(Alert.AlertType.CONFIRMATION, "Room Added Successfully!").show();
+                            clearTextFields();
+                            loadRoom(roomBo.getAllRoom());
+                        }
+                    } else {
+                        animationToTextFields(txtQty);
+                    }
+                } else {
+                    animationToTextFields(txtKeyMoney);
+                }
+            } else {
+                animationToTextFields(txtRoomType);
             }
         }catch (Exception e) {
-            new Alert(Alert.AlertType.ERROR, "Input User Id Is Ivalid!\nPlease Try Again..").show();
+            new Alert(Alert.AlertType.ERROR, "Input Room Id Is Ivalid!\nPlease Try Again..").show();
 
             System.out.println(e);
             e.printStackTrace();
@@ -118,7 +225,6 @@ public class RoomsFormController {
         String id = txtSearchRoomNumber.getText();
 
         try {
-            txtRoomNumber.setDisable(true);
 
             btnDelete.setVisible(true);
             btnUpdate.setVisible(true);
@@ -153,20 +259,35 @@ public class RoomsFormController {
         int qty = Integer.parseInt(txtQty.getText());
 
         try {
-            boolean isUpdated = roomBo.updateRoom(new RoomDTO(
-                    id,
-                    roomType,
-                    keyMoney,
-                    qty
-            ));
+            if (validRoomType()) {
+                if (validKeyMoney()) {
+                    if (validRoomTypeQTY()) {
+                        boolean isUpdated = roomBo.updateRoom(new RoomDTO(
+                                id,
+                                roomType,
+                                keyMoney,
+                                qty
+                        ));
 
-            if (isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Room Added Successfully!").show();
-                clearTextFields();
-                loadRoom(roomBo.getAllRoom());
+                        if (isUpdated) {
+                            new Alert(Alert.AlertType.CONFIRMATION, "Room Updated Successfully!").show();
+                            clearTextFields();
+                            loadRoom(roomBo.getAllRoom());
+                        }
+                    } else {
+                        animationToTextFields(txtQty);
+                        System.out.println("error in qty");
+                    }
+                } else {
+                    animationToTextFields(txtKeyMoney);
+                    System.out.println("error in keymoney");
+                }
+            } else {
+                animationToTextFields(txtRoomType);
+                System.out.println("error in room type");
             }
         } catch (Exception e) {
-            new Alert(Alert.AlertType.ERROR, "Input User Id Is Ivalid!\nPlease Try Again..").show();
+            new Alert(Alert.AlertType.ERROR, "Input Room Id Is Ivalid!\nPlease Try Again..").show();
 
             System.out.println(e);
         }

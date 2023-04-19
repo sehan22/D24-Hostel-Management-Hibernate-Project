@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
@@ -66,9 +67,8 @@
                   <Font name="Calibri Light" size="35.0" />
                </font>
             </Text>
-            <TextField fx:id="userNametxt" focusTraversable="false" layoutX="581.0" layoutY="262.0" prefHeight="32.0" prefWidth="298.0" promptText="UserName" style="-fx-border-color: #880505; -fx-border-radius: 8; -fx-background-radius: 8;" />
-            <Hyperlink focusTraversable="false" layoutX="739.0" layoutY="378.0" text="Forgot Your Password?" />
-            <JFXButton focusTraversable="false" layoutX="688.0" layoutY="419.0" onAction="#loginOnAction" prefHeight="36.0" prefWidth="76.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="LOGIN" textFill="WHITE">
+            <TextField fx:id="userNametxt" focusTraversable="false" layoutX="581.0" layoutY="262.0" onAction="#enterUserNameOnAction" prefHeight="32.0" prefWidth="298.0" promptText="UserName" style="-fx-border-color: #880505; -fx-border-radius: 8; -fx-background-radius: 8;" />
+            <JFXButton focusTraversable="false" layoutX="688.0" layoutY="413.0" onAction="#loginOnAction" prefHeight="36.0" prefWidth="76.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="LOGIN" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="15.0" />
                </font>
@@ -109,12 +109,12 @@
                   </JFXButton>
                </children>
             </Group>
-            <Text layoutX="624.0" layoutY="581.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not a Member?">
+            <Text layoutX="644.0" layoutY="561.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reset Your Password ">
                <font>
                   <Font name="Calibri Light" size="20.0" />
                </font>
             </Text>
-            <Hyperlink focusTraversable="false" layoutX="751.0" layoutY="562.0" onAction="#lnkRegisterNowOnAction" text="Register Now">
+            <Hyperlink focusTraversable="false" layoutX="653.0" layoutY="566.0" onAction="#lnkResetPasswordOnAction" text="Forgot Your Password?">
                <font>
                   <Font size="14.0" />
                </font>
@@ -192,12 +192,12 @@
             <AnchorPane fx:id="paneSignInHide" layoutX="566.0" layoutY="178.0" prefHeight="303.0" prefWidth="327.0" style="-fx-background-color: white;" visible="false" />
             <AnchorPane fx:id="paneResgister" layoutX="566.0" layoutY="178.0" prefHeight="303.0" prefWidth="327.0" style="-fx-background-color: white;" visible="false">
                <children>
-                  <JFXButton focusTraversable="false" layoutX="84.0" layoutY="253.0" prefHeight="36.0" prefWidth="83.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="Reset" textFill="WHITE">
+                  <JFXButton focusTraversable="false" layoutX="84.0" layoutY="253.0" onAction="#resetPasswordOnAction" prefHeight="36.0" prefWidth="83.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="Reset" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </JFXButton>
-                  <Text layoutX="54.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reset Password">
+                  <Text layoutX="53.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reset Password">
                      <font>
                         <Font name="Calibri Light" size="35.0" />
                      </font>
@@ -207,23 +207,32 @@
                         <Font size="14.0" />
                      </font>
                   </Hyperlink>
-                  <TextField focusTraversable="false" layoutX="15.0" layoutY="67.0" prefHeight="32.0" prefWidth="298.0" promptText="UserName" style="-fx-border-color: #880505; -fx-border-radius: 8; -fx-background-radius: 8;" />
-                  <Group layoutX="15.0" layoutY="199.0" />
-                  <TextField focusTraversable="false" layoutX="15.0" layoutY="136.0" prefHeight="32.0" prefWidth="298.0" promptText="Password" style="-fx-border-color: #880505; -fx-border-radius: 8; -fx-background-radius: 8;" />
-                  <ImageView fitHeight="17.0" fitWidth="26.0" layoutX="282.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
+                  <TextField fx:id="txtResetUserName" focusTraversable="false" layoutX="15.0" layoutY="67.0" prefHeight="32.0" prefWidth="298.0" promptText="UserName" style="-fx-border-color: #880505; -fx-border-radius: 8; -fx-background-radius: 8;" />
+                  <TextField fx:id="txtResetShowPassword" focusTraversable="false" layoutX="15.0" layoutY="136.0" prefHeight="32.0" prefWidth="298.0" promptText="Password" style="-fx-border-color: #880505; -fx-border-radius: 8; -fx-background-radius: 8;" />
+                  <ImageView fx:id="imgResetPasswordShow" fitHeight="17.0" fitWidth="26.0" layoutX="282.0" layoutY="144.0" onMouseClicked="#hideCurrentPassword" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
                         <Image url="@../assests/images/icons8-eye-48.png" />
                      </image>
                   </ImageView>
-                  <PasswordField focusTraversable="false" layoutX="15.0" layoutY="136.0" prefHeight="32.0" prefWidth="298.0" promptText="Password" style="-fx-border-color: #880505; -fx-background-radius: 8; -fx-border-radius: 8;" />
-                  <ImageView fx:id="imgRegisterPasswordHide" fitHeight="17.0" fitWidth="26.0" layoutX="282.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
+                  <PasswordField fx:id="txtResetHidePassword" focusTraversable="false" layoutX="15.0" layoutY="136.0" prefHeight="32.0" prefWidth="298.0" promptText="Current Password" style="-fx-border-color: #880505; -fx-background-radius: 8; -fx-border-radius: 8;" />
+                  <ImageView fx:id="imgResetPasswordHide" fitHeight="17.0" fitWidth="26.0" layoutX="282.0" layoutY="144.0" onMouseClicked="#showCurrentPassword" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assests/images/icons8-hide-48%201.png" />
                      </image>
                   </ImageView>
-                  <PasswordField focusTraversable="false" layoutX="15.0" layoutY="199.0" prefHeight="32.0" prefWidth="298.0" promptText="Confirm Password" style="-fx-border-color: #880505; -fx-background-radius: 8; -fx-border-radius: 8;" />
+                  <PasswordField fx:id="txtNewPassword" focusTraversable="false" layoutX="15.0" layoutY="199.0" prefHeight="32.0" prefWidth="298.0" promptText="New Password" style="-fx-border-color: #880505; -fx-background-radius: 8; -fx-border-radius: 8;" />
                </children>
             </AnchorPane>
+            <Label fx:id="lblUserNameDoesNotMatch" focusTraversable="false" layoutX="600.0" layoutY="295.0" text="UserName Incorrect..." textFill="#c1455a" visible="false">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblUserNameorPasswordIncorrect" focusTraversable="false" layoutX="600.0" layoutY="371.0" text="UserName or Password Incorrect..." textFill="#c1455a" visible="false">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
          </children>
          <effect>
             <DropShadow blurType="GAUSSIAN" color="#000000ba" height="150.0" radius="74.5" width="150.0" />

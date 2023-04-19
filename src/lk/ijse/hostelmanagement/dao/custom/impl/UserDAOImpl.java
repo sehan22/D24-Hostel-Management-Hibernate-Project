@@ -115,20 +115,42 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public List<User> getUserNamePassword(String userName) {
+    public String getUserNamePassword(String userName) {
         Session session = SessionFactoryConfiguration.getInstance().getSessionFactory();
         Transaction transaction = session.beginTransaction();
 
         Query query = session.createQuery("SELECT password FROM User WHERE userName LIKE : ID").setParameter("ID", userName);
 
-        List list = query.list();
-        if (list.size()<null) {
+        String password;
 
+        if (query.list().size() == 0) {
+            return null;
+        } else {
+            password = (String) query.list().get(0);
         }
 
         transaction.commit();
         session.close();
 
-        return list;
+        return password;
+    }
+
+    @Override
+    public boolean updatePassword(User entity, String userName) {
+        Session session = SessionFactoryConfiguration.getInstance().getSessionFactory();
+        Transaction transaction = session.beginTransaction();
+
+        Query query = session.createQuery("UPDATE User set password =:PW WHERE userName LIKE : UN");
+        query.setParameter("PW" , entity);
+        query.setParameter("UN" , userName);
+
+        if (query.list().size() == 0) {
+            return false;
+        }
+
+        transaction.commit();
+        session.close();
+
+        return true;
     }
 }

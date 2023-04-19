@@ -6,6 +6,7 @@ package lk.ijse.hostelmanagement.controller;
  * Project Name - D24 Hostel Management System
  */
 
+import animatefx.animation.BounceIn;
 import animatefx.animation.FadeIn;
 import animatefx.animation.FadeOut;
 import javafx.event.ActionEvent;
@@ -13,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -40,8 +42,17 @@ public class LoginFormController {
     public TextField txtShowPassword;
     public AnchorPane mainloginformpane;
     public AnchorPane paneResgister;
-    public ImageView imgRegisterPasswordHide;
     public AnchorPane paneSignInHide;
+    public Label lblUserNameDoesNotMatch;
+    public Label lblUserNameorPasswordIncorrect;
+    
+    
+    public TextField txtResetShowPassword;
+    public ImageView imgResetPasswordShow;
+    public PasswordField txtResetHidePassword;
+    public ImageView imgResetPasswordHide;
+    public TextField txtResetUserName;
+    public PasswordField txtNewPassword;
 
     LoginBo loginBo = (LoginBo) BoFactory.getInstance().getBo(BOType.USER);
 
@@ -65,18 +76,24 @@ public class LoginFormController {
     }
 
     public void loginOnAction(ActionEvent actionEvent) throws IOException {
-       /* loginBo.getUser()*/
+        if (txtHidePassword.getText().equals(loginBo.getUserPassword(userNametxt.getText()))) {
+            lblUserNameDoesNotMatch.setVisible(false);
+            lblUserNameorPasswordIncorrect.setVisible(false);
 
-        if(userNametxt.getText().equals("user")) {
-            if (txtHidePassword.getText().equals("1234") && txtShowPassword.getText().equals("1234"));
-                Navigation.navigate(Routes.MANAGEMENT, mainloginformpane);
+            Navigation.navigate(Routes.MANAGEMENT, mainloginformpane);
+        } else if (null == loginBo.getUserPassword(userNametxt.getText())) {
+            new BounceIn(userNametxt).play();
+            lblUserNameDoesNotMatch.setVisible(true);
+            lblUserNameorPasswordIncorrect.setVisible(false);
+        } else {
+            new BounceIn(txtHidePassword).play();
+            new BounceIn(txtShowPassword).play();
+
+            txtHidePassword.requestFocus();
+
+            lblUserNameorPasswordIncorrect.setVisible(true);
+            lblUserNameDoesNotMatch.setVisible(false);
         }
-    }
-
-    public void lnkRegisterNowOnAction(ActionEvent actionEvent) {
-        paneSignInHide.setVisible(true);
-        paneResgister.setVisible(true);
-        new FadeIn(paneResgister).play();
     }
 
     public void backToSignInOnAction(ActionEvent actionEvent) {
@@ -88,6 +105,52 @@ public class LoginFormController {
             paneSignInHide.setVisible(false);
         });
     }                                                                                                              //load fxml
+
+    public void enterUserNameOnAction(ActionEvent actionEvent) {
+
+    }
+
+    public void lnkResetPasswordOnAction(ActionEvent actionEvent) {
+        paneSignInHide.setVisible(true);
+        paneResgister.setVisible(true);
+        new FadeIn(paneResgister).play();
+    }
+
+    public void hideCurrentPassword(MouseEvent mouseEvent) {
+        txtResetHidePassword.setText(txtResetShowPassword.getText());
+
+        txtResetShowPassword.setVisible(false);
+        imgResetPasswordShow.setVisible(false);
+
+        txtResetHidePassword.setVisible(true);
+        imgResetPasswordHide.setVisible(true);
+    }
+
+    public void showCurrentPassword(MouseEvent mouseEvent) {
+        txtResetShowPassword.setText(txtResetHidePassword.getText());
+
+        txtResetHidePassword.setVisible(false);
+        imgResetPasswordHide.setVisible(false);
+
+        txtResetShowPassword.setVisible(true);
+        imgResetPasswordShow.setVisible(true);
+    }
+
+    public void resetPasswordOnAction(ActionEvent actionEvent) {
+    }
+
+    private boolean checkValidityUserNamePasswordOnUpdate() {
+        if (txtResetHidePassword.getText().equals(loginBo.getUserPassword(txtResetUserName.getText()))) {
+            return true;
+        } else if (null == loginBo.getUserPassword(txtResetUserName.getText())) {
+            new BounceIn(txtResetUserName).play();
+            return false;
+        } else {
+            new BounceIn(txtResetHidePassword).play();
+            new BounceIn(txtResetShowPassword).play();
+            return false;
+        }
+    }
 
 /*
         public void googleOnAction(ActionEvent actionEvent) throws URISyntaxException, IOException {

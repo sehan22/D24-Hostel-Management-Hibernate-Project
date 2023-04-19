@@ -168,32 +168,6 @@
             </JFXPasswordField>
          </children>
       </AnchorPane>
-      <JFXButton fx:id="btnSave" focusTraversable="false" layoutX="662.0" layoutY="545.0" onAction="#SaveOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="Save" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </JFXButton>
-      <JFXButton fx:id="btnCancel" focusTraversable="false" layoutX="789.0" layoutY="544.0" onAction="#CancelOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="whiteButton" stylesheets="@css/FormButtonStyle.css" text="Cancel" textFill="#c1455a">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </JFXButton>
-      <JFXButton fx:id="btnClear" focusTraversable="false" layoutX="538.0" layoutY="545.0" onAction="#ClearOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="blackButton" stylesheets="@css/FormButtonStyle.css" text="Clear" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </JFXButton>
-      <JFXButton fx:id="btnUpdate" focusTraversable="false" layoutX="663.0" layoutY="545.0" onAction="#UpdateOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="Update" textFill="WHITE" visible="false">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </JFXButton>
-      <JFXButton fx:id="btnDelete" focusTraversable="false" layoutX="789.0" layoutY="544.0" onAction="#DeleteOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="whiteButton" stylesheets="@css/FormButtonStyle.css" text="Delete" textFill="#c1455a" visible="false">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </JFXButton>
-      <Text fill="#545454" layoutX="553.0" layoutY="517.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recheck the validity of the data you have entered in the form." />
       <AnchorPane layoutX="486.0" layoutY="124.0" prefHeight="39.0" prefWidth="448.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
          <children>
             <JFXTextField fx:id="txtSearchId" focusColor="WHITE" focusTraversable="false" layoutX="10.0" layoutY="6.0" prefHeight="29.0" prefWidth="396.0" promptText="Search User Id Here..." unFocusColor="WHITE">
@@ -249,11 +223,60 @@
                   <Font size="13.0" />
                </font>
             </Text>
-            <JFXPasswordField fx:id="txtConfDeleteAccPassword" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" onAction="#confirmPasswordOnAction" onKeyReleased="#ConfirmAccDeletePasswordOnAction" prefHeight="30.0" prefWidth="518.0" promptText="Type Account Password For Delete This Account" unFocusColor="WHITE">
+            <JFXPasswordField fx:id="txtConfDeleteAccPassword" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" onAction="#confirmPasswordOnAction" onKeyReleased="#ConfirmAccDeletePasswordOnAction" prefHeight="30.0" prefWidth="518.0" promptText="Type Account Password For Delete or Update This Account" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </JFXPasswordField>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneNewPassword" layoutX="98.0" layoutY="511.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;" visible="false">
+         <children>
+            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Password">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="21.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Male" visible="false">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <JFXPasswordField fx:id="txtNewPassword" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" onKeyReleased="#ConfirmPasswordOnAction" prefHeight="30.0" prefWidth="518.0" promptText="Type Here New Password" unFocusColor="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXPasswordField>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneButtonSet" layoutX="532.0" layoutY="501.0" prefHeight="91.0" prefWidth="375.0">
+         <children>
+            <Text fill="#545454" layoutX="24.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recheck the validity of the data you have entered in the form." wrappingWidth="326.833984375" />
+            <JFXButton fx:id="btnSave" focusTraversable="false" layoutX="132.0" layoutY="39.0" onAction="#SaveOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="Save" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnCancel" focusTraversable="false" layoutX="264.0" layoutY="39.0" onAction="#CancelOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="whiteButton" stylesheets="@css/FormButtonStyle.css" text="Cancel" textFill="#c1455a">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnClear" focusTraversable="false" layoutY="39.0" onAction="#ClearOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="blackButton" stylesheets="@css/FormButtonStyle.css" text="Clear" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnUpdate" focusTraversable="false" layoutX="132.0" layoutY="39.0" onAction="#UpdateOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="Update" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnDelete" focusTraversable="false" layoutX="264.0" layoutY="39.0" onAction="#DeleteOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="whiteButton" stylesheets="@css/FormButtonStyle.css" text="Delete" textFill="#c1455a" visible="false">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
          </children>
       </AnchorPane>
    </children>

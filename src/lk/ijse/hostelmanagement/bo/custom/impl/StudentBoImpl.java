@@ -80,4 +80,9 @@ public class StudentBoImpl implements StudentBO {
 
     return studentList;
     }
+
+    @Override
+    public String genarateStudentId() {
+        return studentDAO.genarateNewId();
+    }
 }

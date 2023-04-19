@@ -11,4 +11,5 @@ public interface StudentBO extends SuperBo {
     public boolean updateStudent(StudentDTO studentDTO);
     public  boolean deleteStudent(String id);
     ArrayList<StudentDTO> getAllStudent();
+    public String genarateStudentId();
 }

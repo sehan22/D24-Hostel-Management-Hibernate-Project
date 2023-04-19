@@ -6,5 +6,6 @@ import lk.ijse.hostelmanagement.entity.User;
 import java.util.List;
 
 public interface UserDAO extends CrudDAO<User> {
-    public List<User> getUserNamePassword();
+    public String getUserNamePassword(String userName);
+    public boolean updatePassword(User entity, String userName);
 }

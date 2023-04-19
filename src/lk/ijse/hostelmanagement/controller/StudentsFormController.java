@@ -52,10 +52,11 @@ public class StudentsFormController {
     public Text txtAddNewStudent;
     public JFXButton btnAddNewStudent;
 
+    StudentBO studentBO = (StudentBO) BoFactory.getInstance().getBo(BOType.STUDENT);
+    //^[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}$
+
     public void initialize() {
     }
-
-    StudentBO studentBO = (StudentBO) BoFactory.getInstance().getBo(BOType.STUDENT);
 
     private void clearTextFields() {
         txtStudentId.setDisable(false);

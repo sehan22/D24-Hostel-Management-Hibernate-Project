@@ -10,6 +10,7 @@ import animatefx.animation.*;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -20,6 +21,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import lk.ijse.hostelmanagement.bo.BOType;
 import lk.ijse.hostelmanagement.bo.BoFactory;
 import lk.ijse.hostelmanagement.bo.custom.LoginBo;
@@ -53,6 +55,9 @@ public class UsersFormController {
     public JFXPasswordField txtHidePassword;
     public AnchorPane paneDeleteAccConfPassword;
     public JFXPasswordField txtConfDeleteAccPassword;
+    public AnchorPane paneNewPassword;
+    public JFXPasswordField txtNewPassword;
+    public AnchorPane paneButtonSet;
 
     LoginBo loginBo = (LoginBo) BoFactory.getInstance().getBo(BOType.USER);
 
@@ -86,6 +91,11 @@ public class UsersFormController {
         paneConfirmPassword.setVisible(true);
         paneDeleteAccConfPassword.setVisible(false);
 
+        slideLeft(paneButtonSet);
+
+        paneNewPassword.setVisible(false);
+
+        genarateUserId();
     }
 
     private void genarateUserId() {
@@ -146,6 +156,30 @@ public class UsersFormController {
             return true;
         }
         return false;
+    }
+
+    private boolean validNewPassword() {
+        if (txtNewPassword.getText().equals("")) {
+            txtNewPassword.requestFocus();
+            txtNewPassword.setFocusColor(Paint.valueOf("red"));
+            return false;
+        }
+        return true;
+    }
+    private void slideRight(AnchorPane anchorPane) {
+        TranslateTransition slider = new TranslateTransition();
+        slider.setDuration(Duration.seconds(0.2));
+        slider.setNode(anchorPane);
+        slider.setToX(335);
+        slider.play();
+    }
+
+    private void slideLeft(AnchorPane anchorPane) {
+        TranslateTransition slider = new TranslateTransition();
+        slider.setDuration(Duration.seconds(0.2));
+        slider.setNode(anchorPane);
+        slider.setToX(0);
+        slider.play();
     }
 
     public void fillNameOnAction(KeyEvent keyEvent) {
@@ -219,6 +253,27 @@ public class UsersFormController {
         } else {
             txtUserEmail.setFocusColor(Paint.valueOf("red"));
         }
+    }
+
+    public void confirmPasswordOnAction(ActionEvent actionEvent) {
+        checkAccPasswordInDelete();
+    }
+
+    public boolean checkAccPasswordInDelete() {
+        UserDTO user = loginBo.getUser(txtUserId.getText());
+        if (txtConfDeleteAccPassword.getText().equals(user.getPassword())) {
+            return true;
+        } else {
+            new BounceIn(txtConfDeleteAccPassword).play();
+
+            txtConfDeleteAccPassword.requestFocus();
+            txtConfDeleteAccPassword.setFocusColor(Paint.valueOf("red"));
+        }
+        return false;
+    }
+
+    public void ConfirmAccDeletePasswordOnAction(KeyEvent keyEvent) {
+        txtConfDeleteAccPassword.setFocusColor(Paint.valueOf("white"));
     }
 
     public void SaveOnAction(ActionEvent actionEvent) {
@@ -302,6 +357,10 @@ public class UsersFormController {
             paneConfirmPassword.setVisible(false);
             paneDeleteAccConfPassword.setVisible(true);
 
+            slideRight(paneButtonSet);
+
+            paneNewPassword.setVisible(true);
+
             UserDTO user = loginBo.getUser(id);
 
             txtUserId.setText(user.getId());
@@ -323,6 +382,10 @@ public class UsersFormController {
 
             paneConfirmPassword.setVisible(true);
             paneDeleteAccConfPassword.setVisible(false);
+
+            slideLeft(paneButtonSet);
+
+            paneNewPassword.setVisible(false);
         }
     }
 
@@ -331,26 +394,49 @@ public class UsersFormController {
         String fullName = txtFullName.getText();
         String userEmail = txtUserEmail.getText();
         String userName = txtUserName.getText();
-        String password = txtHidePassword.getText();
+        String password = txtNewPassword.getText();
 
         try {
-            if (validEmail()) {
-                boolean isUpdated = loginBo.updateUser(new UserDTO(
-                        id,
-                        fullName,
-                        userEmail,
-                        userName,
-                        password));
+            if (validFullName()) {
+                if (validEmail()) {
+                    if (validNewPassword()) {
+                        if (checkAccPasswordInDelete()) {
+                            boolean isUpdated = loginBo.updateUser(new UserDTO(
+                                    id,
+                                    fullName,
+                                    userEmail,
+                                    userName,
+                                    password));
 
-                if (isUpdated) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "User Updated Successfuly!").show();
-                    clearTextFields();
-                    genarateUserId();
+                            if (isUpdated) {
+                                new Alert(Alert.AlertType.CONFIRMATION, "User Updated Successfuly!").show();
+                                clearTextFields();
+                                genarateUserId();
+                            }
+                        }
+                    } else if (checkAccPasswordInDelete()) {
+                        boolean isUpdated = loginBo.updateUser(new UserDTO(
+                                id,
+                                fullName,
+                                userEmail,
+                                userName,
+                                txtHidePassword.getText()));
+
+                        if (isUpdated) {
+                            new Alert(Alert.AlertType.CONFIRMATION, "User Updated Successfuly!").show();
+                            clearTextFields();
+                            genarateUserId();
+                        }
+                    }
+                } else {
+                    new BounceIn(txtUserEmail).play();
+                    txtUserEmail.requestFocus();
+                    txtUserEmail.setFocusColor(Paint.valueOf("red"));
                 }
             } else {
-                new BounceIn(txtUserEmail).play();
-                txtUserEmail.requestFocus();
-                txtUserEmail.setFocusColor(Paint.valueOf("red"));
+                new BounceIn(txtFullName).play();
+                txtFullName.requestFocus();
+                txtFullName.setFocusColor(Paint.valueOf("red"));
             }
         }catch (Exception e) {
             System.out.println(e);
@@ -361,55 +447,24 @@ public class UsersFormController {
         String id = txtUserId.getText();
 
         try {
-        if (checkAccPasswordInDelete()) {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are sure do you want to delete this user?", ButtonType.OK, ButtonType.CANCEL);
-            Optional<ButtonType> buttonType = alert.showAndWait();
+            if (checkAccPasswordInDelete()) {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are sure do you want to delete this user?", ButtonType.OK, ButtonType.CANCEL);
+                Optional<ButtonType> buttonType = alert.showAndWait();
 
-            if (buttonType.get() == ButtonType.OK) {
-                boolean isDeleted = loginBo.deleteUser(id);
+                if (buttonType.get() == ButtonType.OK) {
+                    boolean isDeleted = loginBo.deleteUser(id);
 
-                if (isDeleted) {
-                    new Alert(Alert.AlertType.INFORMATION, "User Deleted Successfuly!").show();
-                    clearTextFields();
-                    genarateUserId();
+                    if (isDeleted) {
+                        new Alert(Alert.AlertType.INFORMATION, "User Deleted Successfuly!").show();
+                        clearTextFields();
+                        genarateUserId();
+                    }
+                } else {
+                    System.out.println("error");
                 }
-            } else {
-                System.out.println("error");
             }
-        }
         }catch (Exception e) {
             System.out.println(e);
         }
     }
-
-    public void confirmPasswordOnAction(ActionEvent actionEvent) {
-        checkAccPasswordInDelete();
-    }
-
-    public boolean checkAccPasswordInDelete() {
-        UserDTO user = loginBo.getUser(txtUserId.getText());
-        if (txtConfDeleteAccPassword.getText().equals(user.getPassword())) {
-            return true;
-        } else {
-            new BounceIn(txtConfDeleteAccPassword).play();
-
-            txtConfDeleteAccPassword.requestFocus();
-            txtConfDeleteAccPassword.setFocusColor(Paint.valueOf("red"));
-        }
-        return false;
-    }
-
-    public void ConfirmAccDeletePasswordOnAction(KeyEvent keyEvent) {
-        txtConfDeleteAccPassword.setFocusColor(Paint.valueOf("white"));
-    }
 }
-
-/*        TextInputDialog textInputDialog = new TextInputDialog();
-        textInputDialog.setTitle("Confirm Delete");
-        textInputDialog.setHeaderText("Enter your Password");
-
-        Optional<String> s = textInputDialog.showAndWait();
-        s.ifPresent(s1 -> {
-            this.txtUserName.setText(s1);
-        });
-        textInputDialog.show();*/

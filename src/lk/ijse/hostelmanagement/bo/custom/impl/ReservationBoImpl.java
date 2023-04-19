@@ -109,4 +109,9 @@ public class ReservationBoImpl implements ReservationBo {
 
         return resList;
     }
+
+    @Override
+    public String genarateReservationId() {
+        return reservationDAO.genarateNewId();
+    }
 }

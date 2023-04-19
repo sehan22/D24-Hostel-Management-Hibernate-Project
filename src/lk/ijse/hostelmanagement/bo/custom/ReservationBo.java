@@ -12,4 +12,5 @@ public interface ReservationBo extends SuperBo {
     public boolean updateReservation(ReservationDTO reservationDTO);
     public boolean deleteReservation(String id);
     ArrayList<ReservationDTO> getAllReservation();
+    public String genarateReservationId();
 }

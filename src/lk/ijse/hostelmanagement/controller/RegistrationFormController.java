@@ -41,6 +41,7 @@ public class RegistrationFormController {
     public JFXButton btnSearch;
     public Text txtAddNewReservation;
     public JFXButton btnAddNewReservation;
+    public JFXTextField txtRoomTypeQTY;
 
     ReservationBo reservationBo = (ReservationBo) BoFactory.getInstance().getBo(BOType.RESERVATION);
 
@@ -101,6 +102,11 @@ public class RegistrationFormController {
         try {
             RoomDTO room = roomBo.getRoom(roomId);
             txtRoomType.setText(room.getType());
+            txtRoomTypeQTY.setText(String.valueOf(room.getQty()));
+
+            if (txtRoomTypeQTY.getText().equals(0)) {
+                btnSave.setDisable(true);
+            }
         }catch (Exception e) {
             System.out.println(e);
         }
