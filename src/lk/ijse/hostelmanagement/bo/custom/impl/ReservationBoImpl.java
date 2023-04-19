@@ -114,4 +114,23 @@ public class ReservationBoImpl implements ReservationBo {
     public String genarateReservationId() {
         return reservationDAO.genarateNewId();
     }
+
+    @Override
+    public ArrayList<StudentDTO> getNotPayStudent() {
+        ArrayList<StudentDTO> notPayStudentList = new ArrayList<>();
+
+        notPayStudentList.addAll(reservationDAO.getKeyMoneyNotPaid().stream().map(student -> {
+            return new StudentDTO(
+                    student.getId(),
+                    student.getName(),
+                    student.getAddress(),
+                    student.getDob(),
+                    student.getGender(),
+                    student.getCampus(),
+                    student.getNumber()
+            );
+        }).collect(Collectors.toList()));
+
+        return notPayStudentList;
+    }
 }

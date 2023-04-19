@@ -132,27 +132,27 @@
                   <Rectangle2D />
                </viewport>
             </ImageView>
-            <JFXButton focusTraversable="false" layoutX="1377.0" layoutY="122.0" prefHeight="39.0" prefWidth="111.0" styleClass="blackButton" stylesheets="@css/FormButtonStyle.css" text="Settings" textFill="#c1455a">
+            <JFXButton focusTraversable="false" layoutX="1298.0" layoutY="122.0" onAction="#keyMoneyNotPayStudentsOnAction" prefHeight="53.0" prefWidth="190.0" styleClass="blackButton" stylesheets="@css/FormButtonStyle.css" text="Key Money Not Pay Students" textFill="#c1455a">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnViewRegistration" focusTraversable="false" layoutX="1338.0" layoutY="61.0" onAction="#ViewRegistrationOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="View" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btnViewRegistration" focusTraversable="false" layoutX="1377.0" layoutY="61.0" onAction="#ViewRegistrationOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="View" textFill="WHITE">
+            <JFXButton fx:id="btnViewStudents" focusTraversable="false" layoutX="1338.0" layoutY="61.0" onAction="#viewStudentsOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="View" textFill="WHITE" visible="false">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btnViewStudents" focusTraversable="false" layoutX="1377.0" layoutY="61.0" onAction="#viewStudentsOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="View" textFill="WHITE" visible="false">
+            <JFXButton fx:id="btnViewRooms" focusTraversable="false" layoutX="1338.0" layoutY="61.0" onAction="#btnRoomsOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="View" textFill="WHITE" visible="false">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btnViewRooms" focusTraversable="false" layoutX="1377.0" layoutY="61.0" onAction="#btnRoomsOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="View" textFill="WHITE" visible="false">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="btnViewUsers" focusTraversable="false" layoutX="1377.0" layoutY="61.0" onAction="#btnViewUsersOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="View" textFill="WHITE" visible="false">
+            <JFXButton fx:id="btnViewUsers" focusTraversable="false" layoutX="1338.0" layoutY="61.0" onAction="#btnViewUsersOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="View" textFill="WHITE" visible="false">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

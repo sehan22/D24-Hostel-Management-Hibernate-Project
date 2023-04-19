@@ -1,8 +1,8 @@
 package lk.ijse.hostelmanagement.controller;
 /*
  * Created by Sehan Ranaweera
- * Date - 4/4/2023
- * Time - 11:55 AM
+ * Date - 4/19/2023
+ * Time - 10:00 PM
  * Project Name - D24 Hostel Management System
  */
 
@@ -12,14 +12,16 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.hostelmanagement.bo.BOType;
 import lk.ijse.hostelmanagement.bo.BoFactory;
-import lk.ijse.hostelmanagement.bo.custom.StudentBO;
+import lk.ijse.hostelmanagement.bo.custom.ReservationBo;
+import lk.ijse.hostelmanagement.dto.ReservationDTO;
 import lk.ijse.hostelmanagement.dto.StudentDTO;
+import lk.ijse.hostelmanagement.view.tm.ReservationTM;
 import lk.ijse.hostelmanagement.view.tm.StudentTM;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-public class ViewStudentsFormController {
+public class ViewNotPayKeyMoneyStudentFormController {
     public TableView tblStudent;
     public TableColumn colStudentId;
     public TableColumn colStudentName;
@@ -29,7 +31,7 @@ public class ViewStudentsFormController {
     public TableColumn colStudentCampus;
     public TableColumn colStudentPhoneNumber;
 
-    StudentBO studentBO = (StudentBO) BoFactory.getInstance().getBo(BOType.STUDENT);
+    ReservationBo reservationBo = (ReservationBo) BoFactory.getInstance().getBo(BOType.RESERVATION);
 
     public void initialize() {
         colStudentId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -39,24 +41,25 @@ public class ViewStudentsFormController {
         colStudentGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
         colStudentCampus.setCellValueFactory(new PropertyValueFactory<>("campus"));
         colStudentPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("contact"));
+
         try {
-            loadStudents(studentBO.getAllStudent());
+            loadKeyMoneyNotPayStudent(reservationBo.getNotPayStudent());
         }catch (Exception e) {
             System.out.println(e);
         }
     }
 
-    private void loadStudents(ArrayList<StudentDTO> students) {
+    private void loadKeyMoneyNotPayStudent(ArrayList<StudentDTO> notPayStudents) {
         tblStudent.setItems(FXCollections.observableArrayList(
-                students.stream().map(studentDTO -> {
-                    return new StudentDTO(
-                        studentDTO.getId(),
-                        studentDTO.getName(),
-                        studentDTO.getAddress(),
-                        studentDTO.getDob(),
-                        studentDTO.getGender(),
-                        studentDTO.getCampus(),
-                        studentDTO.getContact()
+                notPayStudents.stream().map(studentDTO -> {
+                    return new StudentTM(
+                            studentDTO.getId(),
+                            studentDTO.getName(),
+                            studentDTO.getAddress(),
+                            studentDTO.getDob(),
+                            studentDTO.getGender(),
+                            studentDTO.getCampus(),
+                            studentDTO.getContact()
                     );
                 }).collect(Collectors.toList())));
     }

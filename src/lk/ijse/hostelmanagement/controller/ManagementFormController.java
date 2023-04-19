@@ -166,4 +166,8 @@ public class ManagementFormController {
     public void GetStartedOnAction(ActionEvent actionEvent) throws IOException {
         Navigation.navigate(Routes.DASHBOARD, mainFormPane);
     }
+
+    public void keyMoneyNotPayStudentsOnAction(ActionEvent actionEvent) throws IOException {
+        Navigation.navigate(Routes.VIEWNOTPAYKEYMONEYSTUDENTS, mainFormPane);
+    }
 }
