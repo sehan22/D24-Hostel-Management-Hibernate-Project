@@ -168,5 +168,6 @@ public class ManagementFormController {
     }
 
     public void keyMoneyNotPayStudentsOnAction(ActionEvent actionEvent) throws IOException {
+        Navigation.navigate(Routes.VIEWNOTPAYKEYMONEYSTUDENTS, mainFormPane);
     }
 }
