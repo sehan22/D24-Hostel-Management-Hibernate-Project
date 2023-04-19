@@ -6,11 +6,13 @@ package lk.ijse.hostelmanagement.controller;
  * Project Name - D24 Hostel Management System
  */
 
+import animatefx.animation.BounceIn;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import lk.ijse.hostelmanagement.bo.BOType;
 import lk.ijse.hostelmanagement.bo.BoFactory;
@@ -23,6 +25,8 @@ import lk.ijse.hostelmanagement.dto.StudentDTO;
 import lk.ijse.hostelmanagement.entity.Student;
 
 import java.sql.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegistrationFormController {
     public JFXTextField txtResId;
@@ -42,6 +46,7 @@ public class RegistrationFormController {
     public Text txtAddNewReservation;
     public JFXButton btnAddNewReservation;
     public JFXTextField txtRoomTypeQTY;
+    public JFXTextField txtRoomTypeValue;
 
     ReservationBo reservationBo = (ReservationBo) BoFactory.getInstance().getBo(BOType.RESERVATION);
 
@@ -54,10 +59,9 @@ public class RegistrationFormController {
     }
 
     private void clearTextFields() {
-        txtResId.setDisable(false);
-        txtResDate.setDisable(false);
-        txtStudentId.setDisable(false);
-        txtRoomTypeId.setDisable(false);
+        txtResDate.setEditable(false);
+        txtStudentId.setEditable(false);
+        txtRoomTypeId.setEditable(false);
 
         btnUpdate.setVisible(false);
         btnDelete.setVisible(false);
@@ -66,13 +70,14 @@ public class RegistrationFormController {
         btnCancel.setVisible(true);
 
         txtSearchId.clear();
-        txtResId.clear();
         txtResDate.clear();
         txtStatus.clear();
         txtStudentId.clear();
         txtRoomTypeId.clear();
         txtStudentName.clear();
         txtRoomType.clear();
+
+        generateNewId();
     }
 
     public void CancelOnAction(ActionEvent actionEvent) {
@@ -87,6 +92,12 @@ public class RegistrationFormController {
 
         txtAddNewReservation.setVisible(false);
         btnAddNewReservation.setVisible(false);
+    }
+
+    private void setFocusAndAnimationToTextFields(JFXTextField jfxTextField) {
+        jfxTextField.requestFocus();
+        new BounceIn(jfxTextField).play();
+        jfxTextField.setFocusColor(Paint.valueOf("red"));
     }
 
     public void SearchStuNameOnAction(KeyEvent keyEvent) {
@@ -107,6 +118,7 @@ public class RegistrationFormController {
             RoomDTO room = roomBo.getRoom(roomId);
             txtRoomType.setText(room.getType());
             txtRoomTypeQTY.setText(String.valueOf(room.getQty()));
+            txtRoomTypeValue.setText(room.getKeyMoney());
 
             if (txtRoomTypeQTY.getText().equals(0)) {
                 btnSave.setDisable(true);
@@ -125,25 +137,105 @@ public class RegistrationFormController {
         }
     }
 
+    public boolean validDate() {
+        Pattern pattern = Pattern.compile("^[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}$");
+        Matcher matcher = pattern.matcher(txtResDate.getText());
+
+        boolean isMatches = matcher.matches();
+
+        if (isMatches) {
+            return true;
+        }
+        return false;
+    }
+    public boolean validStatus() {
+        Pattern pattern = Pattern.compile("^([a-zA-Z\\s]+)");
+        Matcher matcher = pattern.matcher(txtStatus.getText());
+
+        boolean isMatches = matcher.matches();
+
+        if (isMatches) {
+            return true;
+        }
+        return false;
+    }
+    public boolean validStudentId() {
+        if (txtStudentId.getText().equals("")) {
+            return false;
+        }
+        return true;
+    }
+    public boolean validRoomTypeId() {
+        if (txtRoomTypeId.getText().equals("")) {
+            return false;
+        }
+        return true;
+    }
+
+
+    public void validStatusOnAction(KeyEvent keyEvent) {
+        Pattern pattern = Pattern.compile("^([a-zA-Z\\s]+)");
+        Matcher matcher = pattern.matcher(txtStatus.getText());
+
+        boolean isMatches = matcher.matches();
+
+        if (isMatches) {
+            txtStatus.setFocusColor(Paint.valueOf("white"));
+        } else {
+            txtStatus.setFocusColor(Paint.valueOf("red"));
+        }
+    }
+
+    public void validDateOnAction(KeyEvent keyEvent) {
+        Pattern pattern = Pattern.compile("^[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}$");
+        Matcher matcher = pattern.matcher(txtResDate.getText());
+
+        boolean isMatches = matcher.matches();
+
+        if (isMatches) {
+            txtResDate.setFocusColor(Paint.valueOf("white"));
+        } else {
+            txtResDate.setFocusColor(Paint.valueOf("red"));
+        }
+    }
+
+
     public void SaveReservationOnAction(ActionEvent actionEvent) {
-        String id = txtResId.getText();
-        Date date = Date.valueOf(txtResDate.getText());
-        String status = txtStatus.getText();
-        String studentId = txtStudentId.getText();
-        String roomTypeId = txtRoomTypeId.getText();
-
         try {
-            boolean isAdded = reservationBo.addReservation(new ReservationDTO(
-                    id,
-                    date,
-                    status,
-                    studentId,
-                    roomTypeId
-            ));
+            if (validStudentId()) {
+                if (validRoomTypeId()) {
+                    if (validDate()) {
+                        if (validStatus()) {
 
-            if (isAdded) {
-                new Alert(Alert.AlertType.CONFIRMATION, "User Added!").show();
-                clearTextFields();
+                            String id = txtResId.getText();
+                            Date date = Date.valueOf(txtResDate.getText());
+                            String status = txtStatus.getText();
+                            String studentId = txtStudentId.getText();
+                            String roomTypeId = txtRoomTypeId.getText();
+
+                            boolean isAdded = reservationBo.addReservation(new ReservationDTO(
+                                    id,
+                                    date,
+                                    status,
+                                    studentId,
+                                    roomTypeId
+                            ));
+
+                            if (isAdded) {
+                                new Alert(Alert.AlertType.CONFIRMATION, "User Added!").show();
+                                clearTextFields();
+                            }
+                        } else {
+                            setFocusAndAnimationToTextFields(txtStatus);
+                        }
+                    } else {
+                        setFocusAndAnimationToTextFields(txtResDate);
+                    }
+                } else {
+                    setFocusAndAnimationToTextFields(txtRoomTypeId);
+                }
+            } else {
+                setFocusAndAnimationToTextFields(txtStudentId);
             }
         }catch (Exception e) {
             System.out.println(e);
@@ -154,10 +246,9 @@ public class RegistrationFormController {
         String id = txtSearchId.getText();
 
         try {
-            txtResId.setDisable(true);
-            txtResDate.setDisable(true);
-            txtStudentId.setDisable(true);
-            txtRoomTypeId.setDisable(true);
+            txtResDate.setEditable(true);
+            txtStudentId.setEditable(true);
+            txtRoomTypeId.setEditable(true);
 
             btnSave.setVisible(false);
             btnCancel.setVisible(false);
@@ -186,28 +277,44 @@ public class RegistrationFormController {
     }
 
     public void UpdateReservationOnAction(ActionEvent actionEvent) {
-        String id = txtResId.getText();
-        Date date = Date.valueOf(txtResDate.getText());
-        String status = txtStatus.getText();
-        String sId = txtStudentId.getText();
-        String rId = txtRoomTypeId.getText();
-        String sName = txtStudentName.getText();
-        String rType = txtRoomType.getText();
-
         try {
-            boolean isUpdated = reservationBo.updateReservation(new ReservationDTO(
-                    id,
-                    date,
-                    status,
-                    sId,
-                    rId
-            ));
+            if (validStudentId()) {
+                if (validRoomTypeId()) {
+                    if (validDate()) {
+                        if (validStatus()) {
 
-            if (isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Student Update Successfully!").show();
-                clearTextFields();
+                            String id = txtResId.getText();
+                            Date date = Date.valueOf(txtResDate.getText());
+                            String status = txtStatus.getText();
+                            String sId = txtStudentId.getText();
+                            String rId = txtRoomTypeId.getText();
+
+                            boolean isUpdated = reservationBo.updateReservation(new ReservationDTO(
+                                    id,
+                                    date,
+                                    status,
+                                    sId,
+                                    rId
+                            ));
+
+                            if (isUpdated) {
+                                new Alert(Alert.AlertType.CONFIRMATION, "Reservation Updated Successfully!").show();
+                                clearTextFields();
+                            }
+                        } else {
+                            setFocusAndAnimationToTextFields(txtStatus);
+                        }
+                    } else {
+                        setFocusAndAnimationToTextFields(txtResDate);
+                    }
+                } else {
+                    setFocusAndAnimationToTextFields(txtRoomTypeId);
+                }
+            } else {
+                setFocusAndAnimationToTextFields(txtStudentId);
             }
         }catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, "Somthing Went Wrong!\nPlease Try Again..").show();
             System.out.println(e);
         }
     }
@@ -223,6 +330,7 @@ public class RegistrationFormController {
                 clearTextFields();
             }
         }catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, "Somthing Went Wrong!\nPlease Try Again..").show();
             System.out.println(e);
         }
     }

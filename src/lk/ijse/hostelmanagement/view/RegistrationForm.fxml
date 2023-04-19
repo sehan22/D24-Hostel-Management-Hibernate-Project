@@ -102,7 +102,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="txtStatus" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+            <JFXTextField fx:id="txtStatus" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" onKeyReleased="#validStatusOnAction" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -121,7 +121,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="txtResDate" focusColor="WHITE" focusTraversable="false" layoutX="20.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" promptText="yyyy-mm-dd" unFocusColor="WHITE">
+            <JFXTextField fx:id="txtResDate" focusColor="WHITE" focusTraversable="false" layoutX="20.0" layoutY="24.0" onKeyReleased="#validDateOnAction" prefHeight="30.0" prefWidth="518.0" promptText="yyyy-mm-dd" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -159,22 +159,33 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="txtRoomType" focusColor="WHITE" focusTraversable="false" layoutX="21.0" layoutY="24.0" prefHeight="30.0" prefWidth="378.0" promptText="Input Room Type Id For Details" unFocusColor="WHITE">
+            <JFXTextField fx:id="txtRoomType" focusColor="WHITE" focusTraversable="false" layoutX="21.0" layoutY="24.0" prefHeight="30.0" prefWidth="246.0" promptText="Input Room Type Id For Details" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </JFXTextField>
-            <Text layoutX="431.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room QTY">
+            <Text layoutX="462.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room QTY">
                <font>
                   <Font size="13.0" />
                </font>
             </Text>
-            <Line endX="62.0" endY="39.0" layoutX="354.0" layoutY="26.0" startX="62.0" startY="-24.0" />
-            <JFXTextField fx:id="txtRoomTypeQTY" focusColor="WHITE" focusTraversable="false" layoutX="443.0" layoutY="24.0" prefHeight="30.0" prefWidth="99.0" unFocusColor="WHITE">
+            <Line endX="62.0" endY="39.0" layoutX="392.0" layoutY="26.0" startX="62.0" startY="-24.0" />
+            <JFXTextField fx:id="txtRoomTypeQTY" focusColor="WHITE" focusTraversable="false" layoutX="470.0" layoutY="24.0" prefHeight="30.0" prefWidth="72.0" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </JFXTextField>
+            <Text layoutX="290.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Type Value">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+            <JFXTextField fx:id="txtRoomTypeQTY1" focusColor="WHITE" focusTraversable="false" layoutX="299.0" layoutY="26.0" prefHeight="30.0" prefWidth="145.0" unFocusColor="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXTextField>
+            <Line endX="62.0" endY="38.0" layoutX="219.0" layoutY="27.0" startX="62.0" startY="-24.0" />
          </children>
       </AnchorPane>
       <Text fill="#545454" layoutX="894.0" layoutY="514.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recheck the validity of the data you have entered in the form." />
