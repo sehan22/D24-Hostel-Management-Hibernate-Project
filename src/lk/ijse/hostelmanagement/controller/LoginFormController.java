@@ -30,7 +30,10 @@ import lk.ijse.hostelmanagement.entity.User;
 import lk.ijse.hostelmanagement.util.Navigation;
 import lk.ijse.hostelmanagement.util.Routes;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class LoginFormController {
 
@@ -45,8 +48,8 @@ public class LoginFormController {
     public AnchorPane paneSignInHide;
     public Label lblUserNameDoesNotMatch;
     public Label lblUserNameorPasswordIncorrect;
-    
-    
+
+
     public TextField txtResetShowPassword;
     public ImageView imgResetPasswordShow;
     public PasswordField txtResetHidePassword;
@@ -76,7 +79,8 @@ public class LoginFormController {
     }
 
     public void loginOnAction(ActionEvent actionEvent) throws IOException {
-        if (txtHidePassword.getText().equals(loginBo.getUserPassword(userNametxt.getText()))) {
+        if (txtHidePassword.getText().equals(loginBo.getUserPassword(userNametxt.getText())) ||
+                txtShowPassword.getText().equals(loginBo.getUserPassword(userNametxt.getText()))) {
             lblUserNameDoesNotMatch.setVisible(false);
             lblUserNameorPasswordIncorrect.setVisible(false);
 
@@ -152,16 +156,16 @@ public class LoginFormController {
         }
     }
 
-/*
-        public void googleOnAction(ActionEvent actionEvent) throws URISyntaxException, IOException {
+    public void openGmailOnAction(ActionEvent actionEvent) throws URISyntaxException, IOException {
+        Desktop.getDesktop().browse(new URI("https://wa.me/qr/SLKJU7VCNRZQL1"));
+    }
+
+    public void openWhatsappOnAction(ActionEvent actionEvent) throws URISyntaxException, IOException {
+        Desktop.getDesktop().browse(new URI("https://wa.me/qr/SLKJU7VCNRZQL1"));
+    }
+
+    public void openFacebookOnAction(ActionEvent actionEvent) throws URISyntaxException, IOException {
         Desktop.getDesktop().browse(new URI("https://apexbusiness.lk/"));
     }
-    public void linkedInOnAction(ActionEvent actionEvent) throws URISyntaxException, IOException {
-        Desktop.getDesktop().browse(new URI("https://www.linkedin.com/company/apex-education-llc"));
-    }
-    public void facebbookOnAction(ActionEvent actionEvent) throws URISyntaxException, IOException {
-        Desktop.getDesktop().browse(new URI("https://www.facebook.com/apex.matara/"));
-    }
-    */
 }
 

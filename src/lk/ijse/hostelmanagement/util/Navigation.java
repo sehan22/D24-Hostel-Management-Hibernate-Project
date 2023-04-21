@@ -59,6 +59,9 @@ public class Navigation {
             case VIEWNOTPAYKEYMONEYSTUDENTS:
                 inittUi("ViewNotPayKeyMoneyStudentForm.fxml");
                 break;
+            case VIEWPAYKEYMONEYSTUDENTS:
+                inittUi("ViewPayKeyMoneyStudentForm.fxml");
+                break;
             default:
                 new Alert(Alert.AlertType.ERROR, "Not suitable UI found!").show();
         }

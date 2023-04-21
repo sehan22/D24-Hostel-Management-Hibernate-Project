@@ -52,7 +52,7 @@ public class ViewNotPayKeyMoneyStudentFormController {
     private void loadKeyMoneyNotPayStudent(ArrayList<StudentDTO> notPayStudents) {
         tblStudent.setItems(FXCollections.observableArrayList(
                 notPayStudents.stream().map(studentDTO -> {
-                    return new StudentTM(
+                    return new StudentDTO(
                             studentDTO.getId(),
                             studentDTO.getName(),
                             studentDTO.getAddress(),

@@ -1,22 +1,396 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="599.0" prefWidth="1437.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostelmanagement.controller.DashboardFormController">
+<AnchorPane fx:id="mainPane" prefHeight="599.0" prefWidth="1437.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostelmanagement.controller.DashboardFormController">
    <children>
       <ImageView fitHeight="654.0" fitWidth="1437.0" pickOnBounds="true">
          <image>
-            <Image url="@../assests/images/Rectangle%2029.png" />
+            <Image url="@../assests/images/dashboard/Rectangle%2049.png" />
          </image>
       </ImageView>
-      <Text layoutX="616.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard">
+      <ImageView fitHeight="160.0" fitWidth="496.0" layoutX="33.0" layoutY="27.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assests/images/dashboard/Rectangle%2055.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="124.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello,">
          <font>
-            <Font size="57.0" />
+            <Font size="19.0" />
          </font>
       </Text>
+      <Text layoutX="155.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sehan22">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="80.0" fitWidth="79.0" layoutX="315.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/images/dashboard/Group%20146.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="428.0" fitWidth="496.0" layoutX="33.0" layoutY="187.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assests/images/dashboard/Rectangle%2056.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="160.0" fitWidth="496.0" layoutX="529.0" layoutY="27.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assests/images/dashboard/Rectangle%201.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="160.0" fitWidth="496.0" layoutX="529.0" layoutY="187.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assests/images/dashboard/Rectangle%2061.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="265.0" fitWidth="496.0" layoutX="529.0" layoutY="347.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assests/images/dashboard/Rectangle%2061.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="321.0" fitWidth="363.0" layoutX="1025.0" layoutY="27.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assests/images/dashboard/Rectangle%2059.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="115.0" fitWidth="363.0" layoutX="1025.0" layoutY="348.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assests/images/dashboard/Rectangle%2066.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="115.0" fitWidth="118.0" layoutX="1025.0" layoutY="463.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/images/dashboard/Rectangle%2064.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="115.0" fitWidth="144.0" layoutX="1273.0" layoutY="463.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/images/dashboard/Rectangle%2064.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="115.0" fitWidth="118.0" layoutX="1149.0" layoutY="463.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/images/dashboard/Rectangle%2064.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="238.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Counts">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+      <Text layoutX="718.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Users Counts">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+      <Text layoutX="604.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Operations Section">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+      <Text layoutX="633.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KeyMoney Counts &amp; View Details">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+      <Text layoutX="1149.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View Details">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+      <Text layoutX="1143.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert Section...">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+      <Text layoutX="604.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View Users Details">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="905.0" layoutY="228.0" onAction="#userOnAction" prefHeight="34.0" prefWidth="23.0" style="-fx-background-radius: 200;" text="." textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="27.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" translateX="4.0" translateY="-2.0">
+               <image>
+                  <Image url="@../assests/images/dashboard/Polygon%208.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="905.0" layoutY="275.0" onAction="#userViewOnAction" prefHeight="34.0" prefWidth="23.0" style="-fx-background-radius: 200;" text="." textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="27.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" translateX="4.0" translateY="-2.0">
+               <image>
+                  <Image url="@../assests/images/dashboard/Polygon%208.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Group layoutX="576.0" layoutY="75.0">
+         <children>
+            <ImageView fitHeight="79.0" fitWidth="402.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../assests/images/dashboard/Group%20147.jpg" />
+               </image>
+            </ImageView>
+            <Text layoutX="141.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Users">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Text>
+            <Text layoutX="57.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4">
+               <font>
+                  <Font name="System Bold" size="35.0" />
+               </font>
+            </Text>
+         </children>
+      </Group>
+      <Group layoutX="80.0" layoutY="273.0">
+         <children>
+            <ImageView fitHeight="79.0" fitWidth="402.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../assests/images/dashboard/Group%20148.jpg" />
+               </image>
+            </ImageView>
+            <Text layoutX="138.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Students">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Text>
+            <Text layoutX="57.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4">
+               <font>
+                  <Font name="System Bold" size="35.0" />
+               </font>
+            </Text>
+         </children>
+      </Group>
+      <Group layoutX="80.0" layoutY="377.0">
+         <children>
+            <ImageView fitHeight="79.0" fitWidth="402.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../assests/images/dashboard/Group%20149.jpg" />
+               </image>
+            </ImageView>
+            <Text layoutX="141.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rooms">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Text>
+            <Text layoutX="57.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4">
+               <font>
+                  <Font name="System Bold" size="35.0" />
+               </font>
+            </Text>
+         </children>
+      </Group>
+      <Group layoutX="80.0" layoutY="484.0">
+         <children>
+            <ImageView fitHeight="79.0" fitWidth="402.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../assests/images/dashboard/Group%20150.jpg" />
+               </image>
+            </ImageView>
+            <Text layoutX="140.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservations">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Text>
+            <Text layoutX="57.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4">
+               <font>
+                  <Font name="System Bold" size="35.0" />
+               </font>
+            </Text>
+         </children>
+      </Group>
+      <Group layoutX="576.0" layoutY="424.0">
+         <children>
+            <ImageView fitHeight="65.0" fitWidth="402.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../assests/images/dashboard/Group%20151.jpg" />
+               </image>
+            </ImageView>
+            <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="340.0" layoutY="16.0" onAction="#paidKeyMoneyViewOnAction" prefHeight="34.0" prefWidth="23.0" style="-fx-background-radius: 200;" text="." textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" translateX="3.0">
+                     <image>
+                        <Image url="@../assests/images/dashboard/Polygon%208.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <Text layoutX="98.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Paid KeyMoney">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Text>
+            <Text layoutX="46.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4" wrappingWidth="20.1318359375">
+               <font>
+                  <Font name="System Bold" size="31.0" />
+               </font>
+            </Text>
+         </children>
+      </Group>
+      <Group layoutX="576.0" layoutY="502.0">
+         <children>
+            <ImageView fitHeight="65.0" fitWidth="402.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../assests/images/dashboard/Group%20152.jpg" />
+               </image>
+            </ImageView>
+            <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="340.0" layoutY="16.0" onAction="#upaidKeyMoneyOnAction" prefHeight="34.0" prefWidth="23.0" style="-fx-background-radius: 200;" text="." textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" translateX="3.0">
+                     <image>
+                        <Image url="@../assests/images/dashboard/Polygon%208.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <Text layoutX="98.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UnPaid KeyMoney">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Text>
+            <Text layoutX="46.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4" wrappingWidth="20.1318359375">
+               <font>
+                  <Font name="System Bold" size="31.0" />
+               </font>
+            </Text>
+         </children>
+      </Group>
+      <Group layoutX="1065.0" layoutY="86.0">
+         <children>
+            <ImageView fitHeight="66.0" fitWidth="284.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../assests/images/dashboard/Rectangle%2081.png" />
+               </image>
+            </ImageView>
+            <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="207.0" layoutY="16.0" onAction="#viewStudentOnAction" prefHeight="34.0" prefWidth="23.0" style="-fx-background-radius: 200;" text="." textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" translateX="3.0">
+                     <image>
+                        <Image url="@../assests/images/dashboard/Polygon%208.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <Text layoutX="35.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Students">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Text>
+         </children>
+      </Group>
+      <Group layoutX="1065.0" layoutY="162.0">
+         <children>
+            <ImageView fitHeight="66.0" fitWidth="284.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../assests/images/dashboard/Rectangle%2082.png" />
+               </image>
+            </ImageView>
+            <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="207.0" layoutY="16.0" onAction="#viewRoomsOnAction" prefHeight="34.0" prefWidth="23.0" style="-fx-background-radius: 200;" text="." textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" translateX="3.0">
+                     <image>
+                        <Image url="@../assests/images/dashboard/Polygon%208.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <Text layoutX="35.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rooms">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Text>
+         </children>
+      </Group>
+      <Group layoutX="1065.0" layoutY="244.0">
+         <children>
+            <ImageView fitHeight="66.0" fitWidth="284.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../assests/images/dashboard/Rectangle%2083.png" />
+               </image>
+            </ImageView>
+            <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="207.0" layoutY="16.0" onAction="#viewReservationsOnAction" prefHeight="34.0" prefWidth="23.0" style="-fx-background-radius: 200;" text="." textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" translateX="3.0">
+                     <image>
+                        <Image url="@../assests/images/dashboard/Polygon%208.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <Text layoutX="35.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservations">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Text>
+         </children>
+      </Group>
+      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="1047.0" layoutY="494.0" onAction="#studentOnAction" prefHeight="54.0" prefWidth="71.0" style="-fx-background-radius: 200;" text="." textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="45.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" translateX="4.0">
+               <image>
+                  <Image url="@../assests/images/dashboard/icons8-add-administrator-48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="1171.0" layoutY="494.0" onAction="#roomOnAction" prefHeight="54.0" prefWidth="71.0" style="-fx-background-radius: 200;" text="." textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="45.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" translateX="4.0">
+               <image>
+                  <Image url="@../assests/images/dashboard/icons8-add-properties-24.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="1295.0" layoutY="494.0" onAction="#reservationOnAction" prefHeight="54.0" prefWidth="71.0" style="-fx-background-radius: 200;" text="." textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="45.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" translateX="4.0">
+               <image>
+                  <Image url="@../assests/images/dashboard/icons8-reservation-24%201.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
    </children>
 </AnchorPane>

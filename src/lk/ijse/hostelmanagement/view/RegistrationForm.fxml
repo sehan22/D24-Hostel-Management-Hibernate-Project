@@ -33,7 +33,7 @@
             <Font name="Arial Black" size="32.0" />
          </font>
       </Text>
-      <Text layoutX="1177.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12.30 P.M." y="3.0">
+      <Text fx:id="txtCurrentDate" layoutX="1084.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12.30 P.M." y="3.0">
          <font>
             <Font size="20.0" />
          </font>
@@ -64,7 +64,7 @@
                   <Font size="13.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="txtStudentId" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" onKeyReleased="#SearchStuNameOnAction" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+            <JFXTextField fx:id="txtStudentId" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" onKeyReleased="#SearchStuNameOnAction" prefHeight="30.0" prefWidth="518.0" promptText="SXX - XXX" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -83,7 +83,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="txtRoomTypeId" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" onKeyReleased="#searchRoomTypeOnAction" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+            <JFXTextField fx:id="txtRoomTypeId" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" onKeyReleased="#searchRoomTypeOnAction" prefHeight="30.0" prefWidth="518.0" promptText="RTXX - XXX" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -102,7 +102,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="txtStatus" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" onKeyReleased="#validStatusOnAction" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
+            <JFXTextField fx:id="txtStatus" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" onKeyReleased="#validStatusOnAction" prefHeight="30.0" prefWidth="518.0" promptText="PAID or NOT PAID" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -140,7 +140,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="txtStudentName" focusColor="WHITE" focusTraversable="false" layoutX="21.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" promptText="Input Student Id For Details" unFocusColor="WHITE">
+            <JFXTextField fx:id="txtStudentName" editable="false" focusColor="WHITE" focusTraversable="false" layoutX="21.0" layoutY="24.0" prefHeight="30.0" prefWidth="518.0" promptText="Input Student Id For Details" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -159,7 +159,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="txtRoomType" focusColor="WHITE" focusTraversable="false" layoutX="21.0" layoutY="24.0" prefHeight="30.0" prefWidth="246.0" promptText="Input Room Type Id For Details" unFocusColor="WHITE">
+            <JFXTextField fx:id="txtRoomType" editable="false" focusColor="WHITE" focusTraversable="false" layoutX="21.0" layoutY="24.0" prefHeight="30.0" prefWidth="246.0" promptText="Input Room Type Id For Details" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -170,7 +170,7 @@
                </font>
             </Text>
             <Line endX="62.0" endY="39.0" layoutX="392.0" layoutY="26.0" startX="62.0" startY="-24.0" />
-            <JFXTextField fx:id="txtRoomTypeQTY" focusColor="WHITE" focusTraversable="false" layoutX="470.0" layoutY="24.0" prefHeight="30.0" prefWidth="72.0" unFocusColor="WHITE">
+            <JFXTextField fx:id="txtRoomTypeQTY" editable="false" focusColor="WHITE" focusTraversable="false" layoutX="470.0" layoutY="24.0" prefHeight="30.0" prefWidth="72.0" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -180,7 +180,7 @@
                   <Font size="13.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="txtRoomTypeKeyMoney" focusColor="WHITE" focusTraversable="false" layoutX="299.0" layoutY="26.0" prefHeight="30.0" prefWidth="145.0" unFocusColor="WHITE">
+            <JFXTextField fx:id="txtRoomTypeKeyMoney" editable="false" focusColor="WHITE" focusTraversable="false" layoutX="299.0" layoutY="26.0" prefHeight="30.0" prefWidth="145.0" unFocusColor="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -214,11 +214,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <Text layoutX="1119.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time : " y="3.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
       <JFXTextField layoutX="25.0" layoutY="62.0" prefHeight="25.0" prefWidth="1382.0" visible="false" />
       <AnchorPane layoutX="486.0" layoutY="124.0" prefHeight="39.0" prefWidth="448.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
          <children>

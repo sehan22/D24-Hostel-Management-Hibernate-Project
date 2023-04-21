@@ -10,36 +10,53 @@ import animatefx.animation.*;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 import lk.ijse.hostelmanagement.util.Navigation;
 import lk.ijse.hostelmanagement.util.Routes;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class ManagementFormController {
     public AnchorPane managementformpane;
     public JFXButton btnRegistration;
     public JFXButton btnStudents;
-    public JFXButton btnDashBoard;
+    public static JFXButton btnDashBoard;
     public JFXButton btnRooms;
-    public JFXButton btnUsers;
+    public static JFXButton btnUsers;
     public AnchorPane mainFormPane;
     public JFXButton btnViewRegistration;
     public JFXButton btnViewStudents;
     public JFXButton btnViewRooms;
     public JFXButton btnViewUsers;
+    public Text lblWecome;
+    public Text lblDashboard;
+    public Text lblReservation;
+    public Text lblStudent;
+    public Text lblRoom;
+    public Text lblUser;
 
     public void initialize() {
-
     }
 
     public void logOutOnAction(ActionEvent actionEvent) throws IOException {
-        Navigation.navigate(Routes.LOGIN, managementformpane);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure do you want to logout?", ButtonType.YES, ButtonType.CANCEL);
+        Optional<ButtonType> buttonType = alert.showAndWait();
+        if (buttonType.get() == ButtonType.YES) {
+            Navigation.navigate(Routes.LOGIN, managementformpane);
+        }
     }
 
     public void exitOnAction(ActionEvent actionEvent) {
-        System.exit(0);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure do you want to Exit?", ButtonType.YES, ButtonType.CANCEL);
+        Optional<ButtonType> buttonType = alert.showAndWait();
+        if (buttonType.get() == ButtonType.YES) {
+            System.exit(0);
+        }
     }
 
     public void dashboardOnAction(ActionEvent actionEvent) throws IOException {
@@ -51,6 +68,13 @@ public class ManagementFormController {
         slideLeft(btnRooms);
         slideLeft(btnUsers);
 
+        lblWecome.setVisible(false);
+        lblDashboard.setVisible(true);
+        lblReservation.setVisible(false);
+        lblStudent.setVisible(false);
+        lblRoom.setVisible(false);
+        lblUser.setVisible(false);
+
         Navigation.navigate(Routes.DASHBOARD, mainFormPane);
 
         btnViewStudents.setVisible(true);
@@ -61,13 +85,19 @@ public class ManagementFormController {
     }
 
     public void registrationOnAction(ActionEvent actionEvent) throws IOException {
-
         slideRight(btnRegistration);
 
         slideLeft(btnDashBoard);
         slideLeft(btnStudents);
         slideLeft(btnRooms);
         slideLeft(btnUsers);
+
+        lblWecome.setVisible(false);
+        lblDashboard.setVisible(false);
+        lblReservation.setVisible(true);
+        lblStudent.setVisible(false);
+        lblRoom.setVisible(false);
+        lblUser.setVisible(false);
 
         Navigation.navigate(Routes.REGISTRATION, mainFormPane);
 
@@ -86,6 +116,13 @@ public class ManagementFormController {
         slideLeft(btnRooms);
         slideLeft(btnUsers);
 
+        lblWecome.setVisible(false);
+        lblDashboard.setVisible(false);
+        lblReservation.setVisible(false);
+        lblStudent.setVisible(true);
+        lblRoom.setVisible(false);
+        lblUser.setVisible(false);
+
         Navigation.navigate(Routes.STUDENTS, mainFormPane);
 
         btnViewStudents.setVisible(true);
@@ -103,6 +140,13 @@ public class ManagementFormController {
         slideLeft(btnStudents);
         slideLeft(btnUsers);
 
+        lblWecome.setVisible(false);
+        lblDashboard.setVisible(false);
+        lblReservation.setVisible(false);
+        lblStudent.setVisible(false);
+        lblRoom.setVisible(true);
+        lblUser.setVisible(false);
+
         Navigation.navigate(Routes.ROOMS, mainFormPane);
 
         btnViewRooms.setVisible(true);
@@ -119,6 +163,13 @@ public class ManagementFormController {
         slideLeft(btnRegistration);
         slideLeft(btnStudents);
         slideLeft(btnRooms);
+
+        lblWecome.setVisible(false);
+        lblDashboard.setVisible(false);
+        lblReservation.setVisible(false);
+        lblStudent.setVisible(false);
+        lblRoom.setVisible(false);
+        lblUser.setVisible(true);
 
         Navigation.navigate(Routes.USERS, mainFormPane);
 

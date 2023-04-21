@@ -9,11 +9,15 @@ package lk.ijse.hostelmanagement.controller;
 import animatefx.animation.BounceIn;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import lk.ijse.hostelmanagement.bo.BOType;
 import lk.ijse.hostelmanagement.bo.BoFactory;
 import lk.ijse.hostelmanagement.bo.custom.ReservationBo;
@@ -25,6 +29,8 @@ import lk.ijse.hostelmanagement.dto.StudentDTO;
 import lk.ijse.hostelmanagement.entity.Student;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -47,6 +53,7 @@ public class RegistrationFormController {
     public JFXButton btnAddNewReservation;
     public JFXTextField txtRoomTypeQTY;
     public JFXTextField txtRoomTypeKeyMoney;
+    public Text txtCurrentDate;
 
     ReservationBo reservationBo = (ReservationBo) BoFactory.getInstance().getBo(BOType.RESERVATION);
 
@@ -56,6 +63,17 @@ public class RegistrationFormController {
 
     public void initialize() {
         generateNewId();
+
+        setDateAndTime();
+    }
+
+    private void setDateAndTime() {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO, event -> {
+            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss");
+            txtCurrentDate.setText(LocalDate.now().format(timeFormatter));
+        }), new KeyFrame(Duration.seconds(1)));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
     }
 
     private void clearTextFields() {

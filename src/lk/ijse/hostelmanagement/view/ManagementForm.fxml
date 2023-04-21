@@ -17,7 +17,32 @@
                   <Image url="@../assests/images/Group%20122.png" />
                </image>
             </ImageView>
-            <Text fill="WHITE" layoutX="623.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Managment">
+            <Text fx:id="lblWecome" fill="WHITE" layoutX="659.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text=". . . Welcome . . .">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Text>
+            <Text fx:id="lblDashboard" fill="WHITE" layoutX="550.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome To Your DashBoard" visible="false">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Text>
+            <Text fx:id="lblReservation" fill="WHITE" layoutX="580.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservation Management" visible="false">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Text>
+            <Text fx:id="lblStudent" fill="WHITE" layoutX="613.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Management" visible="false">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Text>
+            <Text fx:id="lblRoom" fill="WHITE" layoutX="629.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Management" visible="false">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Text>
+            <Text fx:id="lblUser" fill="WHITE" layoutX="642.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Management" visible="false">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
