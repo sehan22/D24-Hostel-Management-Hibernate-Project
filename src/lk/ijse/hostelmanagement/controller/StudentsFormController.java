@@ -10,7 +10,12 @@ import animatefx.animation.BounceIn;
 import animatefx.animation.FadeIn;
 import animatefx.animation.FadeOut;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.input.DragEvent;
@@ -19,6 +24,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import lk.ijse.hostelmanagement.bo.BOType;
 import lk.ijse.hostelmanagement.bo.BoFactory;
 import lk.ijse.hostelmanagement.bo.custom.StudentBO;
@@ -31,6 +37,8 @@ import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLDataException;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -39,7 +47,6 @@ public class StudentsFormController {
     public JFXTextField txtStudentName;
     public JFXTextField txtStudentAddress;
     public JFXTextField txtDob;
-    public JFXTextField txtGender;
     public JFXTextField txtPhoneNumber;
     public JFXTextField txtCampus;
     public JFXButton btnSearch;
@@ -52,14 +59,29 @@ public class StudentsFormController {
     public JFXButton btnClear;
     public Text txtAddNewStudent;
     public JFXButton btnAddNewStudent;
+    public JFXComboBox cmbGender;
+    public Text lblCurrentDateAndTime;
 
     StudentBO studentBO = (StudentBO) BoFactory.getInstance().getBo(BOType.STUDENT);
 
     public void initialize() {
         generateNewId();
+        loadGenderComboBoxItems();
+        setDateAndTime();
+    }
+
+    private void setDateAndTime() {
+        Timeline dateAndTime = new Timeline(
+                new KeyFrame(Duration.ZERO, event -> {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    lblCurrentDateAndTime.setText(LocalDateTime.now().format(formatter));
+                }), new KeyFrame(Duration.seconds(1)));
+        dateAndTime.setCycleCount(Animation.INDEFINITE);
+        dateAndTime.play();
     }
 
     private void clearTextFields() {
+        generateNewId();
 
         btnUpdate.setVisible(false);
         btnDelete.setVisible(false);
@@ -70,7 +92,7 @@ public class StudentsFormController {
         txtStudentName.clear();
         txtStudentAddress.clear();
         txtDob.clear();
-        txtGender.clear();
+        cmbGender.getSelectionModel().clearSelection();
         txtCampus.clear();
         txtPhoneNumber.clear();
     }
@@ -91,6 +113,11 @@ public class StudentsFormController {
         new BounceIn(jfxTextField).play();
         jfxTextField.setFocusColor(Paint.valueOf("red"));
     }
+    private void setFocusAndAnimationToComboBox(JFXComboBox comboBox) {
+        comboBox.requestFocus();
+        new BounceIn(comboBox).play();
+        comboBox.setFocusColor(Paint.valueOf("red"));
+    }
 
     private void generateNewId() {
         try {
@@ -101,6 +128,17 @@ public class StudentsFormController {
         }
 
     }
+
+
+    private void loadGenderComboBoxItems() {
+        ObservableList statusList = cmbGender.getItems();
+        statusList.add("MALE");
+        statusList.add("FEMALE");
+    }
+    public void selectGenderOnAction(MouseEvent mouseEvent) {
+        cmbGender.setFocusColor(Paint.valueOf("white"));
+    }
+
 
     private boolean validStudentFullName() {
         Pattern pattern = Pattern.compile("^([a-zA-Z\\s]+)");
@@ -136,15 +174,12 @@ public class StudentsFormController {
         return false;
     }
     private boolean validStudentGender() {
-        Pattern pattern = Pattern.compile("^([a-zA-Z\\s]+)");
-        Matcher matcher = pattern.matcher(txtGender.getText());
+        boolean isNotSelected = cmbGender.getSelectionModel().isEmpty();
 
-        boolean isMatches = matcher.matches();
-
-        if (isMatches) {
-            return true;
+        if (isNotSelected) {
+            return false;
         }
-        return false;
+        return true;
     }
     private boolean validStudentCampus() {
         Pattern pattern = Pattern.compile("^([a-zA-Z\\s]+)");
@@ -209,19 +244,6 @@ public class StudentsFormController {
         }
     }
 
-    public void validStudentGenderOnAction(KeyEvent keyEvent) {
-        Pattern pattern = Pattern.compile("^([a-zA-Z\\s]+)");
-        Matcher matcher = pattern.matcher(txtGender.getText());
-
-        boolean isMatches = matcher.matches();
-
-        if (isMatches) {
-            txtGender.setFocusColor(Paint.valueOf("white"));
-        } else {
-            txtGender.setFocusColor(Paint.valueOf("red"));
-        }
-    }
-
     public void validStudentCampusOnAction(KeyEvent keyEvent) {
         Pattern pattern = Pattern.compile("^([a-zA-Z\\s]+)");
         Matcher matcher = pattern.matcher(txtCampus.getText());
@@ -262,7 +284,7 @@ public class StudentsFormController {
                                     String name = txtStudentName.getText();
                                     String address = txtStudentAddress.getText();
                                     Date dob = Date.valueOf(txtDob.getText());
-                                    String gender = txtGender.getText();
+                                    String gender = String.valueOf(cmbGender.getValue());
                                     String campus = txtCampus.getText();
                                     int phoneNumber = Integer.parseInt(txtPhoneNumber.getText());
 
@@ -287,7 +309,7 @@ public class StudentsFormController {
                                 setFocusAndAnimationToTextFields(txtCampus);
                             }
                         } else {
-                            setFocusAndAnimationToTextFields(txtGender);
+                            setFocusAndAnimationToComboBox(cmbGender);
                         }
                     } else {
                         setFocusAndAnimationToTextFields(txtDob);
@@ -321,7 +343,7 @@ public class StudentsFormController {
             txtStudentName.setText(student.getName());
             txtStudentAddress.setText(student.getAddress());
             txtDob.setText(String.valueOf(student.getDob()));
-            txtGender.setText(student.getGender());
+            cmbGender.setPromptText(student.getGender());
             txtCampus.setText(student.getCampus());
             txtPhoneNumber.setText(String.valueOf(student.getContact()));
         } catch (Exception e) {
@@ -347,7 +369,7 @@ public class StudentsFormController {
                                     String name = txtStudentName.getText();
                                     String address = txtStudentAddress.getText();
                                     Date dob = Date.valueOf(txtDob.getText());
-                                    String gender = txtGender.getText();
+                                    String gender = String.valueOf(cmbGender.getValue());
                                     String campus = txtCampus.getText();
                                     int phoneNumber = Integer.parseInt(txtPhoneNumber.getText());
 
@@ -372,7 +394,7 @@ public class StudentsFormController {
                                 setFocusAndAnimationToTextFields(txtCampus);
                             }
                         } else {
-                            setFocusAndAnimationToTextFields(txtGender);
+                            setFocusAndAnimationToComboBox(cmbGender);
                         }
                     } else {
                         setFocusAndAnimationToTextFields(txtDob);

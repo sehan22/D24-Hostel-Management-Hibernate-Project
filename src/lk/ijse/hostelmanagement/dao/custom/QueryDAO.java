@@ -6,5 +6,4 @@ import lk.ijse.hostelmanagement.dto.StudentDTO;
 import java.util.List;
 
 public interface QueryDAO extends SuperDAO {
-    List<StudentDTO> keyMoneyNotPaidStudents();
 }

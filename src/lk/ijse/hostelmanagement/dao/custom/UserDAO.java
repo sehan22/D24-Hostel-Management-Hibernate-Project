@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface UserDAO extends CrudDAO<User> {
     public String getUserNamePassword(String userName);
-    public boolean updatePassword(User entity, String userName);
 }

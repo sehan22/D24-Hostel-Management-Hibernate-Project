@@ -15,4 +15,5 @@ public interface ReservationBo extends SuperBo {
     ArrayList<ReservationDTO> getAllReservation();
     public String genarateReservationId();
     public ArrayList<StudentDTO> getNotPayStudent();
+    public ArrayList<StudentDTO> getPayStudent();
 }

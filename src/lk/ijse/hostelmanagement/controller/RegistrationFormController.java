@@ -8,13 +8,17 @@ package lk.ijse.hostelmanagement.controller;
 
 import animatefx.animation.BounceIn;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
@@ -30,6 +34,8 @@ import lk.ijse.hostelmanagement.entity.Student;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -37,7 +43,6 @@ import java.util.regex.Pattern;
 public class RegistrationFormController {
     public JFXTextField txtResId;
     public JFXTextField txtResDate;
-    public JFXTextField txtStatus;
     public JFXTextField txtStudentId;
     public JFXTextField txtRoomTypeId;
     public JFXTextField txtStudentName;
@@ -53,7 +58,10 @@ public class RegistrationFormController {
     public JFXButton btnAddNewReservation;
     public JFXTextField txtRoomTypeQTY;
     public JFXTextField txtRoomTypeKeyMoney;
-    public Text txtCurrentDate;
+    public JFXComboBox cmbStatus;
+    public Text lblCurrentDate;
+    public Text lblCurrentTime;
+    public Text lblCurrentDateAndTime;
 
     ReservationBo reservationBo = (ReservationBo) BoFactory.getInstance().getBo(BOType.RESERVATION);
 
@@ -63,17 +71,19 @@ public class RegistrationFormController {
 
     public void initialize() {
         generateNewId();
-
+        loadStetusComboBoxItems();
         setDateAndTime();
+
     }
 
     private void setDateAndTime() {
-        Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO, event -> {
-            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss");
-            txtCurrentDate.setText(LocalDate.now().format(timeFormatter));
-        }), new KeyFrame(Duration.seconds(1)));
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.play();
+        Timeline dateAndTime = new Timeline(
+                new KeyFrame(Duration.ZERO, event -> {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    lblCurrentDateAndTime.setText(LocalDateTime.now().format(formatter));
+                }), new KeyFrame(Duration.seconds(1)));
+        dateAndTime.setCycleCount(Animation.INDEFINITE);
+        dateAndTime.play();
     }
 
     private void clearTextFields() {
@@ -89,7 +99,7 @@ public class RegistrationFormController {
 
         txtSearchId.clear();
         txtResDate.clear();
-        txtStatus.clear();
+        cmbStatus.getSelectionModel().clearSelection();
         txtStudentId.clear();
         txtRoomTypeId.clear();
         txtStudentName.clear();
@@ -116,6 +126,12 @@ public class RegistrationFormController {
         jfxTextField.requestFocus();
         new BounceIn(jfxTextField).play();
         jfxTextField.setFocusColor(Paint.valueOf("red"));
+    }
+
+    private void setFocusAndAnimationToComboBox(JFXComboBox comboBox) {
+        comboBox.requestFocus();
+        new BounceIn(comboBox).play();
+        comboBox.setFocusColor(Paint.valueOf("red"));
     }
 
 
@@ -162,6 +178,12 @@ public class RegistrationFormController {
         }
     }
 
+    private void loadStetusComboBoxItems() {
+        ObservableList statusList = cmbStatus.getItems();
+        statusList.add("PAID");
+        statusList.add("NOT PAID");
+    }
+
 
     public boolean validDate() {
         Pattern pattern = Pattern.compile("^[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}$");
@@ -175,15 +197,12 @@ public class RegistrationFormController {
         return false;
     }
     public boolean validStatus() {
-        Pattern pattern = Pattern.compile("^([a-zA-Z\\s]+)");
-        Matcher matcher = pattern.matcher(txtStatus.getText());
+        boolean isNotSelected = cmbStatus.getSelectionModel().isEmpty();
 
-        boolean isMatches = matcher.matches();
-
-        if (isMatches) {
-            return true;
+        if (isNotSelected) {
+            return false;
         }
-        return false;
+        return true;
     }
     public boolean validStudentId() {
         if (txtStudentId.getText().equals("")) {
@@ -198,18 +217,8 @@ public class RegistrationFormController {
         return true;
     }
 
-
-    public void validStatusOnAction(KeyEvent keyEvent) {
-        Pattern pattern = Pattern.compile("^([a-zA-Z\\s]+)");
-        Matcher matcher = pattern.matcher(txtStatus.getText());
-
-        boolean isMatches = matcher.matches();
-
-        if (isMatches) {
-            txtStatus.setFocusColor(Paint.valueOf("white"));
-        } else {
-            txtStatus.setFocusColor(Paint.valueOf("red"));
-        }
+    public void selectStatusOnAction(MouseEvent mouseEvent) {
+        cmbStatus.setFocusColor(Paint.valueOf("white"));
     }
 
     public void validDateOnAction(KeyEvent keyEvent) {
@@ -232,10 +241,9 @@ public class RegistrationFormController {
                 if (validRoomTypeId()) {
                     if (validDate()) {
                         if (validStatus()) {
-
                             String id = txtResId.getText();
                             Date date = Date.valueOf(txtResDate.getText());
-                            String status = txtStatus.getText();
+                            String status = String.valueOf(cmbStatus.getValue());
                             String studentId = txtStudentId.getText();
                             String roomTypeId = txtRoomTypeId.getText();
 
@@ -252,7 +260,7 @@ public class RegistrationFormController {
                                 clearTextFields();
                             }
                         } else {
-                            setFocusAndAnimationToTextFields(txtStatus);
+                            setFocusAndAnimationToComboBox(cmbStatus);
                         }
                     } else {
                         setFocusAndAnimationToTextFields(txtResDate);
@@ -290,7 +298,7 @@ public class RegistrationFormController {
             txtResId.setText(reservation.getId());
             txtStudentId.setText(reservation.getStudentId());
             txtRoomTypeId.setText(reservation.getRoomId());
-            txtStatus.setText(reservation.getStates());
+            cmbStatus.setPromptText(reservation.getStates());
             txtResDate.setText(String.valueOf(reservation.getDate()));
 
             searchStuNameOnAction();
@@ -314,7 +322,7 @@ public class RegistrationFormController {
 
                             String id = txtResId.getText();
                             Date date = Date.valueOf(txtResDate.getText());
-                            String status = txtStatus.getText();
+                            String status = String.valueOf(cmbStatus.getValue());
                             String sId = txtStudentId.getText();
                             String rId = txtRoomTypeId.getText();
 
@@ -331,7 +339,7 @@ public class RegistrationFormController {
                                 clearTextFields();
                             }
                         } else {
-                            setFocusAndAnimationToTextFields(txtStatus);
+                            setFocusAndAnimationToComboBox(cmbStatus);
                         }
                     } else {
                         setFocusAndAnimationToTextFields(txtResDate);

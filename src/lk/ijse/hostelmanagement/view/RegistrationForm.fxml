@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -18,24 +19,14 @@
             <Image url="@../assests/images/Rectangle%2029.png" />
          </image>
       </ImageView>
-      <Text layoutX="189.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration Date : " y="3.0">
+      <Text layoutX="970.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date &amp; Time: " y="3.0">
          <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <Text layoutX="357.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2023 / 03 / 31" y="3.0">
-         <font>
-            <Font size="20.0" />
+            <Font name="System Bold" size="17.0" />
          </font>
       </Text>
       <Text layoutX="1190.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I" visible="false">
          <font>
             <Font name="Arial Black" size="32.0" />
-         </font>
-      </Text>
-      <Text fx:id="txtCurrentDate" layoutX="1084.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12.30 P.M." y="3.0">
-         <font>
-            <Font size="20.0" />
          </font>
       </Text>
       <AnchorPane layoutX="98.0" layoutY="203.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
@@ -102,11 +93,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="txtStatus" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" onKeyReleased="#validStatusOnAction" prefHeight="30.0" prefWidth="518.0" promptText="PAID or NOT PAID" unFocusColor="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </JFXTextField>
+            <JFXComboBox fx:id="cmbStatus" focusColor="WHITE" focusTraversable="false" layoutX="21.0" layoutY="27.0" onMouseClicked="#selectStatusOnAction" prefHeight="30.0" prefWidth="518.0" promptText="PAID or NOT PAID" stylesheets="@css/comboboxStyle.css" unFocusColor="WHITE" visibleRowCount="2" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="776.0" layoutY="203.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
@@ -263,5 +250,10 @@
             </LinearGradient>
          </ripplerFill>
       </JFXButton>
+      <Text fx:id="lblCurrentDateAndTime" layoutX="1092.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" y="3.0">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

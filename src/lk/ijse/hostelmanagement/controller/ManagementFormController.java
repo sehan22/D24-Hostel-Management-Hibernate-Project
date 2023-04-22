@@ -12,9 +12,16 @@ import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import lk.ijse.hostelmanagement.bo.BOType;
+import lk.ijse.hostelmanagement.bo.BoFactory;
+import lk.ijse.hostelmanagement.bo.custom.LoginBo;
+import lk.ijse.hostelmanagement.bo.custom.ReservationBo;
+import lk.ijse.hostelmanagement.bo.custom.RoomBo;
+import lk.ijse.hostelmanagement.bo.custom.StudentBO;
 import lk.ijse.hostelmanagement.util.Navigation;
 import lk.ijse.hostelmanagement.util.Routes;
 
@@ -25,9 +32,9 @@ public class ManagementFormController {
     public AnchorPane managementformpane;
     public JFXButton btnRegistration;
     public JFXButton btnStudents;
-    public static JFXButton btnDashBoard;
+    public JFXButton btnDashBoard;
     public JFXButton btnRooms;
-    public static JFXButton btnUsers;
+    public JFXButton btnUsers;
     public AnchorPane mainFormPane;
     public JFXButton btnViewRegistration;
     public JFXButton btnViewStudents;
@@ -39,8 +46,42 @@ public class ManagementFormController {
     public Text lblStudent;
     public Text lblRoom;
     public Text lblUser;
+    public ImageView imgUserUserIcon;
+    public Text lblHi;
+    public Text lblUserName;
+    public Text lblStudentsCount;
+    public Text lblRoomCount;
+    public Text lblReservationCount;
+    public Text lblUserCount;
+
+    LoginBo loginBo = (LoginBo) BoFactory.getInstance().getBo(BOType.USER);
+    ReservationBo reservationBo = (ReservationBo) BoFactory.getInstance().getBo(BOType.RESERVATION);
+    StudentBO studentBO = (StudentBO) BoFactory.getInstance().getBo(BOType.STUDENT);
+    RoomBo roomBo = (RoomBo) BoFactory.getInstance().getBo(BOType.ROOM);
 
     public void initialize() {
+        hideUserDetails();
+        loadCounts();
+    }
+
+    public void loadCounts() {
+        lblStudentsCount.setText(String.valueOf(studentBO.getAllStudent().size()));
+        lblReservationCount.setText(String.valueOf(reservationBo.getAllReservation().size()));
+        lblRoomCount.setText(String.valueOf(roomBo.getAllRoom().size()));
+        lblUserCount.setText(String.valueOf(loginBo.getAllUser().size()));
+    }
+
+    private void loadUserDetails() {
+        lblHi.setVisible(true);
+        imgUserUserIcon.setVisible(true);
+        lblUserName.setVisible(true);
+        lblUserName.setText(LoginFormController.userName);
+    }
+
+    private void hideUserDetails() {
+        lblHi.setVisible(false);
+        imgUserUserIcon.setVisible(false);
+        lblUserName.setVisible(false);
     }
 
     public void logOutOnAction(ActionEvent actionEvent) throws IOException {
@@ -59,7 +100,7 @@ public class ManagementFormController {
         }
     }
 
-    public void dashboardOnAction(ActionEvent actionEvent) throws IOException {
+    public void dashboardOnAction(ActionEvent actionEvent) throws IOException {hideUserDetails();
 
         slideRight(btnDashBoard);
 
@@ -85,6 +126,8 @@ public class ManagementFormController {
     }
 
     public void registrationOnAction(ActionEvent actionEvent) throws IOException {
+        loadUserDetails();
+
         slideRight(btnRegistration);
 
         slideLeft(btnDashBoard);
@@ -109,6 +152,8 @@ public class ManagementFormController {
     }
 
     public void studentOnAction(ActionEvent actionEvent) throws IOException {
+        loadUserDetails();
+
         slideRight(btnStudents);
 
         slideLeft(btnDashBoard);
@@ -133,6 +178,8 @@ public class ManagementFormController {
     }
 
     public void roomOnAction(ActionEvent actionEvent) throws IOException {
+        loadUserDetails();
+
         slideRight(btnRooms);
 
         slideLeft(btnDashBoard);
@@ -157,6 +204,8 @@ public class ManagementFormController {
     }
 
     public void usersOnAction(ActionEvent actionEvent) throws IOException {
+        loadUserDetails();
+
         slideRight(btnUsers);
         
         slideLeft(btnDashBoard);
@@ -220,5 +269,9 @@ public class ManagementFormController {
 
     public void keyMoneyNotPayStudentsOnAction(ActionEvent actionEvent) throws IOException {
         Navigation.navigate(Routes.VIEWNOTPAYKEYMONEYSTUDENTS, mainFormPane);
+    }
+
+    public void keyMoneyPayStudentsOnAction(ActionEvent actionEvent) throws IOException {
+        Navigation.navigate(Routes.VIEWPAYKEYMONEYSTUDENTS, mainFormPane);
     }
 }

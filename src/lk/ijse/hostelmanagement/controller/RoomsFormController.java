@@ -10,6 +10,9 @@ package lk.ijse.hostelmanagement.controller;
 import animatefx.animation.BounceIn;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
@@ -19,12 +22,17 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import lk.ijse.hostelmanagement.bo.BOType;
 import lk.ijse.hostelmanagement.bo.BoFactory;
 import lk.ijse.hostelmanagement.bo.custom.RoomBo;
 import lk.ijse.hostelmanagement.dto.RoomDTO;
+import lk.ijse.hostelmanagement.util.Navigation;
+import lk.ijse.hostelmanagement.util.Routes;
 import lk.ijse.hostelmanagement.view.tm.RoomTM;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -47,10 +55,12 @@ public class RoomsFormController {
     public TableColumn colRoomType;
     public TableColumn colRoomKeyMoney;
     public TableColumn colRoomQty;
+    public Text lblCurrentDateAndTime;
 
     RoomBo roomBo = (RoomBo) BoFactory.getInstance().getBo(BOType.ROOM);
 
     public void initialize() {
+        setDateAndTime();
         colRoomTypeId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colRoomType.setCellValueFactory(new PropertyValueFactory<>("type"));
         colRoomKeyMoney.setCellValueFactory(new PropertyValueFactory<>("keyMoney"));
@@ -63,6 +73,16 @@ public class RoomsFormController {
         }
 
         generateNewId();
+    }
+
+    private void setDateAndTime() {
+        Timeline dateAndTime = new Timeline(
+                new KeyFrame(Duration.ZERO, event -> {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    lblCurrentDateAndTime.setText(LocalDateTime.now().format(formatter));
+                }), new KeyFrame(Duration.seconds(1)));
+        dateAndTime.setCycleCount(Animation.INDEFINITE);
+        dateAndTime.play();
     }
 
     private void clearTextFields() {

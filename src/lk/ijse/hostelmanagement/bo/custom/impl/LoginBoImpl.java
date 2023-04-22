@@ -85,9 +85,4 @@ public class LoginBoImpl implements LoginBo {
     public String getUserPassword(String userName) {
         return userDAO.getUserNamePassword(userName);
     }
-
-    @Override
-    public boolean updatePasswordUser(UserDTO userDTO, String userName) {
-        return false;
-    }
 }

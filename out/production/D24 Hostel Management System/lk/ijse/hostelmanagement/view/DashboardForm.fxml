@@ -21,17 +21,17 @@
             <Image url="@../assests/images/dashboard/Rectangle%2055.png" />
          </image>
       </ImageView>
-      <Text layoutX="124.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello,">
+      <Text layoutX="230.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello,">
          <font>
             <Font size="19.0" />
          </font>
       </Text>
-      <Text layoutX="155.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sehan22">
+      <Text fx:id="lblUserName" layoutX="203.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sdfsdf">
          <font>
             <Font name="System Bold" size="35.0" />
          </font>
       </Text>
-      <ImageView fitHeight="80.0" fitWidth="79.0" layoutX="315.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="80.0" fitWidth="79.0" layoutX="105.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assests/images/dashboard/Group%20146.jpg" />
          </image>
@@ -152,7 +152,7 @@
                   <Font name="System Bold" size="26.0" />
                </font>
             </Text>
-            <Text layoutX="57.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4">
+            <Text fx:id="lblUserCount" layoutX="57.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4">
                <font>
                   <Font name="System Bold" size="35.0" />
                </font>
@@ -171,7 +171,7 @@
                   <Font name="System Bold" size="26.0" />
                </font>
             </Text>
-            <Text layoutX="57.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4">
+            <Text fx:id="lblStudentCount" layoutX="57.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4">
                <font>
                   <Font name="System Bold" size="35.0" />
                </font>
@@ -190,7 +190,7 @@
                   <Font name="System Bold" size="26.0" />
                </font>
             </Text>
-            <Text layoutX="57.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4">
+            <Text fx:id="lblRoomCount" layoutX="57.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4">
                <font>
                   <Font name="System Bold" size="35.0" />
                </font>
@@ -209,7 +209,7 @@
                   <Font name="System Bold" size="26.0" />
                </font>
             </Text>
-            <Text layoutX="57.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4">
+            <Text fx:id="lblReservationCount" layoutX="57.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4">
                <font>
                   <Font name="System Bold" size="35.0" />
                </font>
@@ -240,7 +240,7 @@
                   <Font name="System Bold" size="22.0" />
                </font>
             </Text>
-            <Text layoutX="46.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4" wrappingWidth="20.1318359375">
+            <Text fx:id="lblPaidKeyMoneyCount" layoutX="46.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4" wrappingWidth="20.1318359375">
                <font>
                   <Font name="System Bold" size="31.0" />
                </font>
@@ -271,7 +271,7 @@
                   <Font name="System Bold" size="22.0" />
                </font>
             </Text>
-            <Text layoutX="46.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4" wrappingWidth="20.1318359375">
+            <Text fx:id="lblUnpaidKeyMoney" layoutX="46.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4" wrappingWidth="20.1318359375">
                <font>
                   <Font name="System Bold" size="31.0" />
                </font>

@@ -125,4 +125,17 @@ public class ReservationDAOImpl implements ReservationDAO {
 
         return notPaylist;
     }
+
+    @Override
+    public List<Student> getKeyMoneyPaid() {
+        Session session = SessionFactoryConfiguration.getInstance().getSessionFactory();
+        Transaction transaction = session.beginTransaction();
+
+        List<Student> notPaylist = session.createQuery("SELECT student FROM Reservation WHERE states LIKE : ID").setParameter("ID", "PAID").list();
+
+        transaction.commit();
+        session.close();
+
+        return notPaylist;
+    }
 }

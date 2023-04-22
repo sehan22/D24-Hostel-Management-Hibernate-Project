@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -100,11 +101,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="txtGender" focusColor="WHITE" focusTraversable="false" layoutX="22.0" layoutY="24.0" onKeyReleased="#validStudentGenderOnAction" prefHeight="30.0" prefWidth="518.0" unFocusColor="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </JFXTextField>
+            <JFXComboBox fx:id="cmbGender" focusColor="WHITE" layoutX="22.0" layoutY="25.0" onMouseClicked="#selectGenderOnAction" prefHeight="25.0" prefWidth="518.0" stylesheets="@css/comboboxStyle.css" unFocusColor="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="778.0" layoutY="411.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
@@ -145,26 +142,6 @@
             </JFXTextField>
          </children>
       </AnchorPane>
-      <Text layoutX="189.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration Date : " y="3.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <Text layoutX="357.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2023 / 03 / 31" y="3.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <Text layoutX="1177.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12.30 P.M." y="3.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <Text layoutX="1119.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time : " y="3.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
       <JFXTextField focusTraversable="false" layoutX="25.0" layoutY="62.0" prefHeight="25.0" prefWidth="1382.0" visible="false" />
       <Text fill="#545454" layoutX="896.0" layoutY="511.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recheck the validity of the data you have entered in the form." />
       <JFXButton fx:id="btnSave" buttonType="RAISED" focusTraversable="false" layoutX="1002.0" layoutY="542.0" onAction="#saveStudentOnAction" prefHeight="39.0" prefWidth="111.0" styleClass="redButton" stylesheets="@css/FormButtonStyle.css" text="Save" textFill="WHITE">
@@ -256,5 +233,15 @@
             </LinearGradient>
          </ripplerFill>
       </JFXButton>
+      <Text layoutX="970.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date &amp; Time: " y="3.0">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Text>
+      <Text fx:id="lblCurrentDateAndTime" layoutX="1092.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" y="3.0">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

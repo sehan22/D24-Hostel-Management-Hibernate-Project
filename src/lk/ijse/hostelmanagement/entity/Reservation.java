@@ -24,7 +24,7 @@ public class Reservation implements SuperEntity{
     private String id;
     @Column(name = "reservation_date", nullable = false)
     private Date date;
-    @Column(name = "reservation_status", nullable = false)
+    @Column(nullable = false)
     private String states;
 
     @ManyToOne

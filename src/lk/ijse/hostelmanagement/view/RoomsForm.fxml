@@ -20,26 +20,6 @@
          </image>
       </ImageView>
       <JFXTextField layoutX="25.0" layoutY="62.0" prefHeight="25.0" prefWidth="1382.0" visible="false" />
-      <Text layoutX="189.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration Date : " y="3.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <Text layoutX="357.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2023 / 03 / 31" y="3.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <Text layoutX="1177.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12.30 P.M." y="3.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <Text layoutX="1119.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time : " y="3.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
       <AnchorPane layoutX="98.0" layoutY="203.0" prefHeight="66.0" prefWidth="561.0" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;">
          <children>
             <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Number">
@@ -198,5 +178,15 @@
             </LinearGradient>
          </ripplerFill>
       </JFXButton>
+      <Text layoutX="970.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date &amp; Time: " y="3.0">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Text>
+      <Text fx:id="lblCurrentDateAndTime" layoutX="1092.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" y="3.0">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

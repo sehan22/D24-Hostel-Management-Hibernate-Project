@@ -25,6 +25,9 @@ import javafx.stage.StageStyle;
 import lk.ijse.hostelmanagement.bo.BOType;
 import lk.ijse.hostelmanagement.bo.BoFactory;
 import lk.ijse.hostelmanagement.bo.custom.LoginBo;
+import lk.ijse.hostelmanagement.bo.custom.ReservationBo;
+import lk.ijse.hostelmanagement.bo.custom.RoomBo;
+import lk.ijse.hostelmanagement.bo.custom.StudentBO;
 import lk.ijse.hostelmanagement.dto.UserDTO;
 import lk.ijse.hostelmanagement.entity.User;
 import lk.ijse.hostelmanagement.util.Navigation;
@@ -57,6 +60,8 @@ public class LoginFormController {
     public TextField txtResetUserName;
     public PasswordField txtNewPassword;
 
+    public static String userName;
+
     LoginBo loginBo = (LoginBo) BoFactory.getInstance().getBo(BOType.USER);
 
     public void initialize() {
@@ -85,6 +90,8 @@ public class LoginFormController {
             lblUserNameorPasswordIncorrect.setVisible(false);
 
             Navigation.navigate(Routes.MANAGEMENT, mainloginformpane);
+
+            userName = userNametxt.getText();
         } else if (null == loginBo.getUserPassword(userNametxt.getText())) {
             new BounceIn(userNametxt).play();
             lblUserNameDoesNotMatch.setVisible(true);
@@ -143,21 +150,9 @@ public class LoginFormController {
     public void resetPasswordOnAction(ActionEvent actionEvent) {
     }
 
-    private boolean checkValidityUserNamePasswordOnUpdate() {
-        if (txtResetHidePassword.getText().equals(loginBo.getUserPassword(txtResetUserName.getText()))) {
-            return true;
-        } else if (null == loginBo.getUserPassword(txtResetUserName.getText())) {
-            new BounceIn(txtResetUserName).play();
-            return false;
-        } else {
-            new BounceIn(txtResetHidePassword).play();
-            new BounceIn(txtResetShowPassword).play();
-            return false;
-        }
-    }
 
     public void openGmailOnAction(ActionEvent actionEvent) throws URISyntaxException, IOException {
-        Desktop.getDesktop().browse(new URI("https://wa.me/qr/SLKJU7VCNRZQL1"));
+        Desktop.getDesktop().browse(new URI("https://gmail.com"));
     }
 
     public void openWhatsappOnAction(ActionEvent actionEvent) throws URISyntaxException, IOException {

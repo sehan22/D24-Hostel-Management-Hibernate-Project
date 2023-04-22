@@ -134,23 +134,4 @@ public class UserDAOImpl implements UserDAO {
 
         return password;
     }
-
-    @Override
-    public boolean updatePassword(User entity, String userName) {
-        Session session = SessionFactoryConfiguration.getInstance().getSessionFactory();
-        Transaction transaction = session.beginTransaction();
-
-        Query query = session.createQuery("UPDATE User set password =:PW WHERE userName LIKE : UN");
-        query.setParameter("PW" , entity);
-        query.setParameter("UN" , userName);
-
-        if (query.list().size() == 0) {
-            return false;
-        }
-
-        transaction.commit();
-        session.close();
-
-        return true;
-    }
 }

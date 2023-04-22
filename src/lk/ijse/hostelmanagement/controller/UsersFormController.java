@@ -10,6 +10,9 @@ import animatefx.animation.*;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
@@ -30,6 +33,8 @@ import lk.ijse.hostelmanagement.util.Navigation;
 import lk.ijse.hostelmanagement.util.Routes;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -58,11 +63,23 @@ public class UsersFormController {
     public AnchorPane paneNewPassword;
     public JFXPasswordField txtNewPassword;
     public AnchorPane paneButtonSet;
+    public Text lblCurrentDateAndTime;
 
     LoginBo loginBo = (LoginBo) BoFactory.getInstance().getBo(BOType.USER);
 
     public void initialize() {
         genarateUserId();
+        setDateAndTime();
+    }
+
+    private void setDateAndTime() {
+        Timeline dateAndTime = new Timeline(
+                new KeyFrame(Duration.ZERO, event -> {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    lblCurrentDateAndTime.setText(LocalDateTime.now().format(formatter));
+                }), new KeyFrame(Duration.seconds(1)));
+        dateAndTime.setCycleCount(Animation.INDEFINITE);
+        dateAndTime.play();
     }
 
     private void clearTextFields() {

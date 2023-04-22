@@ -16,16 +16,4 @@ import org.hibernate.query.Query;
 import java.util.List;
 
 public class QueryDAOImpl implements QueryDAO {
-    @Override
-    public List<StudentDTO> keyMoneyNotPaidStudents() {
-        Session session = SessionFactoryConfiguration.getInstance().getSessionFactory();
-        Transaction transaction = session.beginTransaction();
-
-/*        Query select_new_studentDTO = session.createQuery("SELECT new StudentDTO");*/
-
-        transaction.commit();
-        session.close();
-
-        return null;
-    }
 }
